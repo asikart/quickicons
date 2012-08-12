@@ -14,7 +14,8 @@
 	
 	<install> <!-- Runs on install -->
     	<sql>
-        	<file charset="utf8">sql/install.sql</file>
+        	<file driver="mysql" charset="utf8">sql/install.sql</file>
+			<file driver="mysqli" charset="utf8">sql/install.sql</file>
   		</sql>
     </install>
 	
