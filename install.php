@@ -15,15 +15,7 @@ class com_AkquickiconsInstallerScript
 	 */
 	function install($parent) 
 	{
-		jimport('joomla.filesystem.file') ;
-		jimport('joomla.filesystem.folder') ;
 		
-		$path = $parent->getPath('source');
-		$installer = new JInstaller();
-		echo $mod_path = $path.DS.'module' ;
-		$result = $installer->install($mod_path);
-		
-		AK::show($result);
 	}
  
 	/**
@@ -53,8 +45,17 @@ class com_AkquickiconsInstallerScript
 	 */
 	function preflight($type, $parent) 
 	{
-		echo '123123' ;
-		AK::show($parent); jexit();
+		
+		jimport('joomla.filesystem.file') ;
+		jimport('joomla.filesystem.folder') ;
+		
+		$path = $parent->getPath('source');
+		$installer = new JInstaller();
+		echo $mod_path = $path.DS.'module' ;
+		$result = $installer->install($mod_path);
+		
+		AK::show($result);
+		jexit();
 	}
  
 	/**
