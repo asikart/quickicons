@@ -25,7 +25,19 @@ class com_AkquickiconsInstallerScript
 	 */
 	function uninstall($parent) 
 	{
+		$db = JFactory::getDbo();
+		$q = $db->getQuery(true) ;
 		
+		$q->select('extension_id')
+			->from('#__extensions')
+			->where("element='mod_akquickicons'")
+			;
+		
+		$db->setQuery($q);
+		$result = $db->loadResult();
+		
+		$installer = new JInstaller();
+		$installer->uninstall( 'module', $result );
 	}
  
 	/**
@@ -35,7 +47,7 @@ class com_AkquickiconsInstallerScript
 	 */
 	function update($parent) 
 	{
-		echo '123123' ;
+		
 	}
  
 	/**
@@ -49,13 +61,20 @@ class com_AkquickiconsInstallerScript
 		jimport('joomla.filesystem.file') ;
 		jimport('joomla.filesystem.folder') ;
 		
-		$path = $parent->getPath('source');
+		// install module
+		$p_installer = $parent->getParent() ;
+		$path = $p_installer->getPath('source');
+		
 		$installer = new JInstaller();
-		echo $mod_path = $path.DS.'module' ;
+		$mod_path = $path.DS.'..'.DS.'module' ;
+		
 		$result = $installer->install($mod_path);
 		
-		AK::show($result);
-		jexit();
+		if(!$result) {
+			return false ;
+		}
+		
+		//echo 'AKQuickicons module Install Successfully.' ;
 	}
  
 	/**
@@ -65,8 +84,7 @@ class com_AkquickiconsInstallerScript
 	 */
 	function postflight($type, $parent) 
 	{
-		echo '123123' ;
-		AK::show($parent); jexit();
+		
 	}
 	
 }
