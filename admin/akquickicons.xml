@@ -36,7 +36,7 @@
 			<folder>sql</folder>
 			<folder>tables</folder>
 			<folder>views</folder>
-			<folder>languages</folder>
+			<folder>language</folder>
 		</files>
 	</administration>
 	

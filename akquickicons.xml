@@ -36,8 +36,11 @@
 			<folder>sql</folder>
 			<folder>tables</folder>
 			<folder>views</folder>
-			<folder>languages</folder>
+			<folder>language</folder>
 		</files>
 	</administration>
+	
+	<updateservers>
+        <server type="extension" priority="1" name="Asikart QuickIcons">http://asikart.com/update/com_akquickicons.xml</server>
+    </updateservers>
 </extension>
-
