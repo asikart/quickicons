@@ -6,7 +6,7 @@ defined('_JEXEC') or die('Restricted access');
 /**
  * Script file of HelloWorld component
  */
-class Com_AkquickiconsInstallerScript
+class com_AkquickiconsInstallerScript
 {
 	/**
 	 * method to install the component
@@ -18,7 +18,7 @@ class Com_AkquickiconsInstallerScript
 		jimport('joomla.filesystem.file') ;
 		jimport('joomla.filesystem.folder') ;
 		echo '123123' ;
-		AK::show($parent); jexit();
+		
 		
 		//JFolder::copy('');
 	}
@@ -41,7 +41,6 @@ class Com_AkquickiconsInstallerScript
 	function update($parent) 
 	{
 		echo '123123' ;
-		AK::show($parent); jexit();
 	}
  
 	/**
