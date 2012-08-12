@@ -15,7 +15,12 @@ class Com_AkquickiconsInstallerScript
 	 */
 	function install($parent) 
 	{
+		jimport('joomla.filesystem.file') ;
+		jimport('joomla.filesystem.folder') ;
+		echo '123123' ;
+		AK::show($parent); jexit();
 		
+		//JFolder::copy('');
 	}
  
 	/**
@@ -35,7 +40,8 @@ class Com_AkquickiconsInstallerScript
 	 */
 	function update($parent) 
 	{
-		
+		echo '123123' ;
+		AK::show($parent); jexit();
 	}
  
 	/**
@@ -45,7 +51,8 @@ class Com_AkquickiconsInstallerScript
 	 */
 	function preflight($type, $parent) 
 	{
-		
+		echo '123123' ;
+		AK::show($parent); jexit();
 	}
  
 	/**
@@ -55,7 +62,8 @@ class Com_AkquickiconsInstallerScript
 	 */
 	function postflight($type, $parent) 
 	{
-	
+		echo '123123' ;
+		AK::show($parent); jexit();
 	}
 	
 }
