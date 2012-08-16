@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5.0" method="upgrade">
 	<name>com_akquickicons</name>
-	<creationDate>2012-02-28</creationDate>
+	<creationDate>2012-08-16</creationDate>
 	<copyright>Copyright (C) 2012. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Asika</author>
 	<authorEmail>asika32764@gmail.com</authorEmail>
 	<authorUrl>http://asikart.com</authorUrl>
-	<version>1.0.0</version>
-	<description>desc of akquickicons</description>
+	<version>1.0.1</version>
+	<description>Asikart QuickIcons</description>
 	
 	<scriptfile>install.php</scriptfile>
 	
