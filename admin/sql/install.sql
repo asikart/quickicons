@@ -37,3 +37,13 @@ CREATE TABLE IF NOT EXISTS `#__akquickicons_icons` (
   KEY `idx_checkout` (`checked_out`),
   KEY `cat_index` (`published`,`access`,`catid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+
+-- Category
+INSERT INTO `#__categories` (`parent_id`, `lft`, `rgt`, `level`, `path`, `extension`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `modified_user_id`, `modified_time`, `hits`, `language`) VALUES
+(1, 135, 136, 1, 'core-icons', 'com_akquickicons', 'Core Icons', 'core-icons', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 908, '2012-08-12 04:03:49', 908, '2012-08-12 04:05:29', 0, '*');
+
+-- Icons
+INSERT INTO `#__akquickicons_icons` (`parent_id`, `lft`, `rgt`, `level`, `path`, `catid`, `title`, `alias`, `link`, `introtext`, `fulltext`, `images`, `version`, `created`, `created_by`, `modified`, `modified_by`, `ordering`, `published`, `publish_up`, `publish_down`, `checked_out`, `checked_out_time`, `access`, `language`, `params`) VALUES
+(0, 0, 0, 0, '', 80, 'New Article', 'new-article', 'index.php?option=com_content&task=article.add', '', '', 'images/quickicons/Primo-Icons/blog_add_48.png', 0, '2012-08-12 04:03:16', 908, '0000-00-00 00:00:00', 0, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 1, '*', ''),
+(0, 0, 0, 0, '', 80, 'Article Manager', 'article-manager', 'index.php?option=com_content', '', '', 'images/quickicons/Primo-Icons/blog_compose_48.png', 0, '2012-08-12 04:09:56', 908, '0000-00-00 00:00:00', 0, 2, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 1, '*', ''),
+(0, 0, 0, 0, '', 80, 'Category Manager', 'category-manager', 'index.php?option=com_categories&extension=com_content', '', '', 'images/quickicons/Primo-Icons/bookmark_48.png', 0, '2012-08-12 04:14:42', 908, '0000-00-00 00:00:00', 0, 3, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 1, '*', '');
