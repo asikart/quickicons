@@ -19,6 +19,13 @@
   		</sql>
     </install>
 	
+	<install> <!-- Runs on install -->
+    	<sql>
+        	<file driver="mysql" charset="utf8">sql/uninstall.sql</file>
+			<file driver="mysqli" charset="utf8">sql/uninstall.sql</file>
+  		</sql>
+    </install>
+	
 	<administration>
 		<menu>COM_AKQUICKICONS</menu>
 		

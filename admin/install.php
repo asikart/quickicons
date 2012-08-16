@@ -15,12 +15,17 @@ class com_AkquickiconsInstallerScript
 	 */
 	function install($parent) 
 	{
+		$db = JFactory::getDbo();
+		
+		$p_installer = $parent->getParent() ;
+		$path = $p_installer->getPath('source');
+		
 		jimport('joomla.filesystem.folder');
-		$origin = $path.DS.'admin'.DS.'images' ;
-		$target = JPATH_ROOT ;
+		$origin = $path.DS.'images'.DS.'quickicons' ;
+		$target = JPATH_ROOT.DS.'images'.DS.'quickicons' ;
 		
 		JFolder::move($origin,$target);
-		
+				
 		// set Category
 		$q = $db->getQuery(true) ;
 		
@@ -49,15 +54,20 @@ class com_AkquickiconsInstallerScript
 		$db->setQuery($q);
 		$icon_ids = $db->loadResultArray();
 		
-		$table_path = $path.DS.'admin'.DS.'tables' ;
-		JTable::addIncludePath($table_path);
+		$table_path = $path.DS.'tables'.DS.'icon.php' ;
+		include_once $table_path ;
 		$icon = JTable::getInstance('icon', 'AkquickiconsTable') ;
+		//echo $table_path ;
+		//AK::show($icon); 
 		
-		foreach( $icon_ids as $icon_id ):
-			$icon-load($icon_id);
-			$icon->catid = $cat_ids[0] ;
+		foreach( $icon_ids as $k => $icon_id ):
+			$icon->load($icon_id);
+			$icon->catid = $catids[0] ;
 			$icon->store();
 		endforeach;
+		
+		$this->catid = $catids[0] ;
+		
 	}
  
 	/**
@@ -80,6 +90,12 @@ class com_AkquickiconsInstallerScript
 		
 		$installer = new JInstaller();
 		$installer->uninstall( 'module', $result );
+		
+		$q->delete('#__categories')
+			->where("extension='com_akquickicons'")
+			;
+		$db->setQuery($q);
+		$db->query();
 	}
  
 	/**
@@ -114,19 +130,33 @@ class com_AkquickiconsInstallerScript
 		$p_installer = $parent->getParent() ;
 		$path = $p_installer->getPath('source');
 		
-		if($type == 'install') {
-			
-		}
-		
 		// install module
 		$installer = new JInstaller();
 		$mod_path = $path.DS.'..'.DS.'module' ;
 		
 		$result = $installer->install($mod_path);
 		
-		if(!$result) {
-			return false ;
-		}
+		// set Module active
+		$q = $db->getQuery(true) ;
+		
+		$q->select('*')
+			->from('#__modules')
+			->where("module='mod_akquickicons'")
+			;
+		$db->setQuery($q);
+		$module = $db->loadObject();
+		$module->published = 1 ;
+		$module->position = 'icon' ;
+		$params = new stdClass ;
+		$params->catid = $this->catid ;
+		$module->params = json_encode($params);
+		
+		$db->updateObject( '#__modules',$module, 'id');
+		
+		$in = new stdClass ;
+		$in->moduleid = $module->id ;
+		$in->menuid = 0 ;
+		$db->insertObject( '#__modules_menu',$in);
 	}
 	
 }
