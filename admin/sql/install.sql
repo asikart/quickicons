@@ -24,8 +24,6 @@ CREATE TABLE IF NOT EXISTS `#__akquickicons_icons` (
   `params` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_access` (`access`),
-  KEY `idx_path` (`path`),
-  KEY `idx_left_right` (`lft`,`rgt`),
   KEY `idx_alias` (`alias`),
   KEY `idx_createdby` (`catid`),
   KEY `idx_language` (`language`),
