@@ -57,23 +57,6 @@ class com_AkquickiconsInstallerScript
 	 */
 	function preflight($type, $parent) 
 	{
-		
-		jimport('joomla.filesystem.file') ;
-		jimport('joomla.filesystem.folder') ;
-		
-		// install module
-		$p_installer = $parent->getParent() ;
-		$path = $p_installer->getPath('source');
-		
-		$installer = new JInstaller();
-		$mod_path = $path.DS.'..'.DS.'module' ;
-		
-		$result = $installer->install($mod_path);
-		
-		if(!$result) {
-			return false ;
-		}
-		
 		//echo 'AKQuickicons module Install Successfully.' ;
 	}
  
@@ -85,6 +68,9 @@ class com_AkquickiconsInstallerScript
 	function postflight($type, $parent) 
 	{
 		$db = JFactory::getDbo();
+		
+		$p_installer = $parent->getParent() ;
+		$path = $p_installer->getPath('source');
 		
 		if($type == 'install') {
 			jimport('joomla.filesystem.folder');
@@ -121,7 +107,8 @@ class com_AkquickiconsInstallerScript
 			$db->setQuery($q);
 			$icon_ids = $db->loadResultArray();
 			
-			JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_akquickicons'.DS.'tables');
+			$table_path = $path.DS.'admin'.DS.'tables' ;
+			JTable::addIncludePath($table_path);
 			$icon = JTable::getInstance('icon', 'AkquickiconsTable') ;
 			
 			foreach( $icon_ids as $icon_id ):
@@ -129,6 +116,16 @@ class com_AkquickiconsInstallerScript
 				$icon->catid = $cat_ids[0] ;
 				$icon->store();
 			endforeach;
+		}
+		
+		// install module
+		$installer = new JInstaller();
+		$mod_path = $path.DS.'..'.DS.'module' ;
+		
+		$result = $installer->install($mod_path);
+		
+		if(!$result) {
+			return false ;
 		}
 	}
 	
