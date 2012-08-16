@@ -45,7 +45,7 @@ class com_AkquickiconsInstallerScript
 		$db->setQuery($q);
 		$icon_ids = $db->loadResultArray();
 		
-		JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_akquickicons');
+		JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_akquickicons'.DS.'tables');
 		$icon = JTable::getInstance('icon', 'AkquickiconsTable') ;
 		
 		foreach( $icon_ids as $icon_id ):
@@ -126,7 +126,7 @@ class com_AkquickiconsInstallerScript
 			$origin = JPATH_ADMINISTRATOR.DS.'components'.DS.'com_akquickicons'.DS.'images' ;
 			$target = JPATH_ROOT.DS ;
 			
-			JFolder::copy($origin,$target);
+			JFolder::move($origin,$target);
 		}
 	}
 	
