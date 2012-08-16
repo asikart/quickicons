@@ -15,44 +15,7 @@ class com_AkquickiconsInstallerScript
 	 */
 	function install($parent) 
 	{
-		$db = JFactory::getDbo();
 		
-		// set Category
-		$q = $db->getQuery(true) ;
-		
-		$q->select('id')
-			->from('#__categories')
-			->where("extension = 'com_akquickicons'")
-			;
-		
-		$db->setQuery($q);
-		$catids = $db->loadResultArray();
-		
-		$cat = JTable::getInstance('Category') ;
-		
-		foreach( $catids as $catid ):
-			$cat->load($catid);
-			$cat->store();
-		endforeach;
-		
-		// set icons
-		$q = $db->getQuery(true) ;
-		
-		$q->select('id')
-			->from('#__akquickicons_icons')
-			;
-		
-		$db->setQuery($q);
-		$icon_ids = $db->loadResultArray();
-		
-		JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_akquickicons'.DS.'tables');
-		$icon = JTable::getInstance('icon', 'AkquickiconsTable') ;
-		
-		foreach( $icon_ids as $icon_id ):
-			$icon-load($icon_id);
-			$icon->catid = $cat_ids[0] ;
-			$icon->store();
-		endforeach;
 	}
  
 	/**
@@ -121,14 +84,52 @@ class com_AkquickiconsInstallerScript
 	 */
 	function postflight($type, $parent) 
 	{
+		$db = JFactory::getDbo();
+		
 		if($type == 'install') {
 			jimport('joomla.filesystem.folder');
 			$origin = JPATH_ADMINISTRATOR.DS.'components'.DS.'com_akquickicons'.DS.'images' ;
 			$target = JPATH_ROOT.DS ;
 			
 			JFolder::move($origin,$target);
+			
+			// set Category
+			$q = $db->getQuery(true) ;
+			
+			$q->select('id')
+				->from('#__categories')
+				->where("extension = 'com_akquickicons'")
+				;
+			
+			$db->setQuery($q);
+			$catids = $db->loadResultArray();
+			
+			$cat = JTable::getInstance('Category') ;
+			
+			foreach( $catids as $catid ):
+				$cat->load($catid);
+				$cat->store();
+			endforeach;
+			
+			// set icons
+			$q = $db->getQuery(true) ;
+			
+			$q->select('id')
+				->from('#__akquickicons_icons')
+				;
+			
+			$db->setQuery($q);
+			$icon_ids = $db->loadResultArray();
+			
+			JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_akquickicons'.DS.'tables');
+			$icon = JTable::getInstance('icon', 'AkquickiconsTable') ;
+			
+			foreach( $icon_ids as $icon_id ):
+				$icon-load($icon_id);
+				$icon->catid = $cat_ids[0] ;
+				$icon->store();
+			endforeach;
 		}
 	}
 	
 }
-
