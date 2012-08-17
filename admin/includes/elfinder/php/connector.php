@@ -31,7 +31,7 @@ $opts = array(
 	'roots' => array(
 		array(
 			'driver'        => 'LocalFileSystem',   // driver for accessing file system (REQUIRED)
-			'path'          => JPATH_ROOT.DS.'images'.DS.'quickicons'.DS,         // path to files (REQUIRED)
+			'path'          => JPATH_ROOT.DS.'images'.DS.'quickicons',         // path to files (REQUIRED)
 			'URL'           => JURI::root().'images/quickicons/', // URL to files (REQUIRED)
 			'accessControl' => 'access'             // disable and hide dot starting files (OPTIONAL)
 		)
