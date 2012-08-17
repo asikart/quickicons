@@ -49,8 +49,17 @@ abstract class modAkquickiconsHelper
 		
 		foreach( $buttons as $button ):
 			
+			// fix task redirect
+			$uri = JFactory::getURI($button->link) ;
+			
+			if($uri->getVar('layout') == 'edit'){
+				$uri->setVar('task', "{$uri->getVar('view')}.{$uri->getVar('layout')}") ;
+				$uri->delVar('view');
+				$uri->delVar('layout');
+			}
+			
 			self::$buttons[$catid][] = array(
-				'link' => JRoute::_($button->link),
+				'link' => JRoute::_($uri->toString()),
 				'image' => JURI::root().$button->images,
 				'text' => $button->title,
 				'access' => true
