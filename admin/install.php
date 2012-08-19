@@ -127,36 +127,38 @@ class com_AkquickiconsInstallerScript
 	{
 		$db = JFactory::getDbo();
 		
-		$p_installer = $parent->getParent() ;
-		$path = $p_installer->getPath('source');
-		
-		// install module
-		$installer = new JInstaller();
-		$mod_path = $path.DS.'..'.DS.'module' ;
-		
-		$result = $installer->install($mod_path);
-		
-		// set Module active
-		$q = $db->getQuery(true) ;
-		
-		$q->select('*')
-			->from('#__modules')
-			->where("module='mod_akquickicons'")
-			;
-		$db->setQuery($q);
-		$module = $db->loadObject();
-		$module->published = 1 ;
-		$module->position = 'icon' ;
-		$params = new stdClass ;
-		$params->catid = $this->catid ;
-		$module->params = json_encode($params);
-		
-		$db->updateObject( '#__modules',$module, 'id');
-		
-		$in = new stdClass ;
-		$in->moduleid = $module->id ;
-		$in->menuid = 0 ;
-		$db->insertObject( '#__modules_menu',$in);
+		if($type == 'install'):
+			$p_installer = $parent->getParent() ;
+			$path = $p_installer->getPath('source');
+			
+			// install module
+			$installer = new JInstaller();
+			$mod_path = $path.DS.'..'.DS.'module' ;
+			
+			$result = $installer->install($mod_path);
+			
+			// set Module active
+			$q = $db->getQuery(true) ;
+			
+			$q->select('*')
+				->from('#__modules')
+				->where("module='mod_akquickicons'")
+				;
+			$db->setQuery($q);
+			$module = $db->loadObject();
+			$module->published = 1 ;
+			$module->position = 'icon' ;
+			$params = new stdClass ;
+			$params->catid = $this->catid ;
+			$module->params = json_encode($params);
+			
+			$db->updateObject( '#__modules',$module, 'id');
+			
+			$in = new stdClass ;
+			$in->moduleid = $module->id ;
+			$in->menuid = 0 ;
+			$db->insertObject( '#__modules_menu',$in);
+		endif;
 	}
 	
 }
