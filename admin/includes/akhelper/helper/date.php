@@ -1,4 +1,7 @@
 <?php
+// No direct access
+defined('_JEXEC') or die;
+
 
 class AKDate {
 	public static function execute ($func , $date = 'now') 

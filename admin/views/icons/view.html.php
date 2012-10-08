@@ -50,8 +50,9 @@ class AkquickiconsViewIcons extends JView
 	{
 		$state	= $this->get('State');
 		$canDo	= AkquickiconsHelper::getActions($state->get('filter.category_id'));
+		$doc 	= JFactory::getDocument();
 
-		JToolBarHelper::title(JText::_('COM_AKQUICKICONS_TITLE_ICONS'), 'article.png');
+		JToolBarHelper::title(JText::_('COM_AKQUICKICONS_TITLE_ICONS'), 'akquickicons.png');
 
         //Check if the form exists before showing the add/edit buttons
         $formPath = JPATH_COMPONENT_ADMINISTRATOR.DS.'views'.DS.'icon';
@@ -76,6 +77,13 @@ class AkquickiconsViewIcons extends JView
 		if ($canDo->get('core.admin')) {
 			JToolBarHelper::preferences('com_akquickicons');
 		}
-
+		
+		
+		// set Title Icon
+		$doc->addStyleDeclaration("
+.icon-48-akquickicons {
+	background: url(components/com_akquickicons/images/icon-48.png) no-repeat;
+}
+");
 	}
 }

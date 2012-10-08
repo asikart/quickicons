@@ -1,5 +1,10 @@
 <?php
 
+// No direct access
+defined('_JEXEC') or die;
+
+
+
 class AKConfig extends JObject {
 
 	public $extension_type 	= 3 ; // ( 1: component, 2: module, 3: plugin )

@@ -1,5 +1,8 @@
 <?php
 
+// No direct access
+defined('_JEXEC') or die;
+
 $submenu[] = 'tags' ;
 $submenu[] = 'orphan' ;
 

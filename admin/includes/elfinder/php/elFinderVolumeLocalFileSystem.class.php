@@ -1,4 +1,7 @@
 <?php
+// No direct access
+defined('_JEXEC') or die;
+
 
 /**
  * elFinder driver for local filesystem.

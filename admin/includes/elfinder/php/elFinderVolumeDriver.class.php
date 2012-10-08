@@ -1,4 +1,9 @@
 <?php
+// No direct access
+defined('_JEXEC') or die;
+
+
+
 /**
  * Base class for elFinder volume.
  * Provide 2 layers:

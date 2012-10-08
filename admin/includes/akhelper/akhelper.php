@@ -1,4 +1,7 @@
 <?php
+// No direct access
+defined('_JEXEC') or die;
+
 
 define('AK_THUMB_PATH'		, JPATH_ROOT.DS.'cache'.DS.'thumbs');
 define('AK_THUMBTEMP_PATH'	, AK_THUMB_PATH.DS.'temp');

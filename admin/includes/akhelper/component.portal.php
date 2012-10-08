@@ -1,4 +1,7 @@
 <?php
+// No direct access
+defined('_JEXEC') or die;
+
 // Require the base controller
 require_once JPATH_ROOT.DS.'administrator'.DS.$com_dir.DS.'helpers'.DS.'helper.php';
 

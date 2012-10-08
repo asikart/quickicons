@@ -1,4 +1,8 @@
 <?php
+// No direct access
+defined('_JEXEC') or die;
+
+
 
 // set extension type path
 switch ( $akconfig->get('extension_type') ) 

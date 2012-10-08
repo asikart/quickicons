@@ -27,7 +27,7 @@
     </uninstall>
 	
 	<administration>
-		<menu>COM_AKQUICKICONS</menu>
+		<menu img="components/com_akquickicons/images/icon-16.png">COM_AKQUICKICONS</menu>
 		
 		<files folder="admin">
 			<filename>access.xml</filename>

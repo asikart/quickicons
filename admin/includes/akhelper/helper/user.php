@@ -1,4 +1,7 @@
 <?php
+// No direct access
+defined('_JEXEC') or die;
+
 
 class AKUser {
 	public static function execute ($func) 
