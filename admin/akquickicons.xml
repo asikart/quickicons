@@ -1,55 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5.0" method="upgrade">
 	<name>com_akquickicons</name>
-	<creationDate>2012-08-16</creationDate>
+	<creationDate>2012-11-15</creationDate>
 	<copyright>Copyright (C) 2012. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Asika</author>
 	<authorEmail>asika32764@gmail.com</authorEmail>
 	<authorUrl>http://asikart.com</authorUrl>
-	<version>1.0.3</version>
-	<description>Asikart QuickIcons</description>
+	<version>1.1.0</version>
+	<description>COM_AKQUICKICONS_XML_DESCRIPTION</description>
+	
 	
 	<scriptfile>install.php</scriptfile>
 	
-	<install> <!-- Runs on install -->
+	
+	<install>
     	<sql>
         	<file driver="mysql" charset="utf8">sql/install.sql</file>
-			<!--<file driver="mysqli" charset="utf8">sql/install.sql</file>-->
   		</sql>
     </install>
 	
-	<uninstall> <!-- Runs on install -->
+	<uninstall>
     	<sql>
         	<file driver="mysql" charset="utf8">sql/uninstall.sql</file>
-			<!--<file driver="mysqli" charset="utf8">sql/uninstall.sql</file>-->
   		</sql>
     </uninstall>
 	
+	
+	
 	<administration>
-		<menu img="components/com_akquickicons/images/icon-16.png">COM_AKQUICKICONS</menu>
+		<menu>COM_AKQUICKICONS</menu>
 		
 		<files folder="admin">
-			<filename>access.xml</filename>
-			<filename>install.php</filename>
-			<filename>config.xml</filename>
-			<filename>controller.php</filename>
 			<filename>index.html</filename>
+			<filename>controller.php</filename>
 			<filename>akquickicons.php</filename>
-			<folder>controllers</folder>
+			<filename>install.php</filename>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
 			<folder>class</folder>
+			<folder>controllers</folder>
 			<folder>helpers</folder>
 			<folder>images</folder>
 			<folder>includes</folder>
+			<folder>language</folder>
 			<folder>models</folder>
 			<folder>sql</folder>
 			<folder>tables</folder>
 			<folder>views</folder>
-			<folder>language</folder>
 		</files>
 	</administration>
+	
+	
+	
+	<modules>
+		<module>mod_akquickicons</module>
+	</modules>
+	
+	
+	<plugins>
+		
+	</plugins>
+	
 	
 	<updateservers>
         <server type="extension" priority="1" name="Asikart QuickIcons">http://asikart.com/update/com_akquickicons.xml</server>
     </updateservers>
+	
+	
 </extension>
+

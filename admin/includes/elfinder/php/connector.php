@@ -1,7 +1,4 @@
 <?php
-// No direct access
-defined('_JEXEC') or die;
-
 
 error_reporting(0); // Set E_ALL for debuging
 

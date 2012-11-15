@@ -1,7 +1,4 @@
 <?php
-// No direct access
-defined('_JEXEC') or die;
-
 
 /**
  * Simple elFinder driver for MySQL.
