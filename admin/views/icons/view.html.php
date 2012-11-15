@@ -76,7 +76,7 @@ class AkquickiconsViewIcons extends AKView
         // Get the toolbar object instance
 		$bar = JToolBar::getInstance('toolbar');
 		
-		JToolBarHelper::title( JText::_('COM_AKQUICKICONS_TITLE_ICONS'), 'article.png');
+		JToolBarHelper::title( JText::_('COM_AKQUICKICONS_TITLE_ICONS'), 'akquickicons.png');
        
 		
 		// Toolbar Buttons
