@@ -69,7 +69,7 @@ defined('_JEXEC') or die;
 <?php if (!empty($buttons)): ?>
 	<div class="cpanel">
 		<?php foreach( $buttons as $button ): ?>
-		<div class="">
+		<div class="<?php echo (JVERSION >= 3) ? '' : 'icon-wrapper'; ?>">
 			<div class="icon">
 				<a href="<?php echo $button['link']; ?>">
 					<img src="<?php echo $button['image']; ?>" alt="">
