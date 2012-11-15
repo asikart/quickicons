@@ -72,6 +72,7 @@ class AkquickiconsViewIcons extends AKView
 		$canDo	= AkquickiconsHelper::getActions();
 		$user 	= JFactory::getUser() ;
 		$filter_state 	= $this->state->get('filter') ;
+		$doc = JFactory::getDocument();
 		
         // Get the toolbar object instance
 		$bar = JToolBar::getInstance('toolbar');

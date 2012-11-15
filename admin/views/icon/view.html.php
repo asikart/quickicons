@@ -60,6 +60,7 @@ class AkquickiconsViewIcon extends AKView
 	protected function addToolbar()
 	{
 		JRequest::setVar('hidemainmenu', true);
+		$doc = JFactory::getDocument();
 
 		$user		= JFactory::getUser();
 		$isNew		= ($this->item->id == 0);
