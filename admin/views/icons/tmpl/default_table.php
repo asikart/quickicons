@@ -152,24 +152,38 @@ $trashed	= $this->state->get('filter.published') == -2 ? true : false;
 				<?php if ($item->get('a_checked_out')) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->get('a_checked_out'), $item->get('a_checked_out_time'), 'icons.', $canCheckin); ?>
 				<?php endif; ?>
-				<a href="<?php echo JRoute::_('index.php?option=com_akquickicons&task=icon.edit&id='.$item->a_id); ?>">
-					<img src="<?php echo JURI::root().$item->images; ?>" width="32" alt="Thumb" style="float: left; margin-right: 10px;" />
-				</a>
+				
 				<?php if ($canEdit || $canEditOwn) : ?>
+					<?php if( $item->images ): ?>
 					<a href="<?php echo JRoute::_('index.php?option=com_akquickicons&task=icon.edit&id='.$item->a_id); ?>">
+						<img src="<?php echo JURI::root().$item->images; ?>" width="32" alt="Thumb" style="float: left; margin-right: 10px;" />
+					</a>
+					<?php endif; ?>
+					
+					<a href="<?php echo JRoute::_('index.php?option=com_akquickicons&task=icon.edit&id='.$item->a_id); ?>">
+						<?php if( JVERSION >= 3 ): ?>
+						<i class="<?php echo $item->icon_class; ?>"></i>&nbsp;
+						<?php endif; ?>
 						<?php echo $item->get('a_title'); ?>
 					</a>
 				<?php else: ?>
+					<?php if( $item->images ): ?>
+					<img src="<?php echo JURI::root().$item->images; ?>" width="32" alt="Thumb" style="float: left; margin-right: 10px;" />
+					<?php endif; ?>
+					
+					<?php if( JVERSION >= 3 ): ?>
+						<i class="<?php echo $item->icon_class; ?>"></i>&nbsp;
+					<?php endif; ?>
 					<?php echo $item->get('a_title'); ?>
 				<?php endif; ?>
 				
 				<?php if( JVERSION >= 3 ): ?>
 				<div class="small">
-					<?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape( $item->get('a_alias') ));?>
+					<?php echo $item->get('a_link');?>
 				</div>
 				<?php else: ?>
 				<p class="smallsub">
-					<?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape( $item->get('a_alias') ));?>
+					<?php echo $item->get('a_link');?>
 				</p>
 				<?php endif; ?>
 				</div>

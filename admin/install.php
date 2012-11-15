@@ -173,27 +173,28 @@ class com_AkquickiconsInstallerScript
 		
 		// set Module active
 		// ========================================================================
-		$q = $db->getQuery(true) ;
-		
-		$q->select('*')
-			->from('#__modules')
-			->where("module='mod_akquickicons'")
-			;
-		$db->setQuery($q);
-		$module = $db->loadObject();
-		$module->published = 1 ;
-		$module->position = ( JVERSION >= 3 ) ? 'cpanel' : 'icon' ;
-		$params = new stdClass ;
-		$params->catid = $this->catid ;
-		$module->params = json_encode($params);
-		
-		$db->updateObject( '#__modules',$module, 'id');
-		
-		$in = new stdClass ;
-		$in->moduleid = $module->id ;
-		$in->menuid = 0 ;
-		$db->insertObject( '#__modules_menu',$in);
-		
+		if($type == 'install'):
+			$q = $db->getQuery(true) ;
+			
+			$q->select('*')
+				->from('#__modules')
+				->where("module='mod_akquickicons'")
+				;
+			$db->setQuery($q);
+			$module = $db->loadObject();
+			$module->published = 1 ;
+			$module->position = ( JVERSION >= 3 ) ? 'cpanel' : 'icon' ;
+			$params = new stdClass ;
+			$params->catid = $this->catid ;
+			$module->params = json_encode($params);
+			
+			$db->updateObject( '#__modules',$module, 'id');
+			
+			$in = new stdClass ;
+			$in->moduleid = $module->id ;
+			$in->menuid = 0 ;
+			$db->insertObject( '#__modules_menu',$in);
+		endif;
 		
 		
 		// Install plugins

@@ -43,6 +43,9 @@ if( JVERSION >= 3 ) {
 	JHtml::_('dropdown.init');
 	JHtml::_('formbehavior.chosen', 'select');
 	
+	// Quicnicons
+	$doc->addStylesheet( 'components/com_akquickicons/includes/akicons/css/akicons.css') ;
+	
 	if ($saveOrder)
 	{
 		$saveOrderingUrl = 'index.php?option=com_akquickicons&task=icons.saveOrderAjax&tmpl=component';

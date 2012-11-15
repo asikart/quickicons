@@ -39,6 +39,12 @@ $span_right = 4 ;
 
 $width_left = 60 ;
 $width_right= 40 ;
+
+if(JVERSION >= 3) {
+	// Quicnicons
+	$doc->addStylesheet( 'components/com_akquickicons/includes/akicons/css/akicons.css') ;
+}
+
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
@@ -97,8 +103,9 @@ $width_right= 40 ;
 						<legend><?php echo JText::_('COM_AKQUICKICONS_EDIT_FIELDSET_'.$fieldset->name); ?></legend>
 						
 						<?php foreach($this->form->getFieldset($fieldset->name) as $field ): ?>
+							<?php if( JVERSION < 3 && $field->type == 'Icon_Modal' ) continue; ?>
 							<div class="control-group">
-								<?php echo $field->label; ?>
+								<?php echo $field->label ;?>
 								<div class="controls">
 									<?php echo $field->input; ?>
 								</div>

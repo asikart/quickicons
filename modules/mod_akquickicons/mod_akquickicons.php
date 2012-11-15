@@ -15,4 +15,8 @@ require_once dirname(__FILE__).'/helper.php';
 $buttons = modAkquickiconsHelper::getList($params) ;
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
-require JModuleHelper::getLayoutPath('mod_quickicon', $params->get('layout', 'default'));
+if( JVERSION >= 3 ){
+	require JModuleHelper::getLayoutPath('mod_akquickicons', $params->get('layout', 'joomla25'));
+}else{
+	require JModuleHelper::getLayoutPath('mod_akquickicons', 'joomla25');
+}

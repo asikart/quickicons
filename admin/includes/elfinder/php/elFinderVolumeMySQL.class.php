@@ -1,10 +1,15 @@
 <?php
-
 /**
- * Simple elFinder driver for MySQL.
- *
- * @author Dmitry (dio) Levashov
+ * @package 	elfinder
+ * @author 		Dmitry (dio) Levashov
+ * @author 		Troex Nevelin
+ * @author 		Alexey Sukhotin
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  **/
+
+// no direct access
+defined('_JEXEC') or die;
+
 class elFinderVolumeMySQL extends elFinderVolumeDriver {
 	
 	/**

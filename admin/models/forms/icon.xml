@@ -50,6 +50,16 @@
 				<option value="0">JUNPUBLISHED</option>
 			</field>
 			
+			<field name="icon_class"
+				type="icon_modal"
+				label="COM_AKQUICKICONS_ICON_CLASS"
+				description="COM_AKQUICKICONS_ICON_CLASS_DESC"
+				preview="true"
+				directory="quickicons"
+				labelclass="control-label"
+				class="onlyj30"
+			/>
+			
 			<field name="images"
 				type="media"
 				label="COM_AKQUICKICONS_IMAGES"

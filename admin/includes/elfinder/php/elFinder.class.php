@@ -1,4 +1,15 @@
 <?php
+/**
+ * @package 	elfinder
+ * @author 		Dmitry (dio) Levashov
+ * @author 		Troex Nevelin
+ * @author 		Alexey Sukhotin
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ **/
+
+// no direct access
+defined('_JEXEC') or die;
+
 
 /**
  * elFinder - file manager for web.

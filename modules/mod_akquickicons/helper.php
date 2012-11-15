@@ -62,6 +62,7 @@ abstract class modAkquickiconsHelper
 				'link' => JRoute::_($uri->toString()),
 				'image' => JURI::root().$button->images,
 				'text' => $button->title,
+				'icon_class'=> $button->icon_class,
 				'access' => true
 			);
 			

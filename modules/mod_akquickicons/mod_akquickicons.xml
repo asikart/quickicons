@@ -32,13 +32,17 @@
 					description="JFIELD_CATEGORY_DESC"
 					extension="com_akquickicons"
 					/>
-			</fieldset>
-			<fieldset name="advanced">
+				
 				<field
 					name="layout"
 					type="modulelayout"
 					label="JFIELD_ALT_LAYOUT_LABEL"
-					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+					defalut="joomla25" />
+				
+			</fieldset>
+			<fieldset name="advanced">
+				
 				<field
 					name="moduleclass_sfx"
 					type="text"

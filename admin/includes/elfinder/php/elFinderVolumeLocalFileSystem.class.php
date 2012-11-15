@@ -1,11 +1,15 @@
 <?php
-
 /**
- * elFinder driver for local filesystem.
- *
- * @author Dmitry (dio) Levashov
- * @author Troex Nevelin
+ * @package 	elfinder
+ * @author 		Dmitry (dio) Levashov
+ * @author 		Troex Nevelin
+ * @author 		Alexey Sukhotin
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  **/
+
+// no direct access
+defined('_JEXEC') or die;
+
 class elFinderVolumeLocalFileSystem extends elFinderVolumeDriver {
 	
 	/**

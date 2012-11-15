@@ -15,7 +15,7 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.multiselect');
 
 $user	= JFactory::getUser();
-$userId	= $user->get('id');
+$userId	= $user->get('<?php echo $class ; ?>');
 
 $function	= JRequest::getCmd('function', 'jSelectArticle');
 $listOrder	= $this->state->get('list.ordering');
@@ -23,110 +23,178 @@ $listDirn	= $this->state->get('list.direction');
 $canOrder	= $user->authorise('core.edit.state', 'com_akquickicons');
 $saveOrder	= $listOrder == 'a.ordering';
 
+$doc = JFactory::getDocument();
+$doc->addStylesheet( 'components/com_akquickicons/includes/akicons/css/akicons.css') ;
+
 if( JVERSION >= 3 ) {
 	JHtml::_('formbehavior.chosen', 'select');
 }
 
 ?>
-
+<style type="text/css">
+	
+	ul.the-icons li {
+		float: left;
+		min-width: 250px;
+		line-height: 150% ;
+		list-style: none ;
+	}
+	
+	ul.the-icons li a {
+		color: black;
+		cursor: pointer ;
+	}
+</style>
 <form action="<?php echo $uri = JFactory::getURI()->toString() ; ?>" method="post" name="adminForm" id="adminForm">
 
-	
-	<?php
-	
-	$this->setLayout('default') ;
-	echo $this->loadTemplate('filter') ;
-	
-	?>
+	<p>
+		<ul class="the-icons clearfix" style="color: black !important;">
+            <li><i class="<?php $class = 'akicon-glass'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-glass</a></li>
+            <li><i class="<?php $class = 'akicon-music'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-music</a></li>
+            <li><i class="<?php $class = 'akicon-search'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-search</a></li>
+            <li><i class="<?php $class = 'akicon-envelope'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-envelope</a></li>
+            <li><i class="<?php $class = 'akicon-heart'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-heart</a></li>
+            <li><i class="<?php $class = 'akicon-star'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-star</a></li>
+            <li><i class="<?php $class = 'akicon-star-empty'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-star-empty</a></li>
+            <li><i class="<?php $class = 'akicon-user'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-user</a></li>
+            <li><i class="<?php $class = 'akicon-film'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-film</a></li>
+            <li><i class="<?php $class = 'akicon-th-large'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-th-large</a></li>
+            <li><i class="<?php $class = 'akicon-th'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-th</a></li>
+            <li><i class="<?php $class = 'akicon-th-list'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-th-list</a></li>
+            <li><i class="<?php $class = 'akicon-ok'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-ok</a></li>
+            <li><i class="<?php $class = 'akicon-remove'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-remove</a></li>
+            <li><i class="<?php $class = 'akicon-zoom-in'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-zoom-in</a></li>
+            <li><i class="<?php $class = 'akicon-zoom-out'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-zoom-out</a></li>
+            <li><i class="<?php $class = 'akicon-off'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-off</a></li>
+            <li><i class="<?php $class = 'akicon-signal'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-signal</a></li>
+            <li><i class="<?php $class = 'akicon-cog'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-cog</a></li>
+            <li><i class="<?php $class = 'akicon-trash'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-trash</a></li>
+            <li><i class="<?php $class = 'akicon-home'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-home</a></li>
+            <li><i class="<?php $class = 'akicon-file'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-file</a></li>
+            <li><i class="<?php $class = 'akicon-time'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-time</a></li>
+            <li><i class="<?php $class = 'akicon-road'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-road</a></li>
+            <li><i class="<?php $class = 'akicon-download-alt'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-download-alt</a></li>
+            <li><i class="<?php $class = 'akicon-download'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-download</a></li>
+            <li><i class="<?php $class = 'akicon-upload'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-upload</a></li>
+            <li><i class="<?php $class = 'akicon-inbox'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-inbox</a></li>
 
-	<table class="adminlist table table-striped">
-		<thead>
-			<tr>
-				
-				<th>
-					<?php echo JHtml::_('grid.sort',  'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
-				</th>
-				
-				<th width="10%">
-					<?php echo JHtml::_('grid.sort',  'JCATEGORY', 'b.title', $listDirn, $listOrder); ?>
-				</th>
-				
-				<th width="5%">
-					<?php echo JHtml::_('grid.sort',  'JGRID_HEADING_ACCESS', 'd.title', $listDirn, $listOrder); ?>
-				</th>
-				
-				<th width="15%">
-					<?php echo JHtml::_('grid.sort',  'JDATE', 'a.created', $listDirn, $listOrder); ?>
-				</th>
-				
-				<th width="13%">
-					<?php echo JHtml::_('grid.sort',  'JGRID_HEADING_LANGUAGE', 'e.title', $listDirn, $listOrder); ?>
-				</th>
-				
-                <th width="1%" class="nowrap">
-                    <?php echo JHtml::_('grid.sort',  'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
-                </th>
+            <li><i class="<?php $class = 'akicon-play-circle'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-play-circle</a></li>
+            <li><i class="<?php $class = 'akicon-repeat'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-repeat</a></li>
+            <li><i class="<?php $class = 'akicon-refresh'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-refresh</a></li>
+            <li><i class="<?php $class = 'akicon-list-alt'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-list-alt</a></li>
+            <li><i class="<?php $class = 'akicon-lock'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-lock</a></li>
+            <li><i class="<?php $class = 'akicon-flag'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-flag</a></li>
+            <li><i class="<?php $class = 'akicon-headphones'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-headphones</a></li>
+            <li><i class="<?php $class = 'akicon-volume-off'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-volume-off</a></li>
+            <li><i class="<?php $class = 'akicon-volume-down'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-volume-down</a></li>
+            <li><i class="<?php $class = 'akicon-volume-up'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-volume-up</a></li>
+            <li><i class="<?php $class = 'akicon-qrcode'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-qrcode</a></li>
+            <li><i class="<?php $class = 'akicon-barcode'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-barcode</a></li>
+            <li><i class="<?php $class = 'akicon-tag'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-tag</a></li>
+            <li><i class="<?php $class = 'akicon-tags'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-tags</a></li>
+            <li><i class="<?php $class = 'akicon-book'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-book</a></li>
+            <li><i class="<?php $class = 'akicon-bookmark'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-bookmark</a></li>
+            <li><i class="<?php $class = 'akicon-print'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-print</a></li>
+            <li><i class="<?php $class = 'akicon-camera'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-camera</a></li>
+            <li><i class="<?php $class = 'akicon-font'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-font</a></li>
+            <li><i class="<?php $class = 'akicon-bold'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-bold</a></li>
+            <li><i class="<?php $class = 'akicon-italic'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-italic</a></li>
+            <li><i class="<?php $class = 'akicon-text-height'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-text-height</a></li>
+            <li><i class="<?php $class = 'akicon-text-width'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-text-width</a></li>
+            <li><i class="<?php $class = 'akicon-align-left'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-align-left</a></li>
+            <li><i class="<?php $class = 'akicon-align-center'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-align-center</a></li>
+            <li><i class="<?php $class = 'akicon-align-right'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-align-right</a></li>
+            <li><i class="<?php $class = 'akicon-align-justify'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-align-justify</a></li>
+            <li><i class="<?php $class = 'akicon-list'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-list</a></li>
 
-			</tr>
-		</thead>
-		<tfoot>
-			<tr>
-				<td colspan="10">
-					<?php echo $this->pagination->getListFooter(); ?>
-				</td>
-			</tr>
-		</tfoot>
-		<tbody>
-		<?php foreach ($this->items as $i => $item) :
-			
-			$item = new JObject($item);
-			
-			$ordering	= ($listOrder == 'a.ordering');
-			$canCreate	= $user->authorise('core.create',		'com_akquickicons');
-			$canEdit	= $user->authorise('core.edit',			'com_akquickicons');
-			$canCheckin	= $user->authorise('core.manage',		'com_akquickicons');
-			$canChange	= $user->authorise('core.edit.state',	'com_akquickicons');
-			$canEditOwn = $user->authorise('core.edit.own',		'com_akquickicons');
-			?>
-			<tr class="row<?php echo $i % 2; ?>">
-				
-				<td>
-					<a class="pointer"
-					   onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $item->a_id; ?>','<?php echo $this->escape(addslashes($item->a_title)); ?>');">
-						<?php echo $this->escape($item->a_title); ?></a>
-					<!--<p class="smallsub">
-						<?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape( $item->get('a_alias') ));?>
-					</p>-->
-				</td>
-				
-				<td class="center">
-					<?php echo $item->get('b_title'); ?>
-				</td>
-				
-				<td class="center">
-					<?php echo $item->get('d_title'); ?>
-				</td>
-				
-				<td class="center">
-					<?php echo JHtml::_('date', $item->get('a_created'), JText::_('DATE_FORMAT_LC4')); ?>
-				</td>
-				
-				<td class="center">
-					<?php if ($item->get('a_language')=='*'):?>
-						<?php echo JText::alt('JALL', 'language'); ?>
-					<?php else:?>
-						<?php echo $item->get('e_title') ? $this->escape($item->e_title) : JText::_('JUNDEFINED'); ?>
-					<?php endif;?>
-				</td>
+            <li><i class="<?php $class = 'akicon-indent-left'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-indent-left</a></li>
+            <li><i class="<?php $class = 'akicon-indent-right'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-indent-right</a></li>
+            <li><i class="<?php $class = 'akicon-facetime-video'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-facetime-video</a></li>
+            <li><i class="<?php $class = 'akicon-picture'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-picture</a></li>
+            <li><i class="<?php $class = 'akicon-pencil'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-pencil</a></li>
+            <li><i class="<?php $class = 'akicon-map-marker'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-map-marker</a></li>
+            <li><i class="<?php $class = 'akicon-adjust'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-adjust</a></li>
+            <li><i class="<?php $class = 'akicon-tint'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-tint</a></li>
+            <li><i class="<?php $class = 'akicon-edit'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-edit</a></li>
+            <li><i class="<?php $class = 'akicon-share'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-share</a></li>
+            <li><i class="<?php $class = 'akicon-check'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-check</a></li>
+            <li><i class="<?php $class = 'akicon-move'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-move</a></li>
+            <li><i class="<?php $class = 'akicon-step-backward'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-step-backward</a></li>
+            <li><i class="<?php $class = 'akicon-fast-backward'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-fast-backward</a></li>
+            <li><i class="<?php $class = 'akicon-backward'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-backward</a></li>
+            <li><i class="<?php $class = 'akicon-play'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-play</a></li>
+            <li><i class="<?php $class = 'akicon-pause'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-pause</a></li>
+            <li><i class="<?php $class = 'akicon-stop'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-stop</a></li>
+            <li><i class="<?php $class = 'akicon-forward'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-forward</a></li>
+            <li><i class="<?php $class = 'akicon-fast-forward'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-fast-forward</a></li>
+            <li><i class="<?php $class = 'akicon-step-forward'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-step-forward</a></li>
+            <li><i class="<?php $class = 'akicon-eject'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-eject</a></li>
+            <li><i class="<?php $class = 'akicon-chevron-left'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-chevron-left</a></li>
+            <li><i class="<?php $class = 'akicon-chevron-right'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-chevron-right</a></li>
+            <li><i class="<?php $class = 'akicon-plus-sign'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-plus-sign</a></li>
+            <li><i class="<?php $class = 'akicon-minus-sign'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-minus-sign</a></li>
+            <li><i class="<?php $class = 'akicon-remove-sign'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-remove-sign</a></li>
+            <li><i class="<?php $class = 'akicon-ok-sign'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-ok-sign</a></li>
 
-				<td class="center">
-					<?php echo (int) $item->get('a_id'); ?>
-				</td>
-   
-			</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
+            <li><i class="<?php $class = 'akicon-question-sign'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-question-sign</a></li>
+            <li><i class="<?php $class = 'akicon-info-sign'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-info-sign</a></li>
+            <li><i class="<?php $class = 'akicon-screenshot'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-screenshot</a></li>
+            <li><i class="<?php $class = 'akicon-remove-circle'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-remove-circle</a></li>
+            <li><i class="<?php $class = 'akicon-ok-circle'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-ok-circle</a></li>
+            <li><i class="<?php $class = 'akicon-ban-circle'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-ban-circle</a></li>
+            <li><i class="<?php $class = 'akicon-arrow-left'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-arrow-left</a></li>
+            <li><i class="<?php $class = 'akicon-arrow-right'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-arrow-right</a></li>
+            <li><i class="<?php $class = 'akicon-arrow-up'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-arrow-up</a></li>
+            <li><i class="<?php $class = 'akicon-arrow-down'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-arrow-down</a></li>
+            <li><i class="<?php $class = 'akicon-share-alt'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-share-alt</a></li>
+            <li><i class="<?php $class = 'akicon-resize-full'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-resize-full</a></li>
+            <li><i class="<?php $class = 'akicon-resize-small'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-resize-small</a></li>
+            <li><i class="<?php $class = 'akicon-plus'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-plus</a></li>
+            <li><i class="<?php $class = 'akicon-minus'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-minus</a></li>
+            <li><i class="<?php $class = 'akicon-asterisk'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-asterisk</a></li>
+            <li><i class="<?php $class = 'akicon-exclamation-sign'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-exclamation-sign</a></li>
+            <li><i class="<?php $class = 'akicon-gift'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-gift</a></li>
+            <li><i class="<?php $class = 'akicon-leaf'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-leaf</a></li>
+            <li><i class="<?php $class = 'akicon-fire'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-fire</a></li>
+            <li><i class="<?php $class = 'akicon-eye-open'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-eye-open</a></li>
+            <li><i class="<?php $class = 'akicon-eye-close'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-eye-close</a></li>
+            <li><i class="<?php $class = 'akicon-warning-sign'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-warning-sign</a></li>
+            <li><i class="<?php $class = 'akicon-plane'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-plane</a></li>
+            <li><i class="<?php $class = 'akicon-calendar'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-calendar</a></li>
+            <li><i class="<?php $class = 'akicon-random'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-random</a></li>
+            <li><i class="<?php $class = 'akicon-comment'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-comment</a></li>
+            <li><i class="<?php $class = 'akicon-magnet'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-magnet</a></li>
+
+            <li><i class="<?php $class = 'akicon-chevron-up'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-chevron-up</a></li>
+            <li><i class="<?php $class = 'akicon-chevron-down'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-chevron-down</a></li>
+            <li><i class="<?php $class = 'akicon-retweet'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-retweet</a></li>
+            <li><i class="<?php $class = 'akicon-shopping-cart'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-shopping-cart</a></li>
+            <li><i class="<?php $class = 'akicon-folder-close'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-folder-close</a></li>
+            <li><i class="<?php $class = 'akicon-folder-open'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-folder-open</a></li>
+            <li><i class="<?php $class = 'akicon-resize-vertical'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-resize-vertical</a></li>
+            <li><i class="<?php $class = 'akicon-resize-horizontal'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-resize-horizontal</a></li>
+            <li><i class="<?php $class = 'akicon-hdd'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-hdd</a></li>
+            <li><i class="<?php $class = 'akicon-bullhorn'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-bullhorn</a></li>
+            <li><i class="<?php $class = 'akicon-bell'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-bell</a></li>
+            <li><i class="<?php $class = 'akicon-certificate'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-certificate</a></li>
+            <li><i class="<?php $class = 'akicon-thumbs-up'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-thumbs-up</a></li>
+            <li><i class="<?php $class = 'akicon-thumbs-down'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-thumbs-down</a></li>
+            <li><i class="<?php $class = 'akicon-hand-right'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-hand-right</a></li>
+            <li><i class="<?php $class = 'akicon-hand-left'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-hand-left</a></li>
+            <li><i class="<?php $class = 'akicon-hand-up'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-hand-up</a></li>
+            <li><i class="<?php $class = 'akicon-hand-down'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-hand-down</a></li>
+            <li><i class="<?php $class = 'akicon-circle-arrow-right'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-circle-arrow-right</a></li>
+            <li><i class="<?php $class = 'akicon-circle-arrow-left'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-circle-arrow-left</a></li>
+            <li><i class="<?php $class = 'akicon-circle-arrow-up'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-circle-arrow-up</a></li>
+            <li><i class="<?php $class = 'akicon-circle-arrow-down'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-circle-arrow-down</a></li>
+            <li><i class="<?php $class = 'akicon-globe'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-globe</a></li>
+            <li><i class="<?php $class = 'akicon-wrench'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-wrench</a></li>
+            <li><i class="<?php $class = 'akicon-tasks'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-tasks</a></li>
+            <li><i class="<?php $class = 'akicon-filter'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-filter</a></li>
+            <li><i class="<?php $class = 'akicon-briefcase'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-briefcase</a></li>
+            <li><i class="<?php $class = 'akicon-fullscreen'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-fullscreen</a></li>
+          </ul>
+	</p>
 	
 	<div>
 		<input type="hidden" name="task" value="" />
