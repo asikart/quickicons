@@ -114,7 +114,13 @@ class AkquickiconsViewIcons extends AKView
 			AKToolBarHelper::preferences('com_akquickicons');
 		}
 		
-		
+		// set Title Icon
+		$doc->addStyleDeclaration("
+.icon-48-akquickicons {
+	background: url(components/com_akquickicons/images/icon-48.png) no-repeat;
+}
+");
+	
 		
 		// Sidebar Filters
 		// ========================================================================

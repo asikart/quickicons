@@ -64,12 +64,20 @@ class AkquickiconsViewIcon extends AKView
 		$user		= JFactory::getUser();
 		$isNew		= ($this->item->id == 0);
 
-		JToolBarHelper::title( JText::_('COM_AKQUICKICONS_TITLE_ICON'), 'article-add.png');
+		JToolBarHelper::title( JText::_('COM_AKQUICKICONS_TITLE_ICON'), 'akquickicons.png');
 
 		JToolBarHelper::apply('icon.apply');
 		JToolBarHelper::save('icon.save');
 		JToolBarHelper::custom('icon.save2new', 'save-new.png', 'save-new_f2.png', 'JTOOLBAR_SAVE_AND_NEW', false);
 		JToolBarHelper::custom('icon.save2copy', 'save-copy.png', 'save-copy_f2.png', 'JTOOLBAR_SAVE_AS_COPY', false);
 		JToolBarHelper::cancel('icon.cancel');
+		
+		// set Title Icon
+		$doc->addStyleDeclaration("
+.icon-48-akquickicons {
+	background: url(components/com_akquickicons/images/icon-48.png) no-repeat;
+}
+");
+	
 	}
 }
