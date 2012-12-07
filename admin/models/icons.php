@@ -11,14 +11,24 @@
 // no direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modellist');
+include_once AKPATH_COMPONENT.'/modellist.php' ;
 
 /**
  * Methods supporting a list of Akquickicons records.
  */
-class AkquickiconsModelIcons extends JModelList
+class AkquickiconsModelIcons extends AKModelList
 {
-
+	/**
+	 * @var		string	The prefix to use with controller messages.
+	 * @since	1.6
+	 */
+	protected 	$text_prefix = 'COM_AKQUICKICONS';
+	
+	public 		$component = 'akquickicons' ;
+	public 		$item_name = 'icon' ;
+	public 		$list_name = 'icons' ;
+	
+	
     /**
      * Constructor.
      *
@@ -45,8 +55,7 @@ class AkquickiconsModelIcons extends JModelList
 		// ========================================================================
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
-                'filter_order_Dir', 'filter_order', 
-				'search' , 'filter'
+                'filter_order_Dir', 'filter_order'
             );
 			
             $config['filter_fields'] = AkquickiconsHelper::_('db.mergeFilterFields', $config['filter_fields'] , $config['tables'] );
@@ -54,10 +63,11 @@ class AkquickiconsModelIcons extends JModelList
 		
 		
 		
-		// Fulltext search setting
+		// Other settings
 		// ========================================================================
-		$config['fulltext_search'] = true ;
+		$config['fulltext_search'] 	= true ;
 		
+		$config['core_sidebar'] 	= false ;
 		
 		
 		$this->config = $config ;
@@ -65,7 +75,8 @@ class AkquickiconsModelIcons extends JModelList
         parent::__construct($config);
     }
 
-
+	
+	
 	/**
 	 * Method to auto-populate the model state.
 	 *
@@ -73,24 +84,7 @@ class AkquickiconsModelIcons extends JModelList
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
-		// Initialise variables.
-		$app = JFactory::getApplication();
-		
-
-		// Load the parameters.
-		$params = JComponentHelper::getParams('com_akquickicons');
-		$this->setState('params', $params);
-		
-		// Fulltext search
-		$this->setState( 'search.fulltext', $this->config['fulltext_search'] );
-		
-		
-		foreach( $this->filter_fields as $field ){
-			$this->setState($field, $app->getUserStateFromRequest($this->context.'.field.'.$field, $field) );
-		}
-
-		// List state information.
-		parent::populateState('a.id', 'asc');
+		parent::populateState($ordering, $direction);
 	}
 
 	
@@ -107,10 +101,6 @@ class AkquickiconsModelIcons extends JModelList
 	 */
 	protected function getStoreId($id = '')
 	{
-		// Compile the store id.
-		$id.= ':' . json_encode($this->getState('search'));
-		$id.= ':' . json_encode($this->getState('filter'));
-
 		return parent::getStoreId($id);
 	}
 	
@@ -124,66 +114,11 @@ class AkquickiconsModelIcons extends JModelList
 	
 	public function getFilter()
 	{
-		if(!empty($this->filter)){
-			return $this->filter ;
-		}
+		$filter = parent::getFilter();
 		
-		// Get filter inputs from from xml files in /models/form.
-		JForm::addFormPath(JPATH_COMPONENT.'/models/forms');
-        JForm::addFieldPath(JPATH_COMPONENT.'/models/fields');
-		
-		
-		/* If you need generate sidebar filter by Joomla! itself, uncomment this.
-		if( JVERSION >=3 ) {
-			
-			// Get filter inputs from raw xml file.
-			$file 	= JPATH_COMPONENT.'/models/forms/icons_filter.xml' ;
-			$xml 	= simplexml_load_file($file);
-			
-			$filters 	= $xml->xpath('//fieldset[@name="filter_sidebar"]') ;
-			$filters	= $filters[0]->field;
-			
-			
-			$form['filter_sidebar'] 	= $filters ;
-			
-		}
-		*/
-		
-		// load forms
-		$form['search'] = JForm::getInstance('com_akquickicons.icons.search', 'icons_search', array( 'control' => 'search' ,'load_data'=>'true'));
-		$form['filter'] = JForm::getInstance('com_akquickicons.icons.filter', 'icons_filter', array( 'control' => 'filter' ,'load_data'=>'true'));
-		
-		
-		// Get default data of this form. Any State key same as form key will auto match.
-		$form['search']->bind( $this->getState('search') );
-		$form['filter']->bind( $this->getState('filter') );
-		
-		
-		return $this->filter = $form;
+		return $filter ;
 	}
 	
-	
-	/*
-	 * function getFulltextSearch
-	 * @param 
-	 */
-	
-	public function getFullSearchFields()
-	{
-		$file = JPATH_COMPONENT.'/models/forms/icons_search.xml' ;
-		
-		$xml = simplexml_load_file($file);
-		$field = $xml->xpath('//field[@name="field"]') ;
-		$options = $field[0]->option ;
-		
-		$fields = array();
-		foreach( $options as $option ):
-			$attr = $option->attributes();
-			$fields[] = $attr['value'];
-		endforeach;
-		
-		return $fields ;
-	}
 	
 
 	/**
@@ -206,6 +141,27 @@ class AkquickiconsModelIcons extends JModelList
 		// Filter and Search
 		$filter = $this->getState('filter',array()) ;
 		$search = $this->getState('search') ;
+		
+		$layout = JRequest::getVar('layout') ;
+		$nested = $this->getState('items.nested') ;
+		$avoid	= JRequest::getVar('avoid') ;
+		$show_root = JRequest::getVar('show_root') ;
+		
+		
+		
+		// Nested
+		// ========================================================================
+		if($nested && !$show_root){
+			$q->where("a.id != 1") ;
+		}
+		
+		if($avoid){
+			$table = $this->getTable();
+			$table->load( $avoid ) ;
+			
+			$q->where("a.lft < {$table->lft} OR a.rgt > {$table->rgt}") ;
+			$q->where("a.id != {$avoid}") ;
+		}
 		
 		
 		

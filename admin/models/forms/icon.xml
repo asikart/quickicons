@@ -38,10 +38,10 @@
 			/>
 	
 			<field name="published"
-				type="list"
+				type="radio"
 				label="JSTATUS"
 				description="JFIELD_PUBLISHED_DESC"
-				class="inputbox"
+				class="inputbox btn-group"
 				size="1"
 				default="1"
 				labelclass="control-label"
@@ -73,7 +73,40 @@
 			<field name="checked_out_time" type="hidden" filter="unset" />
 		</fieldset>
 		
-		<fieldset name="publish" align="right" horz="true">
+		<fieldset name="advanced" align="right" horz="true">
+			<field name="param_target"
+				type="list"
+				label="COM_AKQUICKICONS_TARGET_LABEL"
+				description="COM_AKQUICKICONS_TARGET_DESC"
+				class="inputbox"
+				size="1"
+				default=""
+				labelclass="control-label"
+			>
+				<option value="">COM_AKQUICKICONS_TARGET_OPT_SELF</option>
+				<option value="blank">COM_AKQUICKICONS_TARGET_OPT_BLANK</option>
+				<option value="modal">COM_AKQUICKICONS_TARGET_OPT_MODAL</option>
+			</field>
+			
+			<field name="param_smart_url"
+				type="radio"
+				label="COM_AKQUICKICONS_SMART_URL_LABEL"
+				description="COM_AKQUICKICONS_SMART_URL_DESC"
+				class="inputbox btn-group"
+				size="1"
+				default="1"
+				labelclass="control-label"
+			>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+		</fieldset>
+		
+	</fields>
+	
+	
+	<fields name="publishing">
+		<fieldset name="publish" horz="true">
 			<field name="id" 
 				type="text" 
 				default="0" 
@@ -130,9 +163,7 @@
 			
 			
 		</fieldset>
-		
 	</fields>
-	
 	
 	<!-- Need this field br child of root node for access setting. -->
 	<field name="asset_id" type="hidden" filter="unset" />

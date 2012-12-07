@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5.0" method="upgrade">
 	<name>com_akquickicons</name>
-	<creationDate>2012-11-15</creationDate>
+	<creationDate>2012-11-12</creationDate>
 	<copyright>Copyright (C) 2012. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Asika</author>
 	<authorEmail>asika32764@gmail.com</authorEmail>
 	<authorUrl>http://asikart.com</authorUrl>
-	<version>1.1.0</version>
+	<version>1.0.0</version>
 	<description>COM_AKQUICKICONS_XML_DESCRIPTION</description>
 	
 	
 	<scriptfile>install.php</scriptfile>
 	
-	
+	<!-- do not re install sql when generator working.
 	<install>
     	<sql>
         	<file driver="mysql" charset="utf8">sql/install.sql</file>
   		</sql>
     </install>
+	-->
 	
 	<uninstall>
     	<sql>
@@ -27,9 +28,38 @@
     </uninstall>
 	
 	
+
+	<files folder="../site">
+		<filename>index.html</filename>
+		<filename>akquickicons.php</filename>
+		<filename>controller.php</filename>
+		<filename>router.php</filename>
+		<folder>views</folder>
+		<folder>sql</folder>
+		<folder>models</folder>
+		<folder>controllers</folder>
+		<folder>images</folder>
+		<folder>includes</folder>
+	</files>
+	
+	
 	
 	<administration>
-		<menu img="components/com_akquickicons/images/icon-16.png">COM_AKQUICKICONS</menu>
+		<menu img="components/com_akquickicons/images/admin-icons/menu-akquickicons.png">COM_AKQUICKICONS</menu>
+		
+		<!-- Submenu
+			Note that all & must be escaped to &amp; for the file to be valid
+			XML and be parsed by the installer-->
+		<submenu>
+				
+			<menu link="option=com_akquickicons&amp;view=icons" view="icons"
+				img="components/com_akquickicons/images/admin-icons/menu-icons.png"
+				alt="Weblinks/Links">com_akquickicons_icons</menu>
+			<menu link="option=com_categories&amp;extension=com_akquickicons"
+				view="categories" img="class:category" alt="Akquickicons/Categories">jcategories</menu>
+		</submenu>
+		
+		
 		
 		<files folder="admin">
 			<filename>index.html</filename>
@@ -38,7 +68,7 @@
 			<filename>install.php</filename>
 			<filename>access.xml</filename>
 			<filename>config.xml</filename>
-			<folder>class</folder>
+			<folder>windwalker</folder>
 			<folder>controllers</folder>
 			<folder>helpers</folder>
 			<folder>images</folder>
@@ -54,17 +84,17 @@
 	
 	
 	<modules>
-		<module>mod_akquickicons</module>
+		<!--<module>mod_akquickicons</module>-->
 	</modules>
 	
 	
 	<plugins>
-		
+		<!--<plugin>plg_system_akquickicons</plugin>-->
 	</plugins>
 	
 	
 	<updateservers>
-        <server type="extension" priority="1" name="Asikart QuickIcons">http://asikart.com/update/com_akquickicons.xml</server>
+        <server type="extension" priority="1" name="Asikart Akquickicons Component">http://update.asikart.com/component/com_akquickicons.xml</server>
     </updateservers>
 	
 	

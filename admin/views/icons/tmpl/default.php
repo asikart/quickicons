@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.multiselect');
+AkquickiconsHelper::_('include.core');
 
 
 
@@ -31,9 +32,7 @@ $userId	= $user->get('id');
 // ================================================================================
 $listOrder	= $this->state->get('list.ordering');
 $listDirn	= $this->state->get('list.direction');
-$canOrder	= $user->authorise('core.edit.state', 'com_akquickicons');
-$saveOrder	= $listOrder == 'a.ordering';
-
+$originalOrders = array();
 
 
 // For Joomla!3.0
@@ -46,17 +45,32 @@ if( JVERSION >= 3 ) {
 	// Quicnicons
 	$doc->addStylesheet( 'components/com_akquickicons/includes/akicons/css/akicons.css') ;
 	
-	if ($saveOrder)
-	{
-		$saveOrderingUrl = 'index.php?option=com_akquickicons&task=icons.saveOrderAjax&tmpl=component';
-		JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+	// For Site
+	if($app->isSite()) {
+		AkquickiconsHelper::_('include.isis');
 	}
+}else{
+	
+	// For Site
+	if($app->isSite()) {
+		AkquickiconsHelper::_('include.bluestork');
+		// AkquickiconsHelper::_('include.fixBootstrapToJoomla');
+	}
+	
 }
+
+
+
 ?>
 
 <?php if( JVERSION >= 3 ): ?>
 <!-- Sort Table by Filter seletor -->
 <script type="text/javascript">
+	
+	<?php if( $app->isSite() ): ?>
+	Akquickicons.fixToolbar(40, 300) ;
+	<?php endif; ?>
+	
 	Joomla.orderTable = function() {
 		table = document.getElementById("sortTable");
 		direction = document.getElementById("directionTable");
@@ -71,9 +85,11 @@ if( JVERSION >= 3 ) {
 </script>
 <?php endif; ?>
 
+<div id="<?php echo (JVERSION >= 3) ? 'joomla30' : 'joomla25' ?>">
+
 <!-- Form Begin -->
 <form action="<?php echo JFactory::getURI()->toString(); ?>" method="post" name="adminForm" id="adminForm" enctype="multipart/form-data">
-	<?php if(!empty( $this->sidebar)): ?>
+	<?php if(!empty( $this->sidebar) && $app->isAdmin()): ?>
 		
 		<!-- Sidebar -->
 		<div id="j-sidebar-container" class="span2">
@@ -114,12 +130,16 @@ if( JVERSION >= 3 ) {
 		}
 	?>
 	
-	<!-- Hidden Inputs -->
-	<div id="hidden-inputs">
-		<input type="hidden" name="task" value="" />
-		<input type="hidden" name="boxchecked" value="0" />
-		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-		<?php echo JHtml::_('form.token'); ?>
-	</div>
+			<!-- Hidden Inputs -->
+			<div id="hidden-inputs">
+				<input type="hidden" name="task" value="" />
+				<input type="hidden" name="boxchecked" value="0" />
+				<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
+				<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+				<input type="hidden" name="original_order_values" value="<?php echo implode($originalOrders, ','); ?>" />
+				<?php echo JHtml::_('form.token'); ?>
+			</div>
+		</div>
 </form>
+
+</div>

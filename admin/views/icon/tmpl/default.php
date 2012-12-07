@@ -14,33 +14,63 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('behavior.keepalive');
+AkquickiconsHelper::_('include.core');
 
+
+$app = JFactory::getApplication() ;
 if( JVERSION >= 3){
 	JHtml::_('formbehavior.chosen', 'select');
+	if($app->isSite()){
+		//AkquickiconsHelper::_('include.fixBootstrapToJoomla');
+	}
+}else{
+	AkquickiconsHelper::_('include.bluestork');
+	// AkquickiconsHelper::_('include.fixBootstrapToJoomla');
 }
 
 
 
 // Init some API objects
 // ================================================================================
-$app 	= JFactory::getApplication() ;
 $date 	= JFactory::getDate( 'now' , JFactory::getConfig()->get('offset') ) ;
-$doc 	= JFactory::getDocument();
+$doc 	= JFactory::getDocument() ;
 $uri 	= JFactory::getURI() ;
-$user	= JFactory::getUser();
+$user	= JFactory::getUser() ;
+
+
+
+// For Site
+// ================================================================================
+if($app->isSite()) {
+	AkquickiconsHelper::_('include.isis');
+}
+
 
 
 // Edit setting
 // ================================================================================
 $tabs = count( $this->fields ) > 1 ? true : false;
 
-$span_left 	= 8 ;
-$span_right = 4 ;
+if($app->isAdmin()) {
+	$span_left 	= 8 ;
+	$span_right = 4 ;
+	
+	$width_left = 60 ;
+	$width_right= 40 ;
+}else{
+	$span_left 	= 12 ;
+	$span_right = 12 ;
+	
+	$width_left = 100 ;
+	$width_right= 100 ;
+}
 
-$width_left = 60 ;
-$width_right= 40 ;
 ?>
 <script type="text/javascript">
+	<?php if( $app->isSite() ): ?>
+	Akquickicons.fixToolbar(40, 300) ;
+	<?php endif; ?>
+	
 	Joomla.submitbutton = function(task)
 	{
 		if (task == 'icon.cancel' || document.formvalidator.isValid(document.id('icon-form'))) {
@@ -51,6 +81,8 @@ $width_right= 40 ;
 		}
 	}
 </script>
+
+<div id="<?php echo (JVERSION >= 3) ? 'joomla30' : 'joomla25' ?>">
 
 <form action="<?php echo JRoute::_( JFactory::getURI()->toString() ); ?>" method="post" name="adminForm" id="icon-form" class="form-validate">
 	
@@ -85,29 +117,9 @@ $width_right= 40 ;
 						<?php if( empty($fieldset->align) ) $fieldset->align = 'left' ; ?>
 						<?php if( $fieldset->align == 'right' ) continue; ?>
 						
-						<?php
-						if(!empty($fieldset->horz) && $fieldset->horz !== 'false'){
-							$form_class = 'form-horizontal' ;
-						}else{
-							$form_class = '' ;
-						}
-						?>
-						
-						<fieldset class="adminform <?php echo $form_class; ?>">
-						<legend><?php echo JText::_('COM_AKQUICKICONS_EDIT_FIELDSET_'.$fieldset->name); ?></legend>
-						
-						<?php foreach($this->form->getFieldset($fieldset->name) as $field ): ?>
-							<div class="control-group">
-								<?php echo $field->label; ?>
-								<div class="controls">
-									<?php echo $field->input; ?>
-								</div>
-							</div>
-						<?php endforeach; ?>
-						
-						<br /><br />
-						
-						</fieldset>
+						<!-- Fieldset -->
+						<?php $this->current_fieldset = $fieldset; ?>
+						<?php echo $this->loadTemplate('fieldset'); ?>
 						
 					<?php endforeach; ?>
 					
@@ -122,29 +134,9 @@ $width_right= 40 ;
 						<?php if( empty($fieldset->align) ) $fieldset->align = 'left' ; ?>
 						<?php if( $fieldset->align == 'left' ) continue; ?>
 						
-						<?php
-						if(!empty($fieldset->horz) && $fieldset->horz !== 'false'){
-							$form_class = 'form-horizontal' ;
-						}else{
-							$form_class = '' ;
-						}
-						?>
-						
-						<fieldset class="adminform <?php echo $form_class; ?>">
-						<legend><?php echo JText::_('COM_AKQUICKICONS_EDIT_FIELDSET_'.$fieldset->name); ?></legend>
-						
-						<?php foreach($this->form->getFieldset($fieldset->name) as $field ): ?>
-							<div class="control-group">
-								<?php echo $field->label; ?>
-								<div class="controls">
-									<?php echo $field->input; ?>
-								</div>
-							</div>
-						<?php endforeach; ?>
-						
-						<br /><br />
-						
-						</fieldset>
+						<!-- Fieldset -->
+						<?php $this->current_fieldset = $fieldset; ?>
+						<?php echo $this->loadTemplate('fieldset'); ?>
 						
 					<?php endforeach; ?>
 					
@@ -169,3 +161,5 @@ $width_right= 40 ;
 	</div>
 	<div class="clr"></div>
 </form>
+
+</div>

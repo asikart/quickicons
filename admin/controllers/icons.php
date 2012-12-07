@@ -12,92 +12,34 @@
 defined('_JEXEC') or die;
 
 
-jimport('joomla.application.component.controlleradmin');
+include_once AKPATH_COMPONENT.'/controlleradmin.php' ;
 
 /**
  * Icons list controller class.
  */
-class AkquickiconsControllerIcons extends JControllerAdmin
+class AkquickiconsControllerIcons extends AKControllerAdmin
 {
 	public $view_list = 'icons' ;
 	public $view_item = 'icon' ;
+	public $component = 'akquickicons';
 	
-	
-	/**
-     * Method to get a model object, loading it if required.
-     *
-     * @param   string  $name    The model name. Optional.
-     * @param   string  $prefix  The class prefix. Optional.
-     * @param   array   $config  Configuration array for model. Optional.
-     *
-     * @return  object  The model.
-     *
-     * @since   11.1
-     */
-	public function getModel($name = 'icon', $prefix = 'AkquickiconsModel', $config = array())
-	{
-		$model = parent::getModel($name, $prefix, $config);
-		return $model;
-	}
 	
 	
 	/**
-	 * Method to save the submitted ordering values for records via AJAX.
-	 *
-	 * @return	void
-	 *
-	 * @since   3.0
-	 */
-	public function saveOrderAjax()
-	{
-		$pks 	= $this->input->post->get('cid', array(), 'array');
-		$order 	= $this->input->post->get('order', array(), 'array');
-		
-		// Sanitize the input
-		JArrayHelper::toInteger($pks);
-		JArrayHelper::toInteger($order);
-		
-		// Get the model
-		$model = $this->getModel();
-
-		// Save the ordering
-		$return = $model->saveorder($pks, $order);
-
-		if ($return)
-		{
-			echo "1";
-		}
-
-		// Close the application
-		JFactory::getApplication()->close();
-	}
-	
-	
-	/**
-     * Set a URL for browser redirection.
+     * Constructor.
      *
-     * @param   string  $url   URL to redirect to.
-     * @param   string  $msg   Message to display on redirect. Optional, defaults to value set internally by controller, if any.
-     * @param   string  $type  Message type. Optional, defaults to 'message' or the type set by a previous call to setMessage.
+     * @param   array  $config  An optional associative array of configuration settings.
      *
-     * @return  JController  This object to support chaining.
-     *
+     * @see     JController
      * @since   11.1
      */
 	
-	public function setRedirect($url, $msg = null, $type = null)
-    {
-		$task  = $this->getTask() ;
-		$redirect_tasks = array('save', 'cancel', 'publish', 'unpublish', 'delete');
+    function __construct() {
 		
-		if(!$this->redirect){
-			$this->redirect = AkquickiconsHelper::_('uri.base64', 'decode', JRequest::getVar('return')) ;
-		}
+		$this->redirect_tasks = array(
+			'save', 'cancel', 'publish', 'unpublish', 'delete'
+		);
 		
-        if ($this->redirect && in_array($task, $redirect_tasks)){
-            return parent::setRedirect($this->redirect, $msg, $type) ;
-        }else{
-			return parent::setRedirect($url, $msg, $type) ;
-		}
+        parent::__construct();
     }
 }

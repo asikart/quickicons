@@ -20,7 +20,7 @@ $canOrder	= $user->authorise('core.edit.state', 'com_akquickicons');
 $saveOrder	= $listOrder == 'a.ordering';
 
 jimport('libraries.joomla.html.jgrid');
-
+akquickiconsLoader('admin://class/grid');
 
 
 

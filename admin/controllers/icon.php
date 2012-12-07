@@ -12,17 +12,18 @@
 defined('_JEXEC') or die;
 
 
-jimport('joomla.application.component.controllerform');
+include_once AKPATH_COMPONENT.'/controllerform.php' ;
 
 /**
  * Icon controller class.
  */
-class AkquickiconsControllerIcon extends JControllerForm
+class AkquickiconsControllerIcon extends AKControllerForm
 {
 	
 	public $view_list = 'icons' ;
 	public $view_item = 'icon' ;
-	
+	public $component = 'akquickicons';
+
 	
 	/**
      * Constructor.
@@ -39,97 +40,13 @@ class AkquickiconsControllerIcon extends JControllerForm
 			'return'
 		);
 		
+		$this->redirect_tasks = array(
+			'save', 'cancel', 'publish', 'unpublish', 'delete'
+		);
+		
         parent::__construct();
     }
-	
-	
-	/**
-     * Method to get a model object, loading it if required.
-     *
-     * @param   string  $name    The model name. Optional.
-     * @param   string  $prefix  The class prefix. Optional.
-     * @param   array   $config  Configuration array for model. Optional.
-     *
-     * @return  object  The model.
-     *
-     * @since   11.1
-     */
-	public function getModel($name = 'Icon', $prefix = 'AkquickiconsModel', $config = array('ignore_request' => true))
-	{
-		$model = parent::getModel($name, $prefix, $config);
-		return $model;
-	}
-	
-	
-	/**
-     * Method to run batch operations.
-     *
-     * @param   object  $model  The model of the component being processed.
-     *
-     * @return    boolean     True if successful, false otherwise and internal error is set.
-     *
-     * @since    11.1
-     */
-	
-	public function batch($model = null)
-	{
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
-		// Set the model
-		$model = $this->getModel();
-
-		// Preset the redirect
-		$this->setRedirect(JRoute::_('index.php?option=com_akquickicons&view=icons' . $this->getRedirectToListAppend(), false));
-
-		return parent::batch($model);
-	}
-	
-	
-	/**
-     * Gets the URL arguments to append to an item redirect.
-     *
-     * @param   integer  $recordId  The primary key id for the item.
-     * @param   string   $urlVar    The name of the URL variable for the id.
-     *
-     * @return  string  The arguments to append to the redirect URL.
-     *
-     * @since   11.1
-     */
-	
-	protected function getRedirectToItemAppend($recordId = null, $urlVar = 'id')
-	{
-		$append = parent::getRedirectToItemAppend($recordId , $urlVar );
-		
-		foreach( $this->allow_url_params as $param ):
-			if(JRequest::getVar($param)){
-				$append .= "&{$param}=" . JRequest::getVar($param) ;
-			}
-		endforeach;
-		
-		return $append ;
-	}
-	
-	
-	/**
-     * Gets the URL arguments to append to a list redirect.
-     *
-     * @return  string  The arguments to append to the redirect URL.
-     *
-     * @since   11.1
-     */
-	
-	protected function getRedirectToListAppend()
-	{
-		$append = parent::getRedirectToListAppend();
-		
-		foreach( $this->allow_url_params as $param ):
-			if(JRequest::getVar($param)){
-				$append .= "&{$param}=" . JRequest::getVar($param) ;
-			}
-		endforeach;
-		
-		return $append ;
-	}
 	
 	
 	/**
@@ -149,32 +66,4 @@ class AkquickiconsControllerIcon extends JControllerForm
 		
     }
 	
-	
-	/**
-     * Set a URL for browser redirection.
-     *
-     * @param   string  $url   URL to redirect to.
-     * @param   string  $msg   Message to display on redirect. Optional, defaults to value set internally by controller, if any.
-     * @param   string  $type  Message type. Optional, defaults to 'message' or the type set by a previous call to setMessage.
-     *
-     * @return  JController  This object to support chaining.
-     *
-     * @since   11.1
-     */
-	
-	public function setRedirect($url, $msg = null, $type = null)
-    {
-		$task  = $this->getTask() ;
-		$redirect_tasks = array('save', 'cancel', 'publish', 'unpublish', 'delete');
-		
-		if(!$this->redirect){
-			$this->redirect = AkquickiconsHelper::_('uri.base64', 'decode', JRequest::getVar('return')) ;
-		}
-		
-        if ($this->redirect && in_array($task, $redirect_tasks)){
-            return parent::setRedirect($this->redirect, $msg, $type) ;
-        }else{
-			return parent::setRedirect($url, $msg, $type) ;
-		}
-    }
 }

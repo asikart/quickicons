@@ -11,6 +11,10 @@
 // no direct access
 defined('_JEXEC') or die;
 
+include_once JPATH_ADMINISTRATOR.'/components/com_akquickicons/includes/core.php' ;
+JForm::addFieldPath( AKPATH_FORM.'/fields');
+JFormHelper::loadFieldClass('Modal');
+
 /**
  * Supports a modal article picker.
  *
@@ -40,7 +44,7 @@ class JFormFieldIcon_Modal extends JFormFieldModal
 	 * @return	string	The field input markup.
 	 * @since	1.6
 	 */
-	protected function getInput()
+	public function getInput()
 	{
 		// Load the modal behavior script.
 		JHtml::_('behavior.modal', 'a.modal');

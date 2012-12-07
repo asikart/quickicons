@@ -23,71 +23,37 @@ define('AKQUICKICONS_SITE' , JPATH_COMPONENT_SITE );
 define('AKQUICKICONS_ADMIN', JPATH_COMPONENT_ADMINISTRATOR);
 define('AKQUICKICONS_SELF' , JPATH_COMPONENT);
 
-if(!defined('DS')){
-	define('DS', DIRECTORY_SEPARATOR) ;
-}
-
-
-// Include global helper.
-include_once JPath::clean( JPATH_COMPONENT_ADMINISTRATOR . '/class/proxy.class.php' ) ;
-include_once JPath::clean( JPATH_COMPONENT_ADMINISTRATOR . "/helpers/akquickicons.php" ) ;
-include_once JPath::clean( JPATH_COMPONENT_ADMINISTRATOR . "/includes/loader.php" ) ;
-include_once JPath::clean( JPATH_ADMINISTRATOR . "/includes/toolbar.php" ) ;
-AkquickiconsHelper::setPrefix('AkquickiconsHelper') ;
-AkquickiconsHelper::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR . '/helpers/core');
-AkquickiconsHelper::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR . '/helpers/custom');
-
-
-
-// Include joomla api
-// ========================================================================
-jimport('joomla.application.component.controller');
-jimport('joomla.application.component.controllerform');
-jimport('joomla.application.component.controlleradmin');
-
-jimport('joomla.application.component.view');
-
-jimport('joomla.application.component.modeladmin');
-jimport('joomla.application.component.modellist');
-jimport('joomla.application.component.modelitem');
-
-jimport('joomla.html.toolbar');
-
-jimport('joomla.filesystem.folder');
-jimport('joomla.filesystem.file');
-
-
-
-// Include Component Custom class
-// ========================================================================
-akquickiconsLoader("admin://class/viewpanel.class" ) ;
-akquickiconsLoader("admin://class/aktext.class" ) ;
-akquickiconsLoader("admin://class/toolbar.class" ) ;
-akquickiconsLoader("admin://class/fieldmodal.class" ) ;
-akquickiconsLoader("admin://class/akhelper/akhelper.init" ) ;
-
 
 
 // Include Helpers
 // ========================================================================
 
+// Core init, it can use by module, plugin or other component.
+include_once JPath::clean( JPATH_ADMINISTRATOR . "/components/com_akquickicons/includes/core.php" ) ;
+
+
+// Some useful settings
 if( $app->isSite() ){
 	
 	// Include Admin language as global language.
 	$lang->load('', JPATH_ADMINISTRATOR);
 	$lang->load('com_akquickicons', JPATH_COMPONENT_ADMINISTRATOR );
+	AkquickiconsHelper::_('lang.loadAll', $lang->getTag());
+	
 	
 	// Include Joomla! admin css
-	AkquickiconsHelper::_('include.core');
+	AkquickiconsHelper::_('include.sortedStyle', 'includes/css');
+	
 	
 	// set Base to fix toolbar anchor bug
 	$doc->setBase( JFactory::getURI()->toString() );
 	
 }else{
-	
+	AkquickiconsHelper::_('lang.loadAll', $lang->getTag());
+	AkquickiconsHelper::_('include.sortedStyle', 'includes/css');
 }
 
 
 // Detect version
-AkquickiconsHelper::_('version.detectVersion');
+AkquickiconsHelper::_('plugin.attachPlugins');
 

@@ -29,10 +29,26 @@ $userId	= $user->get('id');
 $listOrder	= $this->state->get('list.ordering');
 $listDirn	= $this->state->get('list.direction');
 $canOrder	= $user->authorise('core.edit.state', 'com_akquickicons');
-$saveOrder	= $listOrder == 'a.ordering';
+$saveOrder	= $listOrder == 'a.ordering' || ($listOrder == 'a.lft' && $listDirn == 'asc');
 $trashed	= $this->state->get('filter.published') == -2 ? true : false;
+$nested		= $this->state->get('items.nested') ;
+$orderCol 	= $nested ? 'a.lft' : 'a.ordering' ;
+$show_root	= JRequest::getVar('show_root') ;
+
+
+// For Joomla!3.0
+// ================================================================================
+if( JVERSION >= 3 ) {
+	if ($saveOrder)
+	{
+		$method = $nested ? 'saveOrderNestedAjax' : 'saveOrderAjax' ;
+		$saveOrderingUrl = 'index.php?option=com_akquickicons&task=icons.'.$method.'&tmpl=component';
+		JHtml::_('sortablelist.sortable', 'itemList', 'adminForm', strtolower($listDirn), $saveOrderingUrl, false, $nested);
+	}
+}
 ?>
 
+<!-- List Table -->
 <!-- List Table -->
 <table class="table table-striped adminlist" id="articleList">
 	<thead>

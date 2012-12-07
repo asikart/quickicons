@@ -11,36 +11,24 @@
 // no direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modeladmin');
+include_once AKPATH_COMPONENT.'/modeladmin.php' ;
 
 /**
  * Akquickicons model.
  */
-class AkquickiconsModelicon extends JModelAdmin
+class AkquickiconsModelIcon extends AKModelAdmin
 {
 	/**
 	 * @var		string	The prefix to use with controller messages.
 	 * @since	1.6
 	 */
-	protected $text_prefix = 'COM_AKQUICKICONS';
+	protected 	$text_prefix = 'COM_AKQUICKICONS';
 	
-	public $item_name = 'icon' ;
-	public $list_name = 'icons' ;
+	public 		$component = 'akquickicons' ;
+	public 		$item_name = 'icon' ;
+	public 		$list_name = 'icons' ;
 	
-
-	/**
-	 * Returns a reference to the a Table object, always creating it.
-	 *
-	 * @param	type	The table type to instantiate
-	 * @param	string	A prefix for the table class name. Optional.
-	 * @param	array	Configuration array for model. Optional.
-	 * @return	JTable	A database object
-	 * @since	1.6
-	 */
-	public function getTable($type = 'Icon', $prefix = 'AkquickiconsTable', $config = array())
-	{
-		return parent::getTable( $type , $prefix , $config );
-	}
+	
 
 	/**
 	 * Method to get the record form.
@@ -52,16 +40,9 @@ class AkquickiconsModelicon extends JModelAdmin
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
-		// Initialise variables.
-		$app	= JFactory::getApplication();
-
-		// Get the form.
-		$form = $this->loadForm('com_akquickicons.icon', $this->item_name, array('control' => 'jform', 'load_data' => $loadData));
-		if (empty($form)) {
-			return false;
-		}
+		$form = parent::getForm($data, $loadData) ;
 		
-		return $form;
+		return $form ;
 	}
 	
 	
@@ -72,20 +53,9 @@ class AkquickiconsModelicon extends JModelAdmin
 	
 	public function getFields()
 	{
-		if(!empty($this->fields_name)) return $this->fields_name ;
+		$fields = parent::getFields();
 		
-		$xml_file = JPATH_COMPONENT.'/models/forms/'.$this->item_name.'.xml' ;
-		$xml = JFactory::getXML( $xml_file );
-		$fields = $xml->xpath('/form/fields');
-		
-		$fields_name = array();
-		
-		foreach( $fields as $field ):
-			if( (string) $field['name'] != 'other' )
-				$fields_name[] = (string) $field['name'] ;
-		endforeach;
-		
-		return $this->fields_name = $fields_name ;
+		return $fields ;
 	}
 	
 	
@@ -98,32 +68,13 @@ class AkquickiconsModelicon extends JModelAdmin
 	 */
 	protected function loadFormData()
 	{
-		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_akquickicons.edit.icon.data', array());
+		$data = parent::loadFormData();
 		
-		if (empty($data)) 
-		{
-			$data = $this->getItem();
-		}else{
-			$data = new JObject($data);
-		}
-		
-		
-		
-		// This seeting is for Fields Group
-		// Convert data[field] to data[fields_group][field] then Jform can bind data into forms.
-		// ==========================================================================================
-		$fields = $this->getFields();
-		
-		foreach( $fields as $field ):
-			$data->$field = clone $data ;
-		endforeach;
-		
-		
-		
-		return $data;
+		return $data ;
 	}
 
+	
+	
 	/**
 	 * Method to get a single record.
 	 *
@@ -134,13 +85,14 @@ class AkquickiconsModelicon extends JModelAdmin
 	 */
 	public function getItem($pk = null)
 	{
-		if ($item = parent::getItem($pk)) {
-
-			//Do any procesing on fields here if needed
+		if($item = parent::getItem($pk)){
 			
+			
+			
+			return $item ;	
 		}
 
-		return $item;
+		return false;
 	}
 	
 	
@@ -153,18 +105,9 @@ class AkquickiconsModelicon extends JModelAdmin
 	 */
 	protected function populateState()
 	{
-		$app = JFactory::getApplication();
-
-		// Load state from the request.
-		$pk = JRequest::getInt('id');
-		$this->setState('item.id', $pk);
-
-		// Load the parameters.
-		$params = JComponentHelper::getParams('com_akquickicons');
-		$this->setState('params', $params);
-		
 		parent::populateState();
 	}
+	
 	
 	
 	/**
@@ -182,8 +125,9 @@ class AkquickiconsModelicon extends JModelAdmin
      */
     protected function preprocessForm(JForm $form, $data, $group = 'content')
 	{
-		parent::preprocessForm($form, $data, $group);
+		return parent::preprocessForm($form, $data, $group);
 	}
+	
 	
 
 	/**
@@ -193,75 +137,8 @@ class AkquickiconsModelicon extends JModelAdmin
 	 */
 	protected function prepareTable(&$table)
 	{
-		jimport('joomla.filter.output');
-		
-		$date 	= JFactory::getDate( 'now' , JFactory::getConfig()->get('offset') ) ;
-		$user 	= JFactory::getUser() ;
-		$db 	= JFactory::getDbo();
-		
-		// alias
-        if( isset($table->alias) ) {
-			
-			if(!$table->alias){
-				$table->alias = JFilterOutput::stringURLSafe( trim($table->title) ) ;
-			}else{
-				$table->alias = JFilterOutput::stringURLSafe( trim($table->alias) ) ;
-			}
-			
-			if(!$table->alias){
-				$table->alias = JFilterOutput::stringURLSafe( $date->toSql(true) ) ;
-			}
-		}
-		
-		// created date
-		if(isset($table->created) && !$table->created){
-			$table->created = $date->toSql(true);
-		}
-		
-		// modified date
-		if(isset($table->modified) && $table->id){
-			$table->modified = $date->toSql(true);
-		}
-		
-		// created user
-		if(isset($table->created_by) && !$table->created_by){
-			$table->created_by = $user->get('id');
-		}
-		
-		// modified user
-		if(isset($table->modified_by) && $table->id){
-			$table->modified_by = $user->get('id');
-		}
-		
-		// ordering
-		if (!$table->id) {
-			// Set ordering to the last item if not set
-			if (!$table->ordering) {
-				$db->setQuery('SELECT MAX(ordering) FROM #__akquickicons_icons');
-				$max = $db->loadResult();
-				$table->ordering = $max+1;
-			}
-		}
+		return parent::prepareTable($table);
 	}
 	
-	
-	/*
-	 * function getCategory
-	 * @param 
-	 */
-	
-	public function getCategory()
-	{	
-		if(!empty($this->category)){
-			return $this->category ;
-		}
-		
-		$item = $this->getItem();
-		
-		$this->category  = JTable::getInstance('Category');
-		$this->category->load($item->catid);
-		
-		return $this->category ;
-	}
 	
 }

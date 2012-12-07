@@ -12,10 +12,12 @@
 defined('_JEXEC') or die;
 
 $doc = JFactory::getDocument();
+JHtml::_('behavior.framework', true);
 
 if( JVERSION >= 3 ){
 	JHtml::_('jquery.framework');
 	$doc->addStylesheet( 'components/com_akquickicons/includes/jquery-ui/css/smoothness/jquery-ui-1.8.24.custom.css' );
+	//$doc->addscript( 'components/com_akquickicons/includes/jquery-ui/js/jquery-1.7.2.min.js' );
 	$doc->addscript( 'components/com_akquickicons/includes/jquery-ui/js/jquery-ui-1.8.24.custom.min.js' );
 }else{
 	$doc->addStylesheet( 'components/com_akquickicons/includes/jquery-ui/css/smoothness/jquery-ui-1.8.24.custom.css' );

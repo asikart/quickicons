@@ -11,12 +11,12 @@
 // no direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
+include_once AKPATH_COMPONENT.'/viewlist.php' ;
 
 /**
  * View class for a list of Akquickicons.
  */
-class AkquickiconsViewImages extends AKView
+class AkquickiconsViewImages extends AKViewList
 {
 	/**
 	 * Display the view

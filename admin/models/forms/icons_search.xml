@@ -10,7 +10,6 @@
 		>
 			<!--<option value="0">Select Column</option>-->
 			<option value="a.title">JGLOBAL_TITLE</option>
-			<option value="a.alias">JGLOBAL_ALIAS</option>
 			<option value="b.title">JCATEGORY</option>
 		</field>
 		

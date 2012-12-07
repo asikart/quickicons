@@ -11,19 +11,28 @@
 // no direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
+include_once AKPATH_COMPONENT.'/viewitem.php' ;
 
 /**
  * View to edit
  */
-class AkquickiconsViewIcon extends AKView
+class AkquickiconsViewIcon extends AKViewItem
 {
-	protected $state;
-	protected $item;
-	protected $form;
+	/**
+	 * @var		string	The prefix to use with controller messages.
+	 * @since	1.6
+	 */
+	protected 	$text_prefix = 'COM_AKQUICKICONS';
+	protected 	$items;
+	protected 	$pagination;
+	protected 	$state;
 	
-	public	$list_name = 'icons' ;
-	public	$item_name = 'icon' ;
+	public		$option 	= 'com_akquickicons' ;
+	public		$list_name 	= 'icons' ;
+	public		$item_name 	= 'icon' ;
+	public		$sort_fields ;
+	
+	
 
 	/**
 	 * Display the view
@@ -36,7 +45,7 @@ class AkquickiconsViewIcon extends AKView
 		$this->item		= $this->get('Item');
 		$this->form		= $this->get('Form');
 		$this->fields	= $this->get('Fields');
-		$this->canDo	= AkquickiconsHelper::getActions();
+		$this->canDo	= AKHelper::getActions($this->option);
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
@@ -44,41 +53,44 @@ class AkquickiconsViewIcon extends AKView
 			return false;
 		}
 
-		$this->addToolbar();
-		
-		// if is frontend, show toolbar
-		if($app->isAdmin())	{
-			parent::display($tpl);
-		}else{
-			parent::displayWithPanel($tpl);
-		}
+		parent::displayWithPanel($tpl) ;
 	}
 
+	
+	
 	/**
 	 * Add the page title and toolbar.
 	 */
 	protected function addToolbar()
 	{
-		JRequest::setVar('hidemainmenu', true);
-		$doc = JFactory::getDocument();
-
-		$user		= JFactory::getUser();
-		$isNew		= ($this->item->id == 0);
-
-		JToolBarHelper::title( JText::_('COM_AKQUICKICONS_TITLE_ICON'), 'akquickicons.png');
-
-		JToolBarHelper::apply('icon.apply');
-		JToolBarHelper::save('icon.save');
-		JToolBarHelper::custom('icon.save2new', 'save-new.png', 'save-new_f2.png', 'JTOOLBAR_SAVE_AND_NEW', false);
-		JToolBarHelper::custom('icon.save2copy', 'save-copy.png', 'save-copy_f2.png', 'JTOOLBAR_SAVE_AS_COPY', false);
-		JToolBarHelper::cancel('icon.cancel');
+		AKToolBarHelper::title( 'Icon' . ' ' . JText::_('COM_AKQUICKICONS_TITLE_ITEM_EDIT'), 'article-add.png');
 		
-		// set Title Icon
-		$doc->addStyleDeclaration("
-.icon-48-akquickicons {
-	background: url(components/com_akquickicons/images/icon-48.png) no-repeat;
-}
-");
+		parent::addToolbar();
+	}
 	
+	
+	
+	/*
+	 * function handleFields
+	 * @param 
+	 */
+	
+	public function handleFields()
+	{
+		$form = $this->form ;
+		
+		parent::handleFields();
+		
+		// for Joomla! 3.0
+		if(JVERSION >= 3) {
+			
+			// $form->removeField('name', 'fields');
+			
+		}else{
+			
+			// $form->removeField('name', 'fields');
+			
+		}
+		
 	}
 }
