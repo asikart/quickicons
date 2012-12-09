@@ -16,6 +16,7 @@
 	<files>
 		<filename module="mod_akquickicons">mod_akquickicons.php</filename>
 		<folder>tmpl</folder>
+		<folder>css</folder>
 		<folder>language</folder>
 		<filename>index.html</filename>
 		<filename>helper.php</filename>
