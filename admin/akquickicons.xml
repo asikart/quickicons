@@ -29,7 +29,7 @@
 	
 	
 	<administration>
-		<menu img="components/com_akquickicons/images/icon-16.png">COM_AKQUICKICONS</menu>
+		<menu img="components/com_akquickicons/images/admin-icons/menu-akquickicons.png">COM_AKQUICKICONS</menu>
 		
 		<files folder="admin">
 			<filename>index.html</filename>
