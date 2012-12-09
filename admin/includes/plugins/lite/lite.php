@@ -258,7 +258,14 @@ class plgAkquickiconsLite extends AKPlugin
 		$result = null ;
 		
 		// Code here
-		
+		if( !AKHelper::_('plugin.get', 'pro') ) {
+			$form->removeField('url_menus', 'basic');
+			$form->removeField('url_articles', 'basic');
+			$form->removeField('url_modules', 'basic');
+			$form->removeField('url_plugins', 'basic');
+			
+			$form->removeField('param_target', 'basic');
+		}
 		
 		if($path = $this->includeEvent(__FUNCTION__)) @include $path;
 		

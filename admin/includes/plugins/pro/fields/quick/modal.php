@@ -22,7 +22,7 @@ JFormHelper::loadFieldClass('Modal');
  * @subpackage	com_content
  * @since		1.6
  */
-class JFormFieldIcon_Modal extends JFormFieldModal
+class JFormFieldQuick_Modal extends JFormFieldModal
 {
 	/**
 	 * The form field type.
@@ -30,13 +30,14 @@ class JFormFieldIcon_Modal extends JFormFieldModal
 	 * @var		string
 	 * @since	1.6
 	 */
-	protected $type = 'Icon_Modal';
+	protected $type = 'Quick_Modal';
 	
 	protected $view_list = 'icons' ;
 	
 	protected $view_item = 'icon' ;
 	
 	protected $extension = 'com_akquickicons' ;
+	
 	
 	/**
 	 * Method to get the field input markup.
@@ -54,9 +55,8 @@ class JFormFieldIcon_Modal extends JFormFieldModal
 		// Build the script.
 		$script = array();
 		$script[] = '	function jSelect'.ucfirst($this->component).'_'.$this->id.'(id, title) {';
-		$script[] = '		document.id("'.$this->id.'_id").value = id;';
-		$script[] = '		document.id("'.$this->id.'_name").value = title;';
-		$script[] = '		$$("#'.$this->id.'_preview i").set("class", "ak"+title)';
+		$script[] = '		document.id("jform_basic_link").value = id;';
+		$script[] = '		document.id("jform_basic_link").highlight();';
 		$script[] = '		SqueezeBox.close();';
 		$script[] = '	}';
 
@@ -68,23 +68,22 @@ class JFormFieldIcon_Modal extends JFormFieldModal
 		$html	= array();
 		$link	= $this->getLink();
 
-		$class 	= $this->value;
+		$title = $this->getTitle();
 
-		if (empty($class)) {
-			$class = JText::_('COM_'.strtoupper($this->component).'_SELECT_ITEM');
+		if (empty($title)) {
+			$title = JText::_('COM_'.strtoupper($this->component).'_SELECT_ITEM');
 		}
-		$class = htmlspecialchars($class, ENT_QUOTES, 'UTF-8');
+		$title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
 		
 		if( JVERSION >=3 ){
 			// The current user display field.
-			$html[] = '<span class="input-append input-prepend">';
-			$html[] = '<div class="media-preview add-on" id="'.$this->id.'_preview"><i class="'.$class.'"></i></div>' ;
-			$html[] = '<input type="text" class="input-medium" id="'.$this->id.'_name" value="'.$class.'" disabled="disabled" size="35" /><a class="modal btn" title="'.JText::_('COM_'.strtoupper($this->component).'_CHANGE_ITEM_BUTTON').'"  href="'.$link.'&amp;'.JSession::getFormToken().'=1" rel="{handler: \'iframe\', size: {x: 800, y: 450}}"><i class="icon-file"></i> '.JText::_('JSELECT').'</a>';
+			$html[] = '<span class="">';
+			$html[] = '<a class="modal btn" title="'.JText::_('COM_'.strtoupper($this->component).'_CHANGE_ITEM_BUTTON').'"  href="'.$link.'&amp;'.JSession::getFormToken().'=1" rel="{handler: \'iframe\', size: {x: 800, y: 450}}"><i class="icon-file"></i> '.JText::_('JSELECT').'</a>';
 			$html[] = '</span>';
 		}else{
 			// The current user display field.
 			$html[] = '<div class="fltlft">';
-			$html[] = '  <input type="text" id="'.$this->id.'_name" value="'.$class.'" disabled="disabled" size="35" />';
+			$html[] = '  <input type="text" id="'.$this->id.'_name" value="'.$title.'" disabled="disabled" size="35" />';
 			$html[] = '</div>';
 	
 			// The user select button.
@@ -113,6 +112,7 @@ class JFormFieldIcon_Modal extends JFormFieldModal
 
 		return implode("\n", $html);
 	}
+		
 	
 	
 	/*
@@ -134,5 +134,4 @@ class JFormFieldIcon_Modal extends JFormFieldModal
 		
 		return 'index.php?option='.$this->extension.'&view='.$this->view_list.$params.'&layout=modal&tmpl=component&function=jSelect'.ucfirst($this->component).'_'.$this->id ;
 	}
-	
 }

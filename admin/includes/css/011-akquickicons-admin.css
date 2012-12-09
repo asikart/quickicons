@@ -31,7 +31,14 @@
 
 
 /* FORM */
+#icon-form .nav-pills .dropdown-menu a {
+	color: #111;
+}
 
+#icon-form .nav-pills .open .dropdown-toggle {
+	background-color: transparent;
+	color: #111;
+}
 
 /* FOOTER */
 

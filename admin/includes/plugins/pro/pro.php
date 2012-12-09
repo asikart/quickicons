@@ -292,7 +292,7 @@ class plgAkquickiconsPro extends AKPlugin
 		$result = null ;
 		
 		// Code here
-		
+		JForm::addFieldPath( dirname(__FILE__).'/fields' );
 		
 		if($path = $this->includeEvent(__FUNCTION__)) @include $path;
 		

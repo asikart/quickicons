@@ -54,11 +54,40 @@ class AkquickiconsModelIcons extends AKModelList
 		// Set filter fields
 		// ========================================================================
         if (empty($config['filter_fields'])) {
-            $config['filter_fields'] = array(
-                'filter_order_Dir', 'filter_order'
-            );
+			$select = JRequest::getVar('select') ;
 			
-            $config['filter_fields'] = AkquickiconsHelper::_('db.mergeFilterFields', $config['filter_fields'] , $config['tables'] );
+			if($select) {
+				if($select == 'modules') {
+					
+					$config['filter_fields'] = array(
+						'filter_order_Dir', 'filter_order',
+						'a.title', 'a.position', 'b.name', 'b.client_id'
+					);
+					
+				}elseif($select == 'plugins') {
+					
+					$config['filter_fields'] = array(
+						'filter_order_Dir', 'filter_order',
+						'a.name', 'a.folder', 'a.element'
+					);
+					
+				}elseif($select == 'articles') {
+					
+					$config['filter_fields'] = array(
+						'filter_order_Dir', 'filter_order',
+						'a.title', 'a.catid', 'a.created'
+					);
+				}	
+			}else{
+					
+				$config['filter_fields'] = array(
+					'filter_order_Dir', 'filter_order'
+				);
+				
+				$config['filter_fields'] = AkquickiconsHelper::_('db.mergeFilterFields', $config['filter_fields'] , $config['tables'] );
+				
+			}
+            
         }
 		
 		
@@ -218,5 +247,156 @@ class AkquickiconsModelIcons extends AKModelList
 			->order( " {$order} {$dir}" ) ;
 		
 		return $q;
+	}
+	
+	
+	/*
+	 * function getMenus
+	 * @param 
+	 */
+	
+	public function getModules()
+	{
+		$order 	= $this->getState('list.ordering' , 'a.id');
+		$dir	= $this->getState('list.direction', 'asc');
+		$limit 	= $this->getState('list.limit');
+		$start 	= $this->getState('list.start');
+		
+		// Filter and Search
+		$filter = $this->getState('filter',array()) ;
+		$search = $this->getState('search') ;
+		$layout = JRequest::getVar('layout') ;
+		
+		$db = JFactory::getDbo();
+		$q = $db->getQuery(true) ;
+		
+		
+		// Search
+		// ========================================================================
+		if($search['index']){
+			$q->where("a.title LIKE '%{$search['index']}%'");
+		}
+		
+		
+		// Filter
+		// ========================================================================
+		if(!empty($filter['b.client_id'])) {
+			$q->where('b.client_id='.$filter['b.client_id']);
+		}else{
+			$q->where('b.client_id=0');
+		}
+		
+		
+		$q->select("a.*, b.*,a.id AS id, a.title AS title, b.name AS name")
+			->from("#__modules AS a")
+			->join('LEFT', '#__extensions AS b ON b.element = a.module')
+			//->where("a.menutype = 'menu'")
+			->order( " {$order} {$dir}" ) ;
+			;
+		
+		$db->setQuery($q);
+		$result = $db->loadObjectList();
+		
+		$result = $result ? $result : array();
+		
+		foreach( $result as &$row ):
+			$row->link = 'index.php?option=com_modules&task=module.edit&id='.$row->id;
+		endforeach;
+		
+		return $result ;
+	}
+	
+	
+	/*
+	 * function getMenus
+	 * @param 
+	 */
+	
+	public function getPlugins()
+	{
+		$order 	= $this->getState('list.ordering' , 'a.id');
+		$dir	= $this->getState('list.direction', 'asc');
+		$limit 	= $this->getState('list.limit', 20);
+		$start 	= $this->getState('list.start', 0);
+
+		// Filter and Search
+		$search = $this->getState('search') ;
+		$layout = JRequest::getVar('layout') ;
+		
+		$db = JFactory::getDbo();
+		$q = $db->getQuery(true) ;
+		
+		
+		// Search
+		// ========================================================================
+		if($search['index']){
+			$q->where("a.title LIKE '%{$search['index']}%'");
+		}
+		
+		
+		$q->select("a.*, a.name AS title, a.extension_id AS id")
+			->from("#__extensions AS a")
+			
+			->where("a.type = 'plugin'")
+			->order( " {$order} {$dir}" ) ;
+			;
+		
+		$db->setQuery($q);
+		$result = $db->loadObjectList();
+		
+		$result = $result ? $result : array();
+		
+		foreach( $result as &$row ):
+			$row->link = 'index.php?option=com_plugins&task=module.edit&id='.$row->id;
+		endforeach;
+		
+		return $result ;
+	}
+	
+	
+	/*
+	 * function getMenus
+	 * @param 
+	 */
+	
+	public function getArticles()
+	{
+		$order 	= $this->getState('list.ordering' , 'a.id');
+		$dir	= $this->getState('list.direction', 'asc');
+		$limit 	= $this->getState('list.limit', 20);
+		$start 	= $this->getState('list.start', 0);
+
+		// Filter and Search
+		$search = $this->getState('search') ;
+		$layout = JRequest::getVar('layout') ;
+		
+		$db = JFactory::getDbo();
+		$q = $db->getQuery(true) ;
+		
+		
+		// Search
+		// ========================================================================
+		if($search['index']){
+			$q->where("a.title LIKE '%{$search['index']}%'");
+		}
+		
+		
+		$q->select("a.*,b.*, a.title AS title, b.title AS cat_title, a.created AS created")
+			->from("#__content AS a")
+			->join("LEFT", "#__categories AS b ON a.catid = b.id")
+			//->where("a.type = 'plugin'")
+			->order( " {$order} {$dir}" ) ;
+			;
+		
+		$db->setQuery($q);
+		$result = $db->loadObjectList();
+		
+		$result = $result ? $result : array();
+		
+		foreach( $result as &$row ):
+			$row->link = 'index.php?option=com_content&task=article.edit&id='.$row->id;
+		endforeach;
+		
+		return $result ;
 	}
 }

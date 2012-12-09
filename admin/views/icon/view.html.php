@@ -63,7 +63,7 @@ class AkquickiconsViewIcon extends AKViewItem
 	 */
 	protected function addToolbar()
 	{
-		AKToolBarHelper::title( 'Icon' . ' ' . JText::_('COM_AKQUICKICONS_TITLE_ITEM_EDIT'), 'article-add.png');
+		AKToolBarHelper::title( JText::_('COM_AKQUICKICONS_TITLE_ICON'), 'article-add.png');
 		
 		parent::addToolbar();
 	}
@@ -88,7 +88,7 @@ class AkquickiconsViewIcon extends AKViewItem
 			
 		}else{
 			
-			// $form->removeField('name', 'fields');
+			$form->removeField('icon_class', 'basic');
 			
 		}
 		

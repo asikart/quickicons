@@ -41,6 +41,23 @@ class AkquickiconsViewIcons extends AKViewList
 	{
 		$app = JFactory::getApplication() ;
 		
+		// For Modal
+		if( JRequest::getVar('layout') == 'modal' ) {
+			
+			$select = JRequest::getVar('select', 'icon') ;
+			$method = 'modal'.ucfirst($select) ;
+			
+			$this->state		= $this->get('State');
+			$this->items 		= $this->get($select);
+			$this->pagination	= $this->get('Pagination');
+			$this->filter		= $this->get('Filter');
+			
+			
+			parent::display($select);
+			return true;
+		}
+		
+		// For Item list
 		$this->state		= $this->get('State');
 		$this->items		= $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
@@ -65,7 +82,7 @@ class AkquickiconsViewIcons extends AKViewList
 	protected function addToolbar()
 	{
 		// Set title.
-		AKToolBarHelper::title( ucfirst($this->getName()) . ' ' . JText::_($this->text_prefix.'_TITLE_LIST'), 'article.png');
+		AKToolBarHelper::title( JText::_($this->text_prefix.'_TITLE_ICONS'), 'article.png');
 		
 		parent::addToolbar();
 	}
@@ -96,6 +113,4 @@ class AkquickiconsViewIcons extends AKViewList
 		
 		return $this->sort_fields ;
 	}
-	
-	
 }

@@ -50,7 +50,7 @@ if( JVERSION >= 3 ) {
 
 <!-- List Table -->
 <!-- List Table -->
-<table class="table table-striped adminlist" id="articleList">
+<table class="table table-striped adminlist" id="itemList">
 	<thead>
 		<tr>
 			<?php if( JVERSION >= 3 ): ?>

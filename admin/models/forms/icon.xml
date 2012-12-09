@@ -33,22 +33,45 @@
 				label="COM_AKQUICKICONS_LINK_LABEL"
 				description="COM_AKQUICKICONS_LINK_DESC"
 				size="45"
+				class="input-xxlarge"
 				required="true"
 				labelclass="control-label"
 			/>
-	
-			<field name="published"
-				type="radio"
-				label="JSTATUS"
-				description="JFIELD_PUBLISHED_DESC"
-				class="inputbox btn-group"
-				size="1"
-				default="1"
+			
+			<field name="url_menus"
+				type="quick_menus"
+				label="COM_AKQUICKICONS_QUICKURL_MENUS_LABEL"
+				description="COM_AKQUICKICONS_QUICKURL_MENUS_DESC"
+				preview="true"
+				directory="quickicons"
+				select="menus"
 				labelclass="control-label"
-			>
-				<option value="1">JPUBLISHED</option>
-				<option value="0">JUNPUBLISHED</option>
-			</field>
+			/>
+			
+			<field name="url_articles"
+				type="quick_modal"
+				label="COM_AKQUICKICONS_QUICKURL_ARTICLES_LABEL"
+				description="COM_AKQUICKICONS_QUICKURL_ARTICLES_DESC"
+				select="articles"
+				labelclass="control-label"
+			/>
+			
+			<field name="url_modules"
+				type="quick_modal"
+				label="COM_AKQUICKICONS_QUICKURL_MODULES_LABEL"
+				description="COM_AKQUICKICONS_QUICKURL_MODULES_DESC"
+				select="modules"
+				labelclass="control-label"
+			/>
+			
+			<field name="url_plugins"
+				type="quick_modal"
+				label="COM_AKQUICKICONS_QUICKURL_PLUGINS_LABEL"
+				description="COM_AKQUICKICONS_QUICKURL_PLUGINS_DESC"
+				select="plugins"
+				labelclass="control-label"
+			/>
+	
 			
 			<field name="icon_class"
 				type="icon_modal"
@@ -56,6 +79,7 @@
 				description="COM_AKQUICKICONS_ICON_CLASS_DESC"
 				preview="true"
 				directory="quickicons"
+				select="icon"
 				labelclass="control-label"
 				class="onlyj30"
 			/>
@@ -74,6 +98,7 @@
 		</fieldset>
 		
 		<fieldset name="advanced" align="right" horz="true">
+			
 			<field name="param_target"
 				type="list"
 				label="COM_AKQUICKICONS_TARGET_LABEL"
@@ -100,6 +125,20 @@
 				<option value="1">JYES</option>
 				<option value="0">JNO</option>
 			</field>
+			
+			<field name="published"
+				type="radio"
+				label="JSTATUS"
+				description="JFIELD_PUBLISHED_DESC"
+				class="inputbox btn-group"
+				size="1"
+				default="1"
+				labelclass="control-label"
+			>
+				<option value="1">JPUBLISHED</option>
+				<option value="0">JUNPUBLISHED</option>
+			</field>
+			
 		</fieldset>
 		
 	</fields>
