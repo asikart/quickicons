@@ -32,7 +32,7 @@
 				type="text"
 				label="COM_AKQUICKICONS_LINK_LABEL"
 				description="COM_AKQUICKICONS_LINK_DESC"
-				size="45"
+				size="75"
 				class="input-xxlarge"
 				required="true"
 				labelclass="control-label"

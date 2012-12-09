@@ -54,11 +54,11 @@ include_once JPath::clean( JPATH_ADMINISTRATOR . "/components/com_akquickicons/i
 
 
 // Set default option to path helper, then AKHelperPath will helpe us get admin path.
-AkquickiconsHelper::_('path.setOption', 'com_akquickicons') ;
+AKHelper::_('path.setOption', 'com_akquickicons') ;
 
 
 // Set Component helper prefix, and AKProxy can use component helper first.
 // If component helper and methods not exists, AKProxy will call AKHelper instead.
-AkquickiconsHelper::setPrefix('AkquickiconsHelper') ;
-AkquickiconsHelper::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_akquickicons/helpers');
+AKHelper::setPrefix('AkquickiconsHelper') ;
+AKHelper::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_akquickicons/helpers');
 

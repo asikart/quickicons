@@ -11,7 +11,7 @@
 // no direct access
 defined('_JEXEC') or die;
 
-JFormHelper::loadFieldClass('Modal');
+JFormHelper::loadFieldClass('Category');
 
 /**
  * Supports a modal article picker.

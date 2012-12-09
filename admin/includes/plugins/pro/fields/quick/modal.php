@@ -81,15 +81,11 @@ class JFormFieldQuick_Modal extends JFormFieldModal
 			$html[] = '<a class="modal btn" title="'.JText::_('COM_'.strtoupper($this->component).'_CHANGE_ITEM_BUTTON').'"  href="'.$link.'&amp;'.JSession::getFormToken().'=1" rel="{handler: \'iframe\', size: {x: 800, y: 450}}"><i class="icon-file"></i> '.JText::_('JSELECT').'</a>';
 			$html[] = '</span>';
 		}else{
-			// The current user display field.
-			$html[] = '<div class="fltlft">';
-			$html[] = '  <input type="text" id="'.$this->id.'_name" value="'.$title.'" disabled="disabled" size="35" />';
-			$html[] = '</div>';
 	
 			// The user select button.
 			$html[] = '<div class="button2-left">';
 			$html[] = '  <div class="blank">';
-			$html[] = '	<a class="modal" title="'.JText::_('COM_'.strtoupper($this->component).'_CHANGE_ITEM').'"  href="'.$link.'&amp;'.JSession::getFormToken().'=1" rel="{handler: \'iframe\', size: {x: 800, y: 450}}">'.JText::_('COM_'.strtoupper($this->component).'_CHANGE_ITEM_BUTTON').'</a>';
+			$html[] = '	<a class="modal" title="'.JText::_('COM_'.strtoupper($this->component).'_CHANGE_ITEM').'"  href="'.$link.'&amp;'.JSession::getFormToken().'=1" rel="{handler: \'iframe\', size: {x: 800, y: 450}}">'.JText::_('JSELECT').'</a>';
 			$html[] = '  </div>';
 			$html[] = '</div>';
 		}

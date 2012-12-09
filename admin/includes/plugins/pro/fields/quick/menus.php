@@ -62,7 +62,7 @@ class JFormFieldQuick_Menus extends JFormField
 		
 		<script type="text/javascript">
 			window.addEvent('domready', function(){
-				a = $$('.controls > ul.nav > li ul a') ;
+				a = $$('.controls > ul > li ul a') ;
 				a.addEvent('click' , function(e){
 					e.stop();
 					$('jform_basic_link').set('value', e.target.get('href'));
@@ -72,6 +72,9 @@ class JFormFieldQuick_Menus extends JFormField
 		</script>
 		
 SCRIPT;
+
+		$app->input->set('hidemainmenu', true) ;
+		
 		echo $script;
 		return $menu;
 	}

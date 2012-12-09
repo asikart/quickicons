@@ -23,7 +23,57 @@ class com_AkquickiconsInstallerScript
 	 */
 	function install($parent) 
 	{
+		// Set Default datas with asset.
+		$db = JFactory::getDbo();
 		
+		$p_installer = $parent->getParent() ;
+		$path = $p_installer->getPath('source');
+		
+		jimport('joomla.filesystem.folder');
+		$origin = $path.DS.'images'.DS.'quickicons' ;
+		$target = JPATH_ROOT.DS.'images'.DS.'quickicons' ;
+		
+		JFolder::move($origin,$target);
+				
+		// set Category
+		$q = $db->getQuery(true) ;
+		
+		$q->select('id')
+			->from('#__categories')
+			->where("extension = 'com_akquickicons'")
+			;
+		
+		$db->setQuery($q);
+		$catids = $db->loadColumn();
+		
+		$cat = JTable::getInstance('Category') ;
+		
+		foreach( $catids as $catid ):
+			$cat->load($catid);
+			$cat->store();
+		endforeach;
+		
+		// set icons
+		$q = $db->getQuery(true) ;
+		
+		$q->select('id')
+			->from('#__akquickicons_icons')
+			;
+		
+		$db->setQuery($q);
+		$icon_ids = $db->loadColumn();
+		
+		$table_path = $path.DS.'tables'.DS.'icon.php' ;
+		include_once $table_path ;
+		$icon = JTable::getInstance('icon', 'AkquickiconsTable') ;
+		
+		foreach( $icon_ids as $k => $icon_id ):
+			$icon->load($icon_id);
+			$icon->catid = $catids[0] ;
+			$icon->store();
+		endforeach;
+		
+		$this->catid = $catids[0] ;
 		
 	}
  
@@ -34,7 +84,29 @@ class com_AkquickiconsInstallerScript
 	 */
 	function uninstall($parent) 
 	{
+		$db = JFactory::getDbo();
+		$q = $db->getQuery(true) ;
 		
+		$q->select('extension_id')
+			->from('#__extensions')
+			->where("element='mod_akquickicons'")
+			;
+		
+		$db->setQuery($q);
+		$result = $db->loadResult();
+		
+		if($result):
+			$installer = new JInstaller();
+			$installer->uninstall( 'module', $result );
+			
+			$q = $db->getQuery(true) ;
+			
+			$q->delete('#__categories')
+				->where("extension='com_akquickicons'")
+				;
+			$db->setQuery($q);
+			$db->query();
+		endif;
 	}
  
 	/**

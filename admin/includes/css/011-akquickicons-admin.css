@@ -31,6 +31,10 @@
 
 
 /* FORM */
+fieldset.adminform {
+	overflow: visible !important;
+}
+
 #icon-form .nav-pills .dropdown-menu a {
 	color: #111;
 }
@@ -38,6 +42,10 @@
 #icon-form .nav-pills .open .dropdown-toggle {
 	background-color: transparent;
 	color: #111;
+}
+
+#icon-form ul#menu > li.node {
+	background-color: whiteSmoke;
 }
 
 /* FOOTER */
