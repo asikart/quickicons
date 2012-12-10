@@ -107,10 +107,11 @@ abstract class modAkquickiconsHelper
 		
 		
 		// Extensions plugin image map
+		$root = JURI::root();
 		$img_map = array(
-			'asterisk' => '../images/quickicons/bluestock/icon-48-extension.png',
-			'download' => '../images/quickicons/bluestock/icon-48-download.png',
-			'pictures' => '../images/quickicons/Primo-Icons/photo_48.png'
+			'asterisk' => $root.'images/quickicons/bluestock/icon-48-extension.png',
+			'download' => $root.'images/quickicons/bluestock/icon-48-download.png',
+			'pictures' => $root.'images/quickicons/Primo-Icons/photo_48.png'
 		);
 		
 		
