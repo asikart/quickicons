@@ -126,7 +126,10 @@ class com_AkquickiconsInstallerScript
 	 */
 	function preflight($type, $parent) 
 	{
-		
+		if($type == 'update') {
+			JFolder::delete( JPATH_ADMINISTRATOR.'/component/com_akquickicons' );
+			JFolder::create( JPATH_ADMINISTRATOR.'/component/com_akquickicons' );
+		}
 	}
  
 	/**
