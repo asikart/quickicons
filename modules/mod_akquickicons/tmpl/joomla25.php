@@ -62,7 +62,7 @@ $keys = array_keys($buttons);
 						class="<?php echo $button['params']->get('target') == 'modal' ? 'modal' : ''; ?>"
 						target="<?php echo $button['params']->get('target') == 'blank' ? '_blank' : '_self'; ?>"
 					>
-						<img src="<?php echo $button['image']; ?>" alt="">
+						<?php echo JHtml::_('image', $button['image'], $button['id'], null, true); ?>
 						<div>
 							<span><?php echo $button['text']; ?></span>
 						</div>

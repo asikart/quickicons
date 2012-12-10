@@ -31,6 +31,15 @@ class AkquickiconsController extends JControllerLegacy
         JRequest::setVar('view', $view);
 
 		parent::display();
+		$com = JComponentHelper::getComponent('com_akquickicons');
+		
+		if( AkquickiconsHelper::_('plugin.get', 'pro') ) {
+			$version = 'Pro' ;
+		}else{
+			$version = 'Lite' ;
+		}
+		
+		echo '<p align="center">Akquickicons Version: '.$version.'</p>';
 
 		return $this;
 	}

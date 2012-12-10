@@ -134,7 +134,7 @@ abstract class modAkquickiconsHelper
 						}
 					}else{
 						$cur_template = JFactory::getApplication()->getTemplate();
-						$icon['image'] = JURI::base(true) .'/templates/'. $cur_template .'/images/'.$icon['image'];
+						//$icon['image'] = JURI::base(true) .'/templates/'. $cur_template .'/images/'.$icon['image'];
 					}
 					
 					// Set params

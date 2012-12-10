@@ -137,7 +137,18 @@ class AkquickiconsModelIcon extends AKModelAdmin
 	 */
 	protected function prepareTable(&$table)
 	{
-		return parent::prepareTable($table);
+		parent::prepareTable($table);
+		
+		// ordering
+		if (!$table->id) {
+			// Set ordering to the last item if not set
+			if (!$table->ordering) {
+				$db = JFactory::getDbo();
+				$db->setQuery('SELECT MAX(ordering) FROM #__akquickicons_icons');
+				$max = $db->loadResult();
+				$table->ordering = $max+1;
+			}
+		}
 	}
 	
 	
