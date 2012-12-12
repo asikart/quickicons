@@ -30,8 +30,8 @@ class com_AkquickiconsInstallerScript
 		$path = $p_installer->getPath('source');
 		
 		jimport('joomla.filesystem.folder');
-		$origin = $path.DS.'images'.DS.'quickicons' ;
-		$target = JPATH_ROOT.DS.'images'.DS.'quickicons' ;
+		$origin = $path.'/images/quickicons' ;
+		$target = JPATH_ROOT.'/images/quickicons' ;
 		
 		JFolder::move($origin,$target);
 				
@@ -63,7 +63,7 @@ class com_AkquickiconsInstallerScript
 		$db->setQuery($q);
 		$icon_ids = $db->loadColumn();
 		
-		$table_path = $path.DS.'tables'.DS.'icon.php' ;
+		$table_path = $path.'/tables/icon.php' ;
 		include_once $table_path ;
 		$icon = JTable::getInstance('icon', 'AkquickiconsTable') ;
 		
