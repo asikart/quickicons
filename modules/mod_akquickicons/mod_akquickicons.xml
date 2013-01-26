@@ -11,7 +11,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>asika@asikart.com</authorEmail>
 	<authorUrl>http://asikart.com</authorUrl>
-	<version>1.1</version>
+	<version>1.2</version>
 	<description>MOD_AKQUICKICONS_INSTALL_DESC</description>
 	<files>
 		<filename module="mod_akquickicons">mod_akquickicons.php</filename>
@@ -33,6 +33,7 @@
 					description="JFIELD_CATEGORY_DESC"
 					extension="com_akquickicons"
 					multiple="true"
+					size="8"
 				>
 					<option value="1">MOD_AKQUICKICONS_OPTION_ALL_CATEGORY</option>
 				</field>
