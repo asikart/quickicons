@@ -88,7 +88,7 @@ class AkquickiconsTableIcon extends JTable
 			$array['params'] = array();
 		}
 		foreach( $array as $key => $row ):
-			if( substr($key, 0, 6) == 'param_' && $row){
+			if( substr($key, 0, 6) == 'param_' && isset($row)){
 				$key2 = substr($key, 6) ;
 				$array['params'][$key2] = $row  ;
 			}

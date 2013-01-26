@@ -16,6 +16,7 @@ abstract class modAkquickiconsHelper
 	public static function getList(&$params)
 	{
 		$list = null ;
+		self::$buttons = array();
 		$date = JFactory::getDate( 'now' , JFactory::getConfig()->get('offset') ) ;
 		$user = JFactory::getUser() ;
 		$db = JFactory::getDbo();
@@ -25,7 +26,14 @@ abstract class modAkquickiconsHelper
 		
 		// v1.1.1
 		$catid = is_array($catid) ? $catid : array($catid) ;
-		$catid = implode(',', $catid);
+		
+		
+		// v1.1.3
+		if( !in_array(1, $catid) ){
+			$catid = implode(',', $catid);
+			$q->where("a.catid IN ({$catid})") ;
+		}
+		
 		
 		$now = $date->toSQL(true);
 		
@@ -52,7 +60,6 @@ abstract class modAkquickiconsHelper
 			->where("b.extension = 'com_akquickicons'")
 			->where("a.published >=1")
 			->where($publish)
-			->where("a.catid IN ({$catid})")
 			->where("a.access IN ({$viewlevel})")
 			->where("(a.language = '{$language}' OR a.language = '*')")
 			->order("b.lft, a.ordering")
@@ -68,19 +75,25 @@ abstract class modAkquickiconsHelper
 			$uri = JFactory::getURI($button->link) ;
 			
 			// Smart URL
-			if( $button->params->get('smart_url') ) {
+			if( $button->params->get('smart_url', 1) ) {
 				$uri = self::smartUrlConvertor($uri, $button);
 			}
 			
-			self::$buttons[$button->catid][] = array(
-				'link' => JRoute::_($uri->toString()),
-				'image' => JURI::root().$button->images,
-				'text' => $button->title,
+			$catid = 1 ;
+			$plugin = JPATH_ADMINISTRATOR.'/components/com_akquickicons/includes/plugins/pro/pro.php' ;
+			if( JFile::exists($plugin) ) {
+				$catid = $button->catid ;
+			}
+			
+			self::$buttons[$catid][] = array(
+				'link' 		=> JRoute::_($uri->toString()),
+				'image' 	=> JURI::root().$button->images,
+				'text' 		=> $button->title,
 				'icon_class'=> $button->icon_class,
-				'access' => true,
+				'access' 	=> true,
 				'cat_title' => $button->cat_title,
-				'id' => str_replace('-', '_', $button->alias),
-				'params' => $button->params
+				'id' 		=> str_replace('-', '_', $button->alias),
+				'params' 	=> $button->params
 			);
 			
 		endforeach;

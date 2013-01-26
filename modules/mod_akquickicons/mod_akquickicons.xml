@@ -33,7 +33,9 @@
 					description="JFIELD_CATEGORY_DESC"
 					extension="com_akquickicons"
 					multiple="true"
-					/>
+				>
+					<option value="1">MOD_AKQUICKICONS_OPTION_ALL_CATEGORY</option>
+				</field>
 				
 				<field
 					name="layout"
