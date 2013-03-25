@@ -57,3 +57,8 @@ if( $app->isSite() ){
 // Detect version
 AkquickiconsHelper::_('plugin.attachPlugins');
 
+// Debug
+define('AKDEBUG', AkquickiconsHelper::_('system.getConfig', 'system.debug')) ;
+
+// Panel
+AkquickiconsHelper::_('panel.setLegacy', true) ;

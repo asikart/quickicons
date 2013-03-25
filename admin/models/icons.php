@@ -381,7 +381,7 @@ class AkquickiconsModelIcons extends AKModelList
 		}
 		
 		
-		$q->select("a.*,b.*, a.title AS title, b.title AS cat_title, a.created AS created")
+		$q->select("a.*,b.*, a.id AS id, a.title AS title, b.title AS cat_title, a.created AS created")
 			->from("#__content AS a")
 			->join("LEFT", "#__categories AS b ON a.catid = b.id")
 			//->where("a.type = 'plugin'")
