@@ -27,6 +27,7 @@ class AkquickiconsHelper extends AKProxy
 	{		
 		jimport('joomla.filesystem.folder');
 		jimport('joomla.filesystem.file');
+		$user = JFactory::getUser() ;
 		
 		if(JVERSION >= 3):
 		
@@ -38,16 +39,20 @@ class AkquickiconsHelper extends AKProxy
 			
 			$folders = JFolder::folders(JPATH_ADMINISTRATOR.'/components/com_akquickicons/views');
 			
-			foreach( $folders as $folder ){
-				if( substr($folder, -2) == 'is' || substr($folder, -1) == 's'){
-					JHtmlSidebar::addEntry(
-						JText::_('COM_AKQUICKICONS_TITLE_'.strtoupper($folder)),
-						'index.php?option=com_akquickicons&view='.$folder,
-						$vName == $folder
-					);
-				}
-			}
-		
+			JHtmlSidebar::addEntry(
+				JText::_('COM_AKQUICKICONS_TITLE_ICONS'),
+				'index.php?option=com_akquickicons&view=icons',
+				$vName == 'icons'
+			);
+			
+			if( $user->authorise('image.manage', 'com_akquickicons') ) :
+				JHtmlSidebar::addEntry(
+					JText::_('COM_AKQUICKICONS_TITLE_IMAGES'),
+					'index.php?option=com_akquickicons&view=images',
+					$vName == 'images'
+				);
+			endif;
+			
 		else:
 			
 			JSubMenuHelper::addEntry(
@@ -58,15 +63,19 @@ class AkquickiconsHelper extends AKProxy
 			
 			$folders = JFolder::folders(JPATH_ADMINISTRATOR.'/components/com_akquickicons/views');
 			
-			foreach( $folders as $folder ){
-				if( substr($folder, -2) == 'is' || substr($folder, -1) == 's'){
-					JSubMenuHelper::addEntry(
-						JText::_('COM_AKQUICKICONS_TITLE_'.strtoupper($folder)),
-						'index.php?option=com_akquickicons&view='.$folder,
-						$vName == $folder
-					);
-				}
-			}
+			JSubMenuHelper::addEntry(
+				JText::_('COM_AKQUICKICONS_TITLE_ICONS'),
+				'index.php?option=com_akquickicons&view=icons',
+				$vName == 'icons'
+			);
+			
+			if( $user->authorise('image.manage', 'com_akquickicons') ) :
+				JSubMenuHelper::addEntry(
+					JText::_('COM_AKQUICKICONS_TITLE_IMAGES'),
+					'index.php?option=com_akquickicons&view=images',
+					$vName == 'images'
+				);
+			endif;
 			
 		endif;
 		

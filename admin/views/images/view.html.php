@@ -23,6 +23,13 @@ class AkquickiconsViewImages extends AKViewList
 	 */
 	public function display($tpl = null)
 	{
+		$canDo	= AkquickiconsHelper::getActions();
+		if( !$canDo->get('image.manage') ) {
+			$app = JFactory::getApplication() ;
+			$app->redirect( 'index.php?option=com_akquickicons', JText::_('JERROR_ALERTNOAUTHOR') , 'warning');
+			return ;
+		}
+		
 		
 		// We don't need toolbar in the modal window.
 		if ($this->getLayout() !== 'modal') {
