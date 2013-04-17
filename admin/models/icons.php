@@ -113,7 +113,40 @@ class AkquickiconsModelIcons extends AKModelList
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
+		$app 	= JFactory::getApplication() ;
+		$select = JRequest::getVar('select') ;
+		
+		if($select) {
+			$origin_search = $app->getUserState($this->context.'.field.search');
+		}
+		
+		
+		
 		parent::populateState($ordering, $direction);
+		
+		
+		
+		// Set all filter fields
+		// ========================================================================
+		
+		$select = $select ? '.'.$select : '' ;
+		
+		$filter = $app->getUserStateFromRequest($this->context.'.field'.$select.'.filter', 'filter');
+		$filter_fields = array();
+		foreach( $this->filter_fields as $field ){
+			$filter_fields[$field] = JArrayHelper::getValue($filter, $field, '') ;
+		}
+		$this->setState('filter', $filter_fields );
+		
+		
+		$search = $app->getUserStateFromRequest($this->context.'.field'.$select.'.search', 'search');
+		if(in_array(JArrayHelper::getValue($search, 'field'), $this->filter_fields) || $this->config['fulltext_search']){
+			$this->setState('search', $search );
+		}
+		
+		if($select) {
+			$app->setUserState($this->context.'.field.search', $origin_search) ;
+		}
 	}
 
 	
@@ -327,13 +360,6 @@ class AkquickiconsModelIcons extends AKModelList
 		$q = $db->getQuery(true) ;
 		
 		
-		// Search
-		// ========================================================================
-		if($search['index']){
-			$q->where("a.title LIKE '%{$search['index']}%'");
-		}
-		
-		
 		$q->select("a.*, a.name AS title, a.extension_id AS id")
 			->from("#__extensions AS a")
 			
@@ -346,9 +372,11 @@ class AkquickiconsModelIcons extends AKModelList
 		
 		$result = $result ? $result : array();
 		
+		
 		foreach( $result as &$row ):
 			$row->link = 'index.php?option=com_plugins&task=plugin.edit&extension_id='.$row->id;
 		endforeach;
+		
 		
 		return $result ;
 	}

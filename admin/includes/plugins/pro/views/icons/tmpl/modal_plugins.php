@@ -32,6 +32,8 @@ if( JVERSION >= 3 ) {
 $lang = JFactory::getLanguage();
 $lang->load('com_plugins');
 
+$search = $this->state->get('search') ;
+
 ?>
 
 <form action="<?php echo $uri = JFactory::getURI()->toString() ; ?>" method="post" name="adminForm" id="adminForm">
@@ -117,6 +119,16 @@ $lang->load('com_plugins');
 			||	$lang->load($extension . '.sys', $source, $lang->getDefault(), false, false);
 			$item->title = JText::_($item->title);
 			
+			
+			// Search
+			// ========================================================================
+			if($search['index']){
+				$title = JText::_($item->name) ;
+				
+				if( strpos( strtolower($title), strtolower($search['index']) ) === false ) {
+					continue; 
+				}
+			}
 			
 			$item = new JObject($item);
 			
