@@ -97,11 +97,11 @@ class JFormFieldIcon_Modal extends JFormFieldModal
 		
 
 		// The active article id field.
-		if (0 == (int)$this->value) {
-			$value = '';
-		} else {
-			$value = (int)$this->value;
-		}
+		//if (0 == (int)$this->value) {
+		//	$value = '';
+		//} else {
+		//	$value = $this->value;
+		//}
 
 		// class='required' for client side validation
 		$class = '';
@@ -109,7 +109,7 @@ class JFormFieldIcon_Modal extends JFormFieldModal
 			$class = ' class="required modal-value"';
 		}
 
-		$html[] = '<input type="hidden" id="'.$this->id.'_id"'.$class.' name="'.$this->name.'" value="'.$value.'" />';
+		$html[] = '<input type="hidden" id="'.$this->id.'_id"'.$class.' name="'.$this->name.'" value="'.$this->value.'" />';
 
 		return implode("\n", $html);
 	}

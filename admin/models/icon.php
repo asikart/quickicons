@@ -137,8 +137,9 @@ class AkquickiconsModelIcon extends AKModelAdmin
 	 */
 	protected function prepareTable(&$table)
 	{
-		parent::prepareTable($table);
 		
+		parent::prepareTable($table);
+		//AK::show($table);jexit('Something Error~~~!');
 		// ordering
 		if (!$table->id) {
 			// Set ordering to the last item if not set
