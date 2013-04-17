@@ -52,7 +52,7 @@ class AkquickiconsController extends JControllerLegacy
 	
 	public function manager()
 	{
-		include_once AKQUICKICONS_ADMIN.DS.'includes'.DS.'elfinder'.DS.'php'.DS.'connector.php' ;
+		include_once AKQUICKICONS_ADMIN.'/includes/elfinder/php/connector.php' ;
 		jexit();
 	}
 }
