@@ -102,7 +102,8 @@ class AkquickiconsHelper extends AKProxy
 			'core.edit', 
 			'core.edit.own', 
 			'core.edit.state', 
-			'core.delete'
+			'core.delete',
+			'image.manage'
 		);
 
 		foreach ($actions as $action) {
