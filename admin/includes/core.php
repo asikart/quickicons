@@ -59,9 +59,6 @@ include_once JPath::clean( JPATH_ADMINISTRATOR . "/components/com_akquickicons/h
 include_once JPath::clean( JPATH_ADMINISTRATOR . "/components/com_akquickicons/includes/loader.php" ) ;
 
 
-// Set default option to path helper, then AKHelperPath will helpe us get admin path.
-AKHelper::_('path.setOption', 'com_akquickicons') ;
-
 
 // Set Component helper prefix, and AKProxy can use component helper first.
 // If component helper and methods not exists, AKProxy will call AKHelper instead.

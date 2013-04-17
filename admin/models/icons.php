@@ -347,7 +347,7 @@ class AkquickiconsModelIcons extends AKModelList
 		$result = $result ? $result : array();
 		
 		foreach( $result as &$row ):
-			$row->link = 'index.php?option=com_plugins&task=module.edit&id='.$row->id;
+			$row->link = 'index.php?option=com_plugins&task=plugin.edit&extension_id='.$row->id;
 		endforeach;
 		
 		return $result ;
