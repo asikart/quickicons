@@ -36,18 +36,6 @@ $keys = array_keys($buttons);
 </style>
 <?php if (!empty($buttons)): ?>
 
-	<?php if( JVERSION >= 3 && $tabs && !empty($buttons) ): ?>
-	<!-- Tab Buttons -->
-	<ul class="nav nav-tabs akquickicons-tabs">
-		<?php foreach( $buttons as $key => $group): ?>
-		<li class="<?php echo $key == $keys[0] ? 'active' : ''; ?>">
-			<a href="#<?php echo 'tab-'.$key; ?>" data-toggle="tab"><?php echo $group[0]['cat_title']; ?></a>
-		</li>
-		<?php endforeach; ?>
-	</ul>
-	<?php endif; ?>
-
-
 	<!-- Icons -->	
 	<?php echo $tabs ? AkquickiconsHelper::_('panel.startTabs', 'iconTab', array( 'active' => 'tab-'.$keys[0] ) ) : null ; ?>
 	
