@@ -181,7 +181,7 @@ CSS;
 			$module->published = 1 ;
 			$module->position = ( JVERSION >= 3 ) ? 'cpanel' : 'icon' ;
 			$params = new stdClass ;
-			$params->catid = $this->catid ;
+			$params->catid = 1 ;
 			$module->params = json_encode($params);
 			
 			$db->updateObject( '#__modules',$module, 'id');
