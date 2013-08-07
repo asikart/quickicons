@@ -15,16 +15,6 @@ $doc 	= JFactory::getDocument();
 $app 	= JFactory::getApplication();
 $lang 	= JFactory::getLanguage();
 
-
-
-// Define
-// ========================================================================
-define('AKQUICKICONS_SITE' , JPATH_COMPONENT_SITE );
-define('AKQUICKICONS_ADMIN', JPATH_COMPONENT_ADMINISTRATOR);
-define('AKQUICKICONS_SELF' , JPATH_COMPONENT);
-
-
-
 // Include Helpers
 // ========================================================================
 

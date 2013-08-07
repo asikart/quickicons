@@ -11,6 +11,9 @@
 // no direct access
 defined('_JEXEC') or die;
 
+// Include Filesystem
+jimport('joomla.filesystem.folder');
+jimport('joomla.filesystem.file');
 
 // Detect is AKHelper exists
 // ===============================================================
@@ -54,6 +57,13 @@ if( !defined('AKPATH_ROOT') ) {
 }else{
 	include_once AKPATH_ROOT.'/init.php' ;
 }
+
+// Define
+// ========================================================================
+define('AKQUICKICONS_SITE' , JPath::clean( JPATH_SITE . "/components/com_akquickicons" ) );
+define('AKQUICKICONS_ADMIN', JPath::clean( JPATH_ADMINISTRATOR . "/components/com_akquickicons" ) );
+define('AKQUICKICONS_SELF' , JPath::clean( JPATH_BASE . "/components/com_akquickicons" ));
+
 
 include_once JPath::clean( JPATH_ADMINISTRATOR . "/components/com_akquickicons/helpers/akquickicons.php" ) ;
 include_once JPath::clean( JPATH_ADMINISTRATOR . "/components/com_akquickicons/includes/loader.php" ) ;
