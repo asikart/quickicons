@@ -67,7 +67,7 @@ SCRIPT;
     {
         $tag     = JArrayHelper::getValue($option, 'tag', 'a');
         $id     = isset($option['id']) ? " id=\"{$option['id']}\"" : "id=\"{$selector}_link\"";
-        $class     = isset($option['class']) ? " class=\"{$option['class']}\"" : '';
+        $class     = isset($option['class']) ? " class=\"{$option['class']} cursor-pointer\"" : 'class="cursor-pointer"';
         $onclick = isset($option['onclick']) ? " onclick=\"{$option['onclick']}\"" : '';
         $icon    = JArrayHelper::getValue($option, 'icon', '');
         
@@ -80,10 +80,109 @@ SCRIPT;
         {
             $rel    = JArrayHelper::getValue($option, 'rel');
             $rel    = $rel ? " rel=\"{$rel}\"" : '';
-            $button = "<a href=\"#{$selector}\"{$id}{$class}{$onclick}{$rel}>{$title}</a>" ;
+            $button = "<{$tag} href=\"#{$selector}\"{$id}{$class}{$onclick}{$rel}>{$title}</{$tag}>" ;
         }
         
         return $button;
+    }
+    
+    /**
+     * Put content and render it as modal box HTML.
+     *
+     * @param   string  $selector  The ID selector for the modal.
+     * @param   array   $content   HTML content to put in modal.
+     * @param   string  $option    Optional markup for the modal, footer or title.
+     *
+     * @return  string  HTML markup for a modal
+     *
+     * @since   3.0
+     */
+    public static function renderModal($selector = 'modal', $content = '', $option = array())
+    {
+        self::modal($selector, $option) ;
+        
+        $header = '';
+        $footer = '';
+        
+        // Header
+        if( !empty($option['title']) ) {
+            $header = <<<HEADER
+<div class="modal-header">
+    <button type="button" role="presentation" class="close" data-dismiss="modal">x</button>
+    <h3>{$option['title']}</h3>
+</div>
+HEADER;
+        }
+        
+        //Footer
+        if( !empty($option['footer']) ) {
+            $footer = <<<FOOTER
+<div class="modal-footer">
+    {$option['footer']}
+</div>
+FOOTER;
+        }
+        
+        // Box
+        $html = <<<MODAL
+<div class="modal hide fade {$selector}" id="{$selector}">
+{$header}
+
+<div id="{$selector}-container" class="modal-body">
+    {$content}
+</div>
+
+{$footer}
+</div>
+MODAL;
+        
+        
+        return $html ;
+    }
+    
+    /**
+     * getQuickaddForm
+     */
+    static public function getQuickaddForm($id, $path, $extension = null)
+    {
+        $content = '';
+        
+        try
+        {
+            $form = new JForm($id.'.quickaddform', array('control' => $id));
+            $form->loadFile(JPATH_ROOT.'/'.$path) ;
+        }
+        catch (Exception $e)
+        {
+            Jerror::raiseWarning(404, $e->getMessage());
+            return false;
+        }
+        
+        // Set Category Extension
+        if( $extension ) {
+            $form->setValue('extension', null, $extension) ;
+        }
+        
+        
+        $fieldset = $form->getFieldset('quickadd') ;
+        
+        foreach( $fieldset as $field ):
+            
+            $content .= "<div class=\"control-group\" id=\"{$field->id}-wrap\">
+                            <div class=\"control-label\">
+                                {$field->label}
+                            </div>
+                            <div class=\"controls\">
+                                {$field->input}
+                            </div>
+                        </div>" ;
+        endforeach;
+        
+        if(JVERSION < 3) {
+            $content = "<fieldset class=\"adminform form-horizontal\">{$content}</fieldset>" ;
+        }
+        
+        return $content ;
     }
 }
 

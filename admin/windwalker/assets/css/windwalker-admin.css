@@ -29,7 +29,14 @@
     width: 100%;
 }
 
+/* J25 Config component */
+#component-form input {
+    margin-bottom: 10px;
+}
 
+#component-form .row-fluid input {
+    margin-bottom: 0px;
+}
 
 
 /* MODAL */
@@ -38,6 +45,10 @@
 .windwalker div.modal,
 .windwalker div.modal-body{
     overflow: visible;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 
@@ -61,7 +72,6 @@
     margin-top: 1px;
     display: inline-block;
 }
-
 
 
 /* BATCH */
