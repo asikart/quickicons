@@ -46,6 +46,8 @@ if( $app->isSite() ){
 	AkquickiconsHelper::_('include.sortedStyle', 'includes/css');
 }
 
+// Include Fields
+JForm::addFieldPath( AKPATH_FORM.'/fields');
 
 // Detect version
 AkquickiconsHelper::_('plugin.attachPlugins');
