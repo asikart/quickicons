@@ -149,7 +149,7 @@
 			<field name="param_class"
 				type="text"
 				label="COM_AKQUICKICONS_CUSTOM_CLASS"
-				description="COM_AKQUICKICONS_CUSTOM_DESC"
+				description="COM_AKQUICKICONS_CUSTOM_CLASS_DESC"
 				labelclass="control-label"
 			/>
 			
