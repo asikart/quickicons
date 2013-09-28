@@ -14,7 +14,7 @@ JHtml::_('behavior.modal');
 
 if( JVERSION >= 3 ): 
 
-$doc->addStyleSheet('modules/mod_akquickicons/css/akquickicons.css');
+	$doc->addStyleSheet('modules/mod_akquickicons/css/akquickicons.css');
 
 endif; 
 
@@ -37,15 +37,15 @@ $keys = array_keys($buttons);
 <?php if (!empty($buttons)): ?>
 
 	<!-- Icons -->	
-	<?php echo $tabs ? AkquickiconsHelper::_('panel.startTabs', 'iconTab', array( 'active' => 'tab-'.$keys[0] ) ) : null ; ?>
+	<?php echo $tabs ? AkquickiconsHelper::_('panel.startTabs', 'iconTab-' . $uniqid, array( 'active' => 'tab-' . $uniqid . '-'.$keys[0] ) ) : null ; ?>
 	
 	<?php foreach( $buttons as $key => $group ): ?>
 		
-		<?php echo $tabs ? AkquickiconsHelper::_('panel.addPanel' , 'iconTab', $group[0]['cat_title'] , 'tab-'.$key ) : null ;?>
+		<?php echo $tabs ? AkquickiconsHelper::_('panel.addPanel' , 'iconTab-' . $uniqid, $group[0]['cat_title'] , 'tab-' . $uniqid . '-'.$key ) : null ;?>
 		<div class="cpanel">
 			<?php foreach( $group as $button ): ?>
 			<div class="<?php echo (JVERSION >= 3) ? '' : 'icon-wrapper'; ?>">
-				<div class="icon" id="<?php echo JArrayHelper::getValue($button, 'id'); ?>">
+				<div class="icon <?php echo $button['class']?>" id="<?php echo JArrayHelper::getValue($button, 'id'); ?>">
 					<a href="<?php echo $button['link']; ?>"
 						class="<?php echo $button['params']->get('target') == 'modal' ? 'modal' : ''; ?>"
 						target="<?php echo $button['params']->get('target') == 'blank' ? '_blank' : '_self'; ?>"
@@ -61,7 +61,7 @@ $keys = array_keys($buttons);
 			<div class="clearfix"></div>
 		</div>
 		<div class="clr"></div>
-		<?php echo $tabs ? AkquickiconsHelper::_('panel.endPanel' , 'iconTab' , 'tab-'.$key ) : null ; ?>
+		<?php echo $tabs ? AkquickiconsHelper::_('panel.endPanel' , 'iconTab-' . $uniqid , 'tab-' . $uniqid . '-'.$key ) : null ; ?>
 		
 	<?php endforeach; ?>
 	

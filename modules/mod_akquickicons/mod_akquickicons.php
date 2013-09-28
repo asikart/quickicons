@@ -22,6 +22,9 @@ $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 // Load WindWalker
 include_once JPATH_ADMINISTRATOR.'/components/com_akquickicons/includes/core.php';
 
+// Using for detect diffect tab groups
+$uniqid = uniqid();
+
 if( JVERSION >= 3 ){
 	require JModuleHelper::getLayoutPath('mod_akquickicons', $params->get('layout', 'joomla25'));
 }else{

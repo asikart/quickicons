@@ -12,10 +12,10 @@
 				labelclass="control-label"
 			/>
 			
-			<field name="alias"
+			<field name="param_langkey"
 				type="text"
-				label="JFIELD_ALIAS_LABEL"
-				description="JFIELD_ALIAS_DESC"
+				label="COM_AKQUICKICONS_LANGUAGE_KEY"
+				description="COM_AKQUICKICONS_LANGUAGE_KEY_DESC"
 				size="45"
 				labelclass="control-label"
 			/>
@@ -139,6 +139,28 @@
 				<option value="0">JUNPUBLISHED</option>
 			</field>
 			
+			<field name="param_id"
+				type="text"
+				label="COM_AKQUICKICONS_CUSTOM_ID"
+				description="COM_AKQUICKICONS_CUSTOM_ID_DESC"
+				labelclass="control-label"
+			/>
+			
+			<field name="param_class"
+				type="text"
+				label="COM_AKQUICKICONS_CUSTOM_CLASS"
+				description="COM_AKQUICKICONS_CUSTOM_DESC"
+				labelclass="control-label"
+			/>
+			
+			<field name="alias"
+				type="text"
+				label="JFIELD_ALIAS_LABEL"
+				description="JFIELD_ALIAS_DESC"
+				size="45"
+				labelclass="control-label"
+			/>
+			
 		</fieldset>
 		
 	</fields>
@@ -189,6 +211,7 @@
 				label="JFIELD_ACCESS_LABEL"
 				description="JFIELD_ACCESS_DESC"
 				labelclass="control-label"
+				default="1"
 			/>
 			
 			<field name="language"

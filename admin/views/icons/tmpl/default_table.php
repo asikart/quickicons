@@ -128,6 +128,8 @@ if( JVERSION >= 3 ) {
 		
 		$item = new JObject($item);
 		
+		$item->a_params = new JRegistry($item->a_params);
+		
 		$ordering	= ($listOrder == 'a.ordering');
 		$canCreate	= $user->authorise('core.create',		'com_akquickicons');
 		$canEdit	= $user->authorise('core.edit',			'com_akquickicons');
@@ -182,6 +184,12 @@ if( JVERSION >= 3 ) {
 						<?php endif; ?>
 						<?php echo $item->get('a_title'); ?>
 					</a>
+					
+					<?php if( $item->a_params->get('langkey')): ?>
+						<span style="color: #999;">
+							(<?php echo $item->a_params->get('langkey'); ?>)
+						</span>
+					<?php endif; ?>
 				<?php else: ?>
 					<?php if( $item->images ): ?>
 					<img src="<?php echo JURI::root().$item->images; ?>" width="32" alt="Thumb" style="float: left; margin-right: 10px;" />
@@ -191,6 +199,12 @@ if( JVERSION >= 3 ) {
 						<i class="<?php echo $item->icon_class; ?>"></i>&nbsp;
 					<?php endif; ?>
 					<?php echo $item->get('a_title'); ?>
+					
+					<?php if( $item->a_params->get('langkey')): ?>
+						<span style="color: #999;">
+							(<?php echo $item->a_params->get('langkey'); ?>)
+						</span>
+					<?php endif; ?>
 				<?php endif; ?>
 				
 				<?php if( JVERSION >= 3 ): ?>

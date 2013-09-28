@@ -19,8 +19,16 @@ abstract class modAkquickiconsHelper
 		self::$buttons = array();
 		$date = JFactory::getDate( 'now' , JFactory::getConfig()->get('offset') ) ;
 		$user = JFactory::getUser() ;
-		$db = JFactory::getDbo();
-		$q = $db->getQuery(true) ;
+		$lang = JFactory::getLanguage();
+		
+		// Load Mod Quickicon language
+		$lang->load('mod_quickicon', JPATH_BASE, null, false, false) || $lang->load('mod_quickicon', JPATH_BASE . '/modules/mod_quickicon', null, false, false)
+            || $lang->load('mod_quickicon', JPATH_BASE, $lang->getDefault(), false, false)
+            || $lang->load('mod_quickicon', JPATH_BASE . '/modules/mod_quickicon', $lang->getDefault(), false, false);
+		
+		
+		$db   = JFactory::getDbo();
+		$q    = $db->getQuery(true) ;
 		
 		$catid = $params->get('catid', array(78)) ;
 		
@@ -51,7 +59,8 @@ abstract class modAkquickiconsHelper
 		a.access 	AS access,
 		a.alias		AS alias,
 		a.params	AS params,
-		b.title 	AS cat_title
+		b.title 	AS cat_title,
+		b.alias	    AS cat_alias
 		";
 		
 		$q->select($select)
@@ -62,6 +71,7 @@ abstract class modAkquickiconsHelper
 			->where($publish)
 			->where("a.access IN ({$viewlevel})")
 			->where("(a.language = '{$language}' OR a.language = '*')")
+			->where("b.published > 0")
 			->order("b.lft, a.ordering")
 			;
 		
@@ -88,11 +98,12 @@ abstract class modAkquickiconsHelper
 			self::$buttons[$catid][] = array(
 				'link' 		=> JRoute::_($uri->toString()),
 				'image' 	=> JURI::root().$button->images,
-				'text' 		=> $button->title,
+				'text' 		=> $button->params->get('langkey') ? JText::_($button->params->get('langkey')) : $button->title,
 				'icon_class'=> $button->icon_class,
 				'access' 	=> true,
 				'cat_title' => $button->cat_title,
-				'id' 		=> str_replace('-', '_', $button->alias),
+				'id' 		=> $button->params->get('id', 'akicon_' . str_replace('-', '_', $button->alias)),
+				'class'     => $button->params->get('class', 'akicon'),
 				'params' 	=> $button->params
 			);
 			
@@ -163,7 +174,6 @@ abstract class modAkquickiconsHelper
 				}
 			}
 		}
-		//AK::show(self::$buttons);
 		
 		return self::$buttons ;
 	}

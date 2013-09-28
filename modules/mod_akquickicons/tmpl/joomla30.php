@@ -32,14 +32,14 @@ $keys = array_keys($buttons);
 <?php if (!empty($buttons)): ?>
 
 	<!-- Icons -->	
-	<?php echo $tabs ? AkquickiconsHelper::_('panel.startTabs', 'iconTab', array( 'active' => 'tab-'.$keys[0] ) ) : null ; ?>
+	<?php echo $tabs ? AkquickiconsHelper::_('panel.startTabs', 'iconTab-' . $uniqid, array( 'active' => 'tab-' . $uniqid . '-'.$keys[0] ) ) : null ; ?>
 	
 	<?php foreach( $buttons as $key => $group ): ?>
 		
-		<?php echo $tabs ? AkquickiconsHelper::_('panel.addPanel' , 'iconTab', $group[0]['cat_title'] , 'tab-'.$key ) : null ;?>
+		<?php echo $tabs ? AkquickiconsHelper::_('panel.addPanel' , 'iconTab-' . $uniqid, $group[0]['cat_title'] , 'tab-' . $uniqid . '-'.$key ) : null ;?>
 	<div class="row-striped">
 		<?php foreach( $group as $button ): ?>
-		<div class="row-fluid" id="<?php echo JArrayHelper::getValue($button, 'id'); ?>">
+		<div class="row-fluid <?php echo $button['class']?>" id="<?php echo JArrayHelper::getValue($button, 'id'); ?>">
 			<div class="span6">
 				<a href="<?php echo $button['link']; ?>"
 					class="<?php echo $button['params']->get('target') == 'modal' ? 'modal' : ''; ?>"
@@ -54,7 +54,7 @@ $keys = array_keys($buttons);
 		</div>
 		<?php endforeach; ?>
 	</div>
-	<?php echo $tabs ? AkquickiconsHelper::_('panel.endPanel' , 'iconTab' , 'tab-'.$key ) : null ; ?>
+	<?php echo $tabs ? AkquickiconsHelper::_('panel.endPanel' , 'iconTab-' . $uniqid , 'tab-' . $uniqid . '-'.$key ) : null ; ?>
 		
 	<?php endforeach; ?>
 	
