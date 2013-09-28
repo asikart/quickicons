@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension
 	type="module"
-	version="2.5"
+	version="3.2"
 	client="administrator"
 	method="upgrade">
 	<name>Asikart QuickIcons Module</name>
@@ -11,7 +11,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>asika@asikart.com</authorEmail>
 	<authorUrl>http://asikart.com</authorUrl>
-	<version>1.3</version>
+	<version>1.4</version>
 	<description>MOD_AKQUICKICONS_INSTALL_DESC</description>
 	<files>
 		<filename module="mod_akquickicons">mod_akquickicons.php</filename>
