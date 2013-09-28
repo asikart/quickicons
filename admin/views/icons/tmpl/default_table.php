@@ -186,8 +186,9 @@ if( JVERSION >= 3 ) {
 					</a>
 					
 					<?php if( $item->a_params->get('langkey')): ?>
+						/
 						<span style="color: #999;">
-							(<?php echo $item->a_params->get('langkey'); ?>)
+							<?php echo $item->a_params->get('langkey'); ?>
 						</span>
 					<?php endif; ?>
 				<?php else: ?>
@@ -201,8 +202,9 @@ if( JVERSION >= 3 ) {
 					<?php echo $item->get('a_title'); ?>
 					
 					<?php if( $item->a_params->get('langkey')): ?>
+						/
 						<span style="color: #999;">
-							(<?php echo $item->a_params->get('langkey'); ?>)
+							<?php echo $item->a_params->get('langkey'); ?>
 						</span>
 					<?php endif; ?>
 				<?php endif; ?>
