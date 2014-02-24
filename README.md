@@ -18,7 +18,7 @@ You just need to upload images and setting icons in Asikart Quickicons&nbsp;comp
 
 [DEMO][8]&nbsp;Account: demo / demo
 
-## Donate Us ![![Donate](http://f.cl.ly/items/201r3g370r0r461l3x2b/btn_donate_LG.gif)](http://goo.gl/RklRQV)
+## Donate Us [![Donate](http://f.cl.ly/items/201r3g370r0r461l3x2b/btn_donate_LG.gif)](http://goo.gl/RklRQV)
 
 Encurage us makeing our extension more perfectly.
 
