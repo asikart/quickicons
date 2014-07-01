@@ -169,6 +169,16 @@ abstract class modAkquickiconsHelper
 					}else{
 						$icon['params'] = new JRegistry ;
 					}
+
+					if (!isset ($keys[0]))
+					{
+						$keys[0] = null;
+					}
+
+					if (!isset ($buttons[$keys[0]]))
+					{
+						$buttons[$keys[0]] = array();
+					}
 					
 					self::$buttons[$keys[0]][] = $icon;
 				}

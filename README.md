@@ -1,4 +1,4 @@
-# Asikart QuickIcons (AQI)
+# Asikart QuickIcons (AQI) [![Analytics](https://ga-beacon.appspot.com/UA-48372917-1/quickicons/readme)](https://github.com/igrigorik/ga-beacon)
 
 Admin Quickicon management component for Joomla CMS.
 
@@ -17,6 +17,10 @@ You just need to upload images and setting icons in Asikart Quickicons&nbsp;comp
 > Notice: The size of AQI is ovr 2 MB, if you can't upload installation package, see [this page][7].
 
 [DEMO][8]&nbsp;Account: demo / demo
+
+## [![Donate](http://f.cl.ly/items/201r3g370r0r461l3x2b/btn_donate_LG.gif)](http://ext.asikart.com/donate-us.html)
+
+Help us making our extensions more perfectly.
 
 
 ## Getting Started
