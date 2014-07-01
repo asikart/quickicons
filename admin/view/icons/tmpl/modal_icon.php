@@ -14,21 +14,22 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.multiselect');
 
-$function	= JRequest::getCmd('function', 'jSelectArticle');
-$doc 		= JFactory::getDocument();
+$input = JFactory::getApplication()->input;
+$function = $input->get('function', 'jSelectArticle');
+$doc      = JFactory::getDocument();
 
-$doc->addStylesheet( 'components/com_akquickicons/includes/akicons/css/akicons.css') ;
+$data->asset->addCss('akicons.css');
 
 ?>
 <style type="text/css">
-	
+
 	ul.the-icons li {
 		float: left;
 		min-width: 250px;
 		line-height: 150% ;
 		list-style: none ;
 	}
-	
+
 	ul.the-icons li a {
 		color: black;
 		cursor: pointer ;
@@ -184,12 +185,10 @@ $doc->addStylesheet( 'components/com_akquickicons/includes/akicons/css/akicons.c
             <li><i class="<?php $class = 'akicon-fullscreen'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-fullscreen</a></li>
           </ul>
 	</p>
-	
+
 	<div>
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />
-		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
 		<?php echo JHtml::_('form.token'); ?>
 	</div>
 </form>

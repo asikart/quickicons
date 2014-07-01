@@ -145,7 +145,7 @@ $grid->registerTableSort();
 				<!-- Image -->
 				<?php if($item->images): ?>
 					<?php if ($grid->can('edit') || $grid->can('editOwn')): ?>
-					<a href="<?php echo JRoute::_('index.php?option=com_akquickicons&task=icon.edit&id='.$item->a_id); ?>">
+					<a href="<?php echo JRoute::_('index.php?option=com_akquickicons&task=icon.edit.edit&id='.$item->id); ?>">
 						<img src="<?php echo JURI::root().$item->images; ?>" width="32" alt="Thumb" style="float: left; margin-right: 10px;" />
 					</a>
 					<?php else: ?>
