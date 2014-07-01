@@ -111,6 +111,19 @@ class AkquickiconsViewIconsHtml extends GridView
 	}
 
 	/**
+	 * setTitle
+	 *
+	 * @param string $title
+	 * @param string $icons
+	 *
+	 * @return  void
+	 */
+	protected function setTitle($title = null, $icons = 'stack')
+	{
+		parent::setTitle(JText::_('COM_AKQUICKICONS_TITLE_ICONS'), $icons);
+	}
+
+	/**
 	 * Configure the toolbar button set.
 	 *
 	 * @param   array   $buttonSet Customize button set.

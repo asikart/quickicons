@@ -38,17 +38,17 @@ abstract class AkquickiconsHelper
 			);
 		}
 
-		foreach (new \DirectoryIterator(JPATH_ADMINISTRATOR . '/components/com_akquickicons/view') as $folder)
-		{
-			if ($folder->isDir() && $inflector->isPlural($view = $folder->getBasename()))
-			{
-				JHtmlSidebar::addEntry(
-					JText::sprintf(sprintf('COM_AKQUICKICONS_%s_TITLE_LIST', strtoupper($folder))),
-					'index.php?option=com_akquickicons&view=' . $view,
-					($vName == $view)
-				);
-			}
-		}
+		JHtmlSidebar::addEntry(
+			JText::sprintf('COM_AKQUICKICONS_TITLE_ICONS'),
+			'index.php?option=com_akquickicons&view=icons',
+			($vName == 'icons')
+		);
+
+		JHtmlSidebar::addEntry(
+			JText::sprintf('COM_AKQUICKICONS_TITLE_IMAGES'),
+			'index.php?option=com_akquickicons&view=images',
+			($vName == 'images')
+		);
 
 		$dispatcher = \JEventDispatcher::getInstance();
 		$dispatcher->trigger('onAfterAddSubmenu', array('com_akquickicons', $vName));
