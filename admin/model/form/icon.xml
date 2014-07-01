@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-	<fieldset name="information"
-		align="left"
-		horz="true">
+	<fieldset name="information">
 
 		<field name="title"
 			type="text"
@@ -12,15 +10,21 @@
 			size="50"
 			labelclass="control-label"
 			/>
+	</fieldset>
 
-		<field name="param_langkey"
-			type="text"
-			label="COM_AKQUICKICONS_LANGUAGE_KEY"
-			description="COM_AKQUICKICONS_LANGUAGE_KEY_DESC"
-			size="45"
-			labelclass="control-label"
-			/>
+	<fields name="params">
+		<fieldset name="information">
+			<field name="langkey"
+				type="text"
+				label="COM_AKQUICKICONS_LANGUAGE_KEY"
+				description="COM_AKQUICKICONS_LANGUAGE_KEY_DESC"
+				size="45"
+				labelclass="control-label"
+				/>
+		</fieldset>
+	</fields>
 
+	<fieldset name="information">
 		<field name="catid"
 			type="category"
 			label="JCATEGORY"
@@ -95,38 +99,53 @@
 			/>
 	</fieldset>
 
-	<fieldset
-		name="publish"
-		align="right"
-		horz="true">
+	<fields name="params">
+		<fieldset name="publish">
+			<field name="param_target"
+				type="list"
+				label="COM_AKQUICKICONS_TARGET_LABEL"
+				description="COM_AKQUICKICONS_TARGET_DESC"
+				class="inputbox"
+				size="1"
+				default=""
+				labelclass="control-label"
+				>
+				<option value="">COM_AKQUICKICONS_TARGET_OPT_SELF</option>
+				<option value="blank">COM_AKQUICKICONS_TARGET_OPT_BLANK</option>
+				<option value="modal">COM_AKQUICKICONS_TARGET_OPT_MODAL</option>
+			</field>
 
-		<field name="param_target"
-			type="list"
-			label="COM_AKQUICKICONS_TARGET_LABEL"
-			description="COM_AKQUICKICONS_TARGET_DESC"
-			class="inputbox"
-			size="1"
-			default=""
-			labelclass="control-label"
-			>
-			<option value="">COM_AKQUICKICONS_TARGET_OPT_SELF</option>
-			<option value="blank">COM_AKQUICKICONS_TARGET_OPT_BLANK</option>
-			<option value="modal">COM_AKQUICKICONS_TARGET_OPT_MODAL</option>
-		</field>
+			<field name="param_smart_url"
+				type="radio"
+				label="COM_AKQUICKICONS_SMART_URL_LABEL"
+				description="COM_AKQUICKICONS_SMART_URL_DESC"
+				class="inputbox btn-group"
+				size="1"
+				default="1"
+				labelclass="control-label"
+				>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
 
-		<field name="param_smart_url"
-			type="radio"
-			label="COM_AKQUICKICONS_SMART_URL_LABEL"
-			description="COM_AKQUICKICONS_SMART_URL_DESC"
-			class="inputbox btn-group"
-			size="1"
-			default="1"
-			labelclass="control-label"
-			>
-			<option value="1">JYES</option>
-			<option value="0">JNO</option>
-		</field>
+			<field name="param_id"
+				type="text"
+				label="COM_AKQUICKICONS_CUSTOM_ID"
+				description="COM_AKQUICKICONS_CUSTOM_ID_DESC"
+				labelclass="control-label"
+				/>
 
+			<field name="param_class"
+				type="text"
+				label="COM_AKQUICKICONS_CUSTOM_CLASS"
+				description="COM_AKQUICKICONS_CUSTOM_CLASS_DESC"
+				labelclass="control-label"
+				/>
+
+		</fieldset>
+	</fields>
+
+	<fieldset name="publish">
 		<field name="published"
 			type="radio"
 			label="JSTATUS"
@@ -139,20 +158,6 @@
 			<option value="1">JPUBLISHED</option>
 			<option value="0">JUNPUBLISHED</option>
 		</field>
-
-		<field name="param_id"
-			type="text"
-			label="COM_AKQUICKICONS_CUSTOM_ID"
-			description="COM_AKQUICKICONS_CUSTOM_ID_DESC"
-			labelclass="control-label"
-			/>
-
-		<field name="param_class"
-			type="text"
-			label="COM_AKQUICKICONS_CUSTOM_CLASS"
-			description="COM_AKQUICKICONS_CUSTOM_CLASS_DESC"
-			labelclass="control-label"
-			/>
 
 		<field name="alias"
 			type="text"

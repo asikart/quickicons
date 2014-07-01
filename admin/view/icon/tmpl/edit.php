@@ -23,6 +23,9 @@ JHtmlBehavior::formvalidation();
 $container = $this->getContainer();
 $form      = $data->form;
 $item      = $data->item;
+$asset     = $data->asset;
+
+$asset->addCss('quickicons.css');
 
 // Setting tabset
 $tabs = array(
