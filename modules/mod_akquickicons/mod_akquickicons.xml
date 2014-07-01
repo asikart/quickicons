@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension
 	type="module"
-	version="3.2"
+	version="3.3"
 	client="administrator"
 	method="upgrade">
 	<name>Asikart QuickIcons Module</name>
@@ -11,7 +11,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>asika@asikart.com</authorEmail>
 	<authorUrl>http://asikart.com</authorUrl>
-	<version>1.4</version>
+	<version>2.0.0</version>
 	<description>MOD_AKQUICKICONS_INSTALL_DESC</description>
 	<files>
 		<filename module="mod_akquickicons">mod_akquickicons.php</filename>
@@ -25,26 +25,27 @@
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_FOOTER" />
 	<config>
 		<fields name="params">
-			<fieldset name="basic" addfieldpath="administrator/components/com_akquickicons/models/fields">
+			<fieldset name="basic">
 				<field
 					name="catid"
-					type="iconcategory"
+					type="category"
 					label="JCATEGORY"
 					description="JFIELD_CATEGORY_DESC"
 					extension="com_akquickicons"
 					multiple="true"
 					size="8"
-				>
+					default="1"
+					>
 					<option value="1">MOD_AKQUICKICONS_OPTION_ALL_CATEGORY</option>
 				</field>
-				
+
 				<field
 					name="layout"
 					type="modulelayout"
 					label="JFIELD_ALT_LAYOUT_LABEL"
 					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
 					defalut="joomla25" />
-				
+
 				<field
 					name="get_icon_from_plugins"
 					type="radio"
@@ -52,14 +53,14 @@
 					description="MOD_AKQUICKICONS_GET_ICON_FROM_PLUGINS_DESC"
 					default="1"
 					class="btn-group"
-				>
+					>
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-				
+
 			</fieldset>
 			<fieldset name="advanced">
-				
+
 				<field
 					name="moduleclass_sfx"
 					type="text"
@@ -86,8 +87,7 @@
 					name="cachemode"
 					type="hidden"
 					default="static">
-					<option
-						value="static"></option>
+					<option value="static"></option>
 				</field>
 			</fieldset>
 		</fields>

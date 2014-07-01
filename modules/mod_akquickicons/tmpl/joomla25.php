@@ -12,23 +12,13 @@ defined('_JEXEC') or die;
 $doc = JFactory::getDocument();
 JHtml::_('behavior.modal');
 
-if( JVERSION >= 3 ): 
-
-	$doc->addStyleSheet('modules/mod_akquickicons/css/akquickicons.css');
-
-endif; 
+$doc->addStyleSheet('modules/mod_akquickicons/css/akquickicons.css');
 
 $tabs = count($buttons) > 1 ? true : false ;
 
-$plugin = JPATH_ADMINISTRATOR.'/components/com_akquickicons/includes/plugins/pro/pro.php' ;
-if( !JFile::exists($plugin) ) {
-	$tabs = false ;
-}
-
 $keys = array_keys($buttons);
-
+$uniqid = uniqid();
 ?>
-
 <style type="text/css">
 	.pane-sliders .panel .tabs h3 {
 		background-color: transparent ;
@@ -37,11 +27,11 @@ $keys = array_keys($buttons);
 <?php if (!empty($buttons)): ?>
 
 	<!-- Icons -->	
-	<?php echo $tabs ? AkquickiconsHelper::_('panel.startTabs', 'iconTab-' . $uniqid, array( 'active' => 'tab-' . $uniqid . '-'.$keys[0] ) ) : null ; ?>
+	<?php echo $tabs ? JHtmlBootstrap::startTabSet('iconTab-' . $uniqid, array('active' => 'tab-' . $uniqid . '-'.$keys[0])) : null ; ?>
 	
 	<?php foreach( $buttons as $key => $group ): ?>
 		
-		<?php echo $tabs ? AkquickiconsHelper::_('panel.addPanel' , 'iconTab-' . $uniqid, $group[0]['cat_title'] , 'tab-' . $uniqid . '-'.$key ) : null ;?>
+		<?php echo $tabs ? JHtmlBootstrap::addTab('iconTab-' . $uniqid, 'tab-' . $uniqid . '-'.$key, $group[0]['cat_title']) : null ;?>
 		<div class="cpanel">
 			<?php foreach( $group as $button ): ?>
 			<div class="<?php echo (JVERSION >= 3) ? '' : 'icon-wrapper'; ?>">
@@ -61,11 +51,11 @@ $keys = array_keys($buttons);
 			<div class="clearfix"></div>
 		</div>
 		<div class="clr"></div>
-		<?php echo $tabs ? AkquickiconsHelper::_('panel.endPanel' , 'iconTab-' . $uniqid , 'tab-' . $uniqid . '-'.$key ) : null ; ?>
+		<?php echo $tabs ? JHtmlBootstrap::endTab() : null ; ?>
 		
 	<?php endforeach; ?>
 	
-	<?php echo $tabs ? AkquickiconsHelper::_('panel.endTabs' ) : null ; ?>
+	<?php echo $tabs ? JHtmlBootstrap::endTabSet() : null ; ?>
 	
 <?php endif;?>
 <div class="clearfix clr"></div>

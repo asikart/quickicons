@@ -132,6 +132,19 @@ SCRIPT;
 	}
 
 	/**
+	 * setTitle
+	 *
+	 * @param null   $title
+	 * @param string $icons
+	 *
+	 * @return  void
+	 */
+	protected function setTitle($title = null, $icons = 'pictures')
+	{
+		parent::setTitle(JText::_('COM_AKQUICKICONS_TITLE_IMAGES'), $icons);
+	}
+
+	/**
 	 * configureToolbar
 	 *
 	 * @param array   $buttonSet

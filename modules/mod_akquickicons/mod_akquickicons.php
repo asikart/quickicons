@@ -1,32 +1,19 @@
 <?php
 /**
- * @package		Asikart Joomla! Extansion Example
- * @subpackage	mod_example
- * @copyright	Copyright (C) 2012 Asikart.com, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @package        Asikart.Module
+ * @subpackage     mod_akquickicons
+ * @copyright      Copyright (C) 2014 SMS Taiwan, Inc. All rights reserved.
+ * @license        GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// no direct access
+// No direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.filesystem.file');
-jimport('joomla.filesystem.folder');
-
 // Include the syndicate functions only once
-require_once dirname(__FILE__).'/helper.php';
+JLoader::registerPrefix('ModAkquickicons', __DIR__);
 
-// Get icons
-$buttons = modAkquickiconsHelper::getList($params) ;
-$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
+$model    = new ModAkquickiconsModel($params);
+$buttons  = $model->getItems($params);
+$classSfx = ModAkquickiconsHelper::escape($params->get('moduleclass_sfx'));
 
-// Load WindWalker
-include_once JPATH_ADMINISTRATOR.'/components/com_akquickicons/includes/core.php';
-
-// Using for detect diffect tab groups
-$uniqid = uniqid();
-
-if( JVERSION >= 3 ){
-	require JModuleHelper::getLayoutPath('mod_akquickicons', $params->get('layout', 'joomla25'));
-}else{
-	require JModuleHelper::getLayoutPath('mod_akquickicons', 'joomla25');
-}
+require JModuleHelper::getLayoutPath('mod_akquickicons', $params->get('layout', 'joomla25'));

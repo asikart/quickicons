@@ -65,6 +65,15 @@ class AkquickiconsViewIconsHtml extends GridView
 	protected $viewList = 'icons';
 
 	/**
+	 * The fields mapper.
+	 *
+	 * @var  array
+	 */
+	protected $fields = array(
+		'state' => 'published'
+	);
+
+	/**
 	 * Method to instantiate the view.
 	 *
 	 * @param Model            $model     The model object.
