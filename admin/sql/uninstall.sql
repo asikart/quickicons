@@ -1,1 +1,1 @@
-DROP TABLE  `#__akquickicons_icons`;
+DROP TABLE  `#__akquickicons_icons`
