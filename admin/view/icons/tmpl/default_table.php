@@ -168,7 +168,7 @@ $grid->registerTableSort();
 
 			<!-- Sub Title -->
 			<div class="small">
-				<?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>
+				<?php echo $this->escape($item->link); ?>
 			</div>
 		</td>
 
