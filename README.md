@@ -10,7 +10,7 @@ You just need to upload images and setting icons in Asikart Quickicons&nbsp;comp
 
 > Extension type
 >
-> ![compat 25][2]&nbsp;![compat 30][3]&nbsp;![ext com][4]&nbsp;![ext mod][5]
+> ![compat 30][3]&nbsp;![ext com][4]&nbsp;![ext mod][5]
 
 
 
