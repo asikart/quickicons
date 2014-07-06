@@ -28,7 +28,7 @@ $icons = \Akquickicons\Helper\IconHelper::getIcons();
 	ul.the-icons li {
 		float: left;
 		min-width: 250px;
-		line-height: 150% ;
+		line-height: 175% ;
 		list-style: none ;
 	}
 
@@ -51,7 +51,7 @@ $icons = \Akquickicons\Helper\IconHelper::getIcons();
 	<ul class="the-icons clearfix" style="color: black !important;">
 		<?php foreach ($icons as $icon): ?>
 		<li>
-			<i class="fa <?php echo $icon; ?>" style="width: 15px"></i>
+			<i class="fa <?php echo $icon; ?>" style="width: 20px; font-size: 16px;"></i>
 			<a class="pointer" href="return false;" onclick="returnButton('<?php echo $icon; ?>');">
 				<?php echo $icon; ?>
 			</a>
