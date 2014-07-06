@@ -65,7 +65,7 @@ class Com_AkquickiconsInstallerScript
 		$db->setQuery($q);
 		$icon_ids = $db->loadColumn();
 
-		$table_path = $path . '/tables/icon.php';
+		$table_path = $path . '/table/icon.php';
 
 		include_once $table_path;
 

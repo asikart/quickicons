@@ -15,13 +15,12 @@
 	<description>MOD_AKQUICKICONS_INSTALL_DESC</description>
 	<files>
 		<filename module="mod_akquickicons">mod_akquickicons.php</filename>
-		<folder>tmpl</folder>
 		<folder>css</folder>
+		<folder>helper</folder>
 		<folder>language</folder>
 		<folder>model</folder>
-		<folder>helper</folder>
+		<folder>tmpl</folder>
 		<filename>index.html</filename>
-		<filename>helper.php</filename>
 		<filename>mod_akquickicons.xml</filename>
 		<filename>install.php</filename>
 	</files>
