@@ -10,7 +10,7 @@
 	background-position: -30px;
 	display: block;
 	float: left;
-	height: 97px;
+	height: 103px;
 	width: 108px;
 	padding: 7px;
 	c/olor: #565656;
@@ -58,23 +58,32 @@
 	background-color: whiteSmoke;
 }
 
-.akicon i
+.akicon-module i
 {
 	padding: 10px 0;
 	font-size: 48px;
 }
 
-.akicon a .fa
+.akicon-module a .fa
 {
 	transition: all 0.8s;
 	-webkit-transition: all 0.8s;
 	-moz-transition: all 0.8s;
 }
 
-.akicon a:hover .fa
+.akicon-module a:hover .fa
 {
 	color: #005580;
 	transition: all 0.8s;
 	-webkit-transition: all 0.8s;
 	-moz-transition: all 0.8s;
+}
+
+.akicon-module a [class^="icon-"],
+.akicon-module a [class*=" icon-"]
+{
+	padding: 10px 0;
+	width: auto;
+	height: auto;
+	line-height: 100%;
 }

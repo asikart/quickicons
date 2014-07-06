@@ -61,4 +61,16 @@ abstract class ModAkquickiconsHelper
 	{
 		return htmlspecialchars($text);
 	}
+
+	/**
+	 * show
+	 *
+	 * @param mixed $data
+	 *
+	 * @return  void
+	 */
+	public static function show($data)
+	{
+		echo "<pre>" . print_r($data, 1) . "</pre>";
+	}
 }

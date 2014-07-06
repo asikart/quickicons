@@ -141,23 +141,16 @@ class ModAkquickiconsModel extends \JModelDatabase
 		$arrays = (array) $app->triggerEvent('onGetIcons', array('mod_quickicon'));
 
 		// Extensions plugin image map
-		$root    = JURI::root();
-		$img_map = array(
-			'asterisk'                 => $root . 'images/quickicons/bluestock/icon-48-extension.png', // For Joomla!Update
-			'download'                 => $root . 'images/quickicons/bluestock/icon-48-download.png', // For Joomla! Extenaion Update
-			'pictures'                 => $root . 'images/quickicons/Primo-Icons/photo_48.png', // For JCE
-			'header/icon-48-media.png' => $root . 'images/quickicons/Primo-Icons/photo_48.png' // For JCE
-		);
-
 		foreach ($arrays as $response)
 		{
 			foreach ($response as $icon)
 			{
 				$default = array(
 					'link'   => null,
-					'image'  => 'cog',
 					'text'   => null,
-					'access' => true
+					'image'  => 'joomla',
+					'access' => true,
+					'class'  => 'akicon'
 				);
 
 				$icon = array_merge($default, $icon);
@@ -166,10 +159,7 @@ class ModAkquickiconsModel extends \JModelDatabase
 				{
 					$icon['icon_class'] = 'icon-' . $icon['image'];
 
-					if (array_key_exists($icon['image'], $img_map))
-					{
-						$icon['image'] = $img_map[$icon['image']];
-					}
+					unset($icon['image']);
 
 					// Set params
 					if (isset($icon['params']))

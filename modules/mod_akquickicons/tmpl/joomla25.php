@@ -34,7 +34,7 @@ ModAkquickiconsHelper::loadFontAwesome();
 	<?php foreach( $buttons as $key => $group ): ?>
 		
 		<?php echo $tabs ? JHtmlBootstrap::addTab('iconTab-' . $uniqid, 'tab-' . $uniqid . '-'.$key, $group[0]['cat_title']) : null ;?>
-		<div class="cpanel">
+		<div class="cpanel akicon-module">
 			<?php foreach( $group as $button ): ?>
 			<div class="<?php echo (JVERSION >= 3) ? '' : 'icon-wrapper'; ?>">
 				<div class="icon <?php echo $button['class']?>" id="<?php echo JArrayHelper::getValue($button, 'id'); ?>">
