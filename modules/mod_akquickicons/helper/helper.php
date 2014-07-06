@@ -17,53 +17,37 @@ defined('_JEXEC') or die;
 abstract class ModAkquickiconsHelper
 {
 	/**
-	 * Columns cache.
+	 * getButtonImage
 	 *
-	 * @var array.
+	 * @param array $button
+	 *
+	 * @return  string
 	 */
-	protected static $columns;
-
-	/**
-	 * Get select query from tables array.
-	 *
-	 * @param   array   $tables Tables name to get columns.
-	 * @param   boolean $all    Contain a.*, b.* etc.
-	 *
-	 * @return  array  Select column list.
-	 */
-	public static function getSelectList($tables = array(), $all = true)
+	public static function getButtonImage($button)
 	{
-		$db = JFactory::getDbo();
-
-		$select = array();
-		$fields = array();
-		$i      = 'a';
-
-		foreach ($tables as $k => $table)
+		if (!empty($button['image']))
 		{
-			if (empty(self::$columns[$table]))
-			{
-				self::$columns[$table] = $db->getTableColumns($table);
-			}
-
-			$columns = self::$columns[$table];
-
-			if ($all)
-			{
-				$select[] = "`{$k}`.*";
-			}
-
-			foreach ($columns as $key => $var)
-			{
-				$fields[] = $db->qn("{$k}.{$key}", "{$k}_{$key}");
-			}
-
-			$i = ord($i);
-			$i++;
-			$i = chr($i);
+			return JHtml::image($button['image'], $button['id'], null, true);
 		}
 
-		return $final = implode(",", $select) . ",\n" . implode(",\n", $fields);
+		if (!empty($button['icon_class']))
+		{
+			return "<i class=\"{$button['icon_class']}\"></i>";
+		}
+
+		return "<i class=\"fa fa-joomla\"></i>";
+	}
+
+	/**
+	 * loadFontAwesome
+	 *
+	 * @return  void
+	 */
+	public static function loadFontAwesome()
+	{
+		$doc = JFactory::getDocument();
+
+		$doc->addStyleSheetVersion('components/com_akquickicons/asset/css/font-awesome.css');
 	}
 
 	/**

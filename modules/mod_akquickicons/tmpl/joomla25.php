@@ -18,6 +18,8 @@ $tabs = count($buttons) > 1 ? true : false ;
 
 $keys = array_keys($buttons);
 $uniqid = uniqid();
+
+ModAkquickiconsHelper::loadFontAwesome();
 ?>
 <style type="text/css">
 	.pane-sliders .panel .tabs h3 {
@@ -40,7 +42,7 @@ $uniqid = uniqid();
 						class="<?php echo $button['params']->get('target') == 'modal' ? 'modal' : ''; ?>"
 						target="<?php echo $button['params']->get('target') == 'blank' ? '_blank' : '_self'; ?>"
 					>
-						<?php echo JHtml::_('image', $button['image'], $button['id'], null, true); ?>
+						<?php echo ModAkquickiconsHelper::getButtonImage($button); ?>
 						<div>
 							<span><?php echo $button['text']; ?></span>
 						</div>

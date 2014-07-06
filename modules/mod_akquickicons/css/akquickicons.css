@@ -57,3 +57,24 @@
 .akquickicons-tabs.nav-tabs > li.active > a {
 	background-color: whiteSmoke;
 }
+
+.akicon i
+{
+	padding: 10px 0;
+	font-size: 48px;
+}
+
+.akicon a .fa
+{
+	transition: all 0.8s;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+}
+
+.akicon a:hover .fa
+{
+	color: #005580;
+	transition: all 0.8s;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+}

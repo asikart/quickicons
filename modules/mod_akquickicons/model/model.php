@@ -106,7 +106,7 @@ class ModAkquickiconsModel extends \JModelDatabase
 
 			$this->buttons[$catid][] = array(
 				'link'       => JRoute::_($uri->toString()),
-				'image'      => JURI::root() . $button->images,
+				'image'      => $button->images ? JURI::root() . $button->images : null,
 				'text'       => $button->params->get('langkey') ? JText::_($button->params->get('langkey')) : $button->title,
 				'icon_class' => $button->icon_class,
 				'access'     => true,
