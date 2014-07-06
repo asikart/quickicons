@@ -56,11 +56,9 @@
 		<module>mod_akquickicons</module>
 	</modules>
 
-	<!--
 	<updateservers>
-		<server type="extension" priority="1" name="Asikart Akquickicons Component">http://update.asikart.com/component/com_akquickicons.xml</server>
+		<server type="extension" priority="1" name="Asikart Quickicons Component">https://raw.githubusercontent.com/asikart/quickicons/staging/update.xml</server>
 	</updateservers>
-	-->
 
 </extension>
 
