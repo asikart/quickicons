@@ -35,7 +35,29 @@ abstract class ModAkquickiconsHelper
 			return "<i class=\"{$button['icon_class']}\"></i>";
 		}
 
-		return "<i class=\"fa fa-joomla\"></i>";
+		return "<i class=\"icon-joomla\"></i>";
+	}
+
+	/**
+	 * getButtonImage
+	 *
+	 * @param array $button
+	 *
+	 * @return  string
+	 */
+	public static function getButtonIcon($button)
+	{
+		if (!empty($button['icon_class']))
+		{
+			return "<i class=\"{$button['icon_class']}\"></i>";
+		}
+
+		if (!empty($button['image']))
+		{
+			return JHtml::image($button['image'], $button['id'], null, true);
+		}
+
+		return "<i class=\"icon-joomla\"></i>";
 	}
 
 	/**

@@ -112,7 +112,7 @@ class ModAkquickiconsModel extends \JModelDatabase
 				'access'     => true,
 				'cat_title'  => $button->cat_title,
 				'id'         => $button->params->get('id', 'akicon_' . str_replace('-', '_', $button->alias)),
-				'class'      => $button->params->get('class', 'akicon'),
+				'class'      => $button->params->get('class', 'ak-icon-item'),
 				'params'     => $button->params
 			);
 		}
@@ -150,7 +150,7 @@ class ModAkquickiconsModel extends \JModelDatabase
 					'text'   => null,
 					'image'  => 'joomla',
 					'access' => true,
-					'class'  => 'akicon'
+					'class'  => 'ak-icon-item'
 				);
 
 				$icon = array_merge($default, $icon);

@@ -10,55 +10,48 @@
 defined('_JEXEC') or die;
 
 $doc = JFactory::getDocument();
-JHtml::_('behavior.modal');
-$doc->addStylesheet( 'components/com_akquickicons/includes/akicons/css/akicons.css') ;
+JHtmlBehavior::modal();
 
-if( JVERSION >= 3 ): 
-
+$doc->addStylesheet('components/com_akquickicons/asset/css/akicons.css');
 $doc->addStyleSheet('modules/mod_akquickicons/css/akquickicons.css');
+ModAkquickiconsHelper::loadFontAwesome();
 
-endif; 
-
-$tabs = count($buttons) > 1 ? true : false ;
-
-$plugin = JPATH_ADMINISTRATOR.'/components/com_akquickicons/includes/plugins/pro/pro.php' ;
-if( !JFile::exists($plugin) ) {
-	$tabs = false ;
-}
+$tabs = count($buttons) > 1 ? true : false;
 
 $keys = array_keys($buttons);
-
+$uniqid = uniqid();
 ?>
 <?php if (!empty($buttons)): ?>
 
-	<!-- Icons -->	
-	<?php echo $tabs ? AkquickiconsHelper::_('panel.startTabs', 'iconTab-' . $uniqid, array( 'active' => 'tab-' . $uniqid . '-'.$keys[0] ) ) : null ; ?>
-	
-	<?php foreach( $buttons as $key => $group ): ?>
-		
-		<?php echo $tabs ? AkquickiconsHelper::_('panel.addPanel' , 'iconTab-' . $uniqid, $group[0]['cat_title'] , 'tab-' . $uniqid . '-'.$key ) : null ;?>
-	<div class="row-striped">
-		<?php foreach( $group as $button ): ?>
-		<div class="row-fluid <?php echo $button['class']?>" id="<?php echo JArrayHelper::getValue($button, 'id'); ?>">
-			<div class="span6">
-				<a href="<?php echo $button['link']; ?>"
-					class="<?php echo $button['params']->get('target') == 'modal' ? 'modal' : ''; ?>"
-					target="<?php echo $button['params']->get('target') == 'blank' ? '_blank' : '_self'; ?>"
-				>
-					<i class="icon <?php echo $button['icon_class']; ?>"></i>
-					<span>
-						<?php echo $button['text']; ?>
-					</span>
-				</a>
+	<div class="aqi-module joomla30-layout">
+		<!-- Icons -->
+		<?php echo $tabs ? JHtmlBootstrap::startTabSet('iconTab-' . $uniqid, array('active' => 'tab-' . $uniqid . '-' . $keys[0])) : null; ?>
+
+		<?php foreach ($buttons as $key => $group): ?>
+
+			<?php echo $tabs ? JHtmlBootstrap::addTab('iconTab-' . $uniqid, 'tab-' . $uniqid . '-' . $key, $group[0]['cat_title']) : null; ?>
+			<div class="row-striped">
+				<?php foreach ($group as $button): ?>
+					<div class="row-fluid <?php echo $button['class'] ?>" id="<?php echo JArrayHelper::getValue($button, 'id'); ?>">
+						<div class="span6">
+							<a href="<?php echo $button['link']; ?>"
+								class="<?php echo $button['params']->get('target') == 'modal' ? 'modal' : ''; ?>"
+								target="<?php echo $button['params']->get('target') == 'blank' ? '_blank' : '_self'; ?>"
+								>
+								<?php echo ModAkquickiconsHelper::getButtonIcon($button); ?>
+								<span>
+									<?php echo $button['text']; ?>
+								</span>
+							</a>
+						</div>
+					</div>
+				<?php endforeach; ?>
 			</div>
-		</div>
+			<?php echo $tabs ? JHtmlBootstrap::endTab() : null; ?>
+
 		<?php endforeach; ?>
+
+		<?php echo $tabs ? JHtmlBootstrap::endTabSet() : null; ?>
 	</div>
-	<?php echo $tabs ? AkquickiconsHelper::_('panel.endPanel' , 'iconTab-' . $uniqid , 'tab-' . $uniqid . '-'.$key ) : null ; ?>
-		
-	<?php endforeach; ?>
-	
-	<?php echo $tabs ? AkquickiconsHelper::_('panel.endTabs' ) : null ; ?>
-	
-	
-<?php endif;?>
+
+<?php endif; ?>
