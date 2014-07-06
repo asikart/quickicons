@@ -18,9 +18,12 @@
 		<folder>tmpl</folder>
 		<folder>css</folder>
 		<folder>language</folder>
+		<folder>model</folder>
+		<folder>helper</folder>
 		<filename>index.html</filename>
 		<filename>helper.php</filename>
 		<filename>mod_akquickicons.xml</filename>
+		<filename>install.php</filename>
 	</files>
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_FOOTER" />
 	<config>
