@@ -7,6 +7,17 @@
  */
 
 ?>
+<style>
+	.elfinder-button-search input
+	{
+		padding-left: 20px;
+	}
+
+	.elfinder-ltr .elfinder-button-search .ui-icon-close
+	{
+		right: 13px;
+	}
+</style>
 <div id="akquickicons" class="image-manager">
 	<div class="row-fluid">
 		<div class="span2">

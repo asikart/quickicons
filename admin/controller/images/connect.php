@@ -24,7 +24,7 @@ class AkquickiconsControllerImagesConnect extends \Windwalker\Controller\Control
 	{
 		// Init some API objects
 		// ================================================================================
-		$elfinder_path = WINDWALKER . '/assets/js/elfinder/php/';
+		$elfinder_path = WINDWALKER . '/src/Elfinder/Connect/';
 
 		include_once $elfinder_path . 'elFinderConnector.class.php';
 		include_once $elfinder_path . 'elFinder.class.php';

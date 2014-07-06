@@ -88,4 +88,17 @@ class AkquickiconsViewIconHtml extends EditView
 	{
 		parent::prepareData();
 	}
+
+	/**
+	 * setTitle
+	 *
+	 * @param string $title
+	 * @param string $icons
+	 *
+	 * @return  void
+	 */
+	protected function setTitle($title = null, $icons = 'pencil-2')
+	{
+		parent::setTitle(JText::_('COM_AKQUICKICONS_TITLE_ICON'), $icons);
+	}
 }
