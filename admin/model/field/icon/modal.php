@@ -64,6 +64,7 @@ class JFormFieldIcon_Modal extends JFormFieldModal
 		$asset = \Windwalker\DI\Container::getInstance('com_akquickicons')->get('helper.asset');
 
 		$asset->addCss('akicons.css');
+		$asset->addCss('font-awesome.css');
 
 		// Build the script.
 		$script   = array();

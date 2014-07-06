@@ -30,6 +30,7 @@ $grid      = $data->grid;
 $date      = $container->get('date');
 
 $asset->addCss('akicons.css');
+$asset->addCss('font-awesome.css');
 
 // Set order script.
 $grid->registerTableSort();

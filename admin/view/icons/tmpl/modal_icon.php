@@ -19,7 +19,9 @@ $function = $input->get('function', 'jSelectArticle');
 $doc      = JFactory::getDocument();
 
 $data->asset->addCss('akicons.css');
+$data->asset->addCss('font-awesome.css');
 
+$icons = \Akquickicons\Helper\IconHelper::getIcons();
 ?>
 <style type="text/css">
 
@@ -35,8 +37,29 @@ $data->asset->addCss('akicons.css');
 		cursor: pointer ;
 	}
 </style>
-<form action="<?php echo $uri = JFactory::getURI()->toString() ; ?>" method="post" name="adminForm" id="adminForm">
+<script>
+	var returnButton = function(icon)
+	{
+		if (window.parent)
+		{
+			window.parent.<?php echo $this->escape($function);?>('fa ' + icon, ' fa ' + icon);
+		}
+	}
+</script>
+<form action="<?php echo $uri = JUri::getInstance()->toString() ; ?>" method="post" name="adminForm" id="adminForm">
 
+	<ul class="the-icons clearfix" style="color: black !important;">
+		<?php foreach ($icons as $icon): ?>
+		<li>
+			<i class="fa <?php echo $icon; ?>" style="width: 15px"></i>
+			<a class="pointer" href="return false;" onclick="returnButton('<?php echo $icon; ?>');">
+				<?php echo $icon; ?>
+			</a>
+		</li>
+		<?php endforeach; ?>
+	</ul>
+
+	<!--
 	<p>
 		<ul class="the-icons clearfix" style="color: black !important;">
             <li><i class="<?php $class = 'akicon-glass'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-glass</a></li>
@@ -185,6 +208,7 @@ $data->asset->addCss('akicons.css');
             <li><i class="<?php $class = 'akicon-fullscreen'; echo $class; ?>"></i><a class="pointer" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $class ; ?>','<?php echo str_replace('ak', '', $class); ?>');"> icon-fullscreen</a></li>
           </ul>
 	</p>
+	-->
 
 	<div>
 		<input type="hidden" name="task" value="" />
