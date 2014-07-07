@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 /**
  * The Akquickicons model to get data.
  *
- * @since 1.0
+ * @since 2.0
  */
 class ModAkquickiconsModel extends \JModelDatabase
 {

@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 /**
  * Module helper to provides some useful methods.
  *
- * @since 1.0s
+ * @since 2.0
  */
 abstract class ModAkquickiconsHelper
 {

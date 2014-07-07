@@ -1,8 +1,8 @@
 <?php
 /**
- * @package        Joomla.Administrator
- * @subpackage     mod_quickicon
- * @copyright      Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @package        Asikart.Module
+ * @subpackage     mod_akquickicons
+ * @copyright      Copyright (C) 2014 SMS Taiwan, Inc. All rights reserved.
  * @license        GNU General Public License version 2 or later; see LICENSE.txt
  */
 
