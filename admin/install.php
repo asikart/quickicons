@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Script file of HelloWorld component
+ * Script file of Akquickicons component
  *
  * @package     Joomla.Administrator
  * @subpackage  com_akquickicons
@@ -36,9 +36,9 @@ class Com_AkquickiconsInstallerScript
 		$origin = $path . '/images/quickicons';
 		$target = JPATH_ROOT . '/images/quickicons';
 
-		JFolder::move($origin, $target);
+		JFolder::copy($origin, $target);
 
-		// set Category
+		// Set Category
 		$q = $db->getQuery(true);
 
 		$q->select('id')
@@ -56,7 +56,7 @@ class Com_AkquickiconsInstallerScript
 			$cat->store();
 		}
 
-		// set icons
+		// Set icons
 		$q = $db->getQuery(true);
 
 		$q->select('id')
