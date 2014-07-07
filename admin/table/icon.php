@@ -6,8 +6,6 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-use Windwalker\Table\Table;
-
 // No direct access
 defined('_JEXEC') or die;
 
@@ -16,14 +14,14 @@ defined('_JEXEC') or die;
  *
  * @since 1.0
  */
-class AkquickiconsTableIcon extends Table
+class AkquickiconsTableIcon extends \JTable
 {
 	/**
 	 * Constructor
 	 */
-	public function __construct()
+	public function __construct($db)
 	{
-		parent::__construct('#__akquickicons_icons');
+		parent::__construct('#__akquickicons_icons', 'id', $db);
 	}
 
 	/**
