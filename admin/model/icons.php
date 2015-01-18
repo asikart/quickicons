@@ -127,9 +127,9 @@ class AkquickiconsModelIcons extends ListModel
 	protected function processFilters(\JDatabaseQuery $query, $filters = array())
 	{
 		// If no state filter, set published >= 0
-		if (!isset($filters['icon.state']) && property_exists($this->getTable(), 'state'))
+		if (!isset($filters['icon.published']))
 		{
-			$query->where($query->quoteName('icon.state') . ' >= 0');
+			$query->where($query->quoteName('icon.published') . ' >= 0');
 		}
 
 		return parent::processFilters($query, $filters);
