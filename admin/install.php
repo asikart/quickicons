@@ -36,7 +36,17 @@ class Com_AkquickiconsInstallerScript
 		$origin = $path . '/images/quickicons';
 		$target = JPATH_ROOT . '/images/quickicons';
 
-		JFolder::copy($origin, $target);
+		if (is_dir($target))
+		{
+			if (JFolder::copy($origin, $target))
+			{
+				JFactory::getApplication()->enqueueMessage('Copy icons to: ' . $target, 'message');
+			}
+		}
+		else
+		{
+			JFactory::getApplication()->enqueueMessage('images/quickicons folder has exists.', 'warning');
+		}
 
 		// Set Category
 		$q = $db->getQuery(true);
