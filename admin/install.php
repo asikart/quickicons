@@ -36,7 +36,7 @@ class Com_AkquickiconsInstallerScript
 		$origin = $path . '/images/quickicons';
 		$target = JPATH_ROOT . '/images/quickicons';
 
-		if (is_dir($target))
+		if (!is_dir($target))
 		{
 			if (JFolder::copy($origin, $target))
 			{
