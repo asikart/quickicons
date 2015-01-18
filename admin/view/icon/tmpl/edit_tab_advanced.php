@@ -11,6 +11,9 @@ defined('_JEXEC') or die;
 
 $tab       = $data->tab;
 $fieldsets = $data->form->getFieldsets();
+
+// A workaround to fix finder script bug.
+$data->asset->internalJS(';');
 ?>
 
 <?php echo JHtmlBootstrap::addTab('iconEditTab', $tab, \JText::_($data->view->option . '_EDIT_FIELDS_ADVANCED')) ?>

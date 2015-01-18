@@ -42,12 +42,14 @@ $tabs = array(
 		{
 			Joomla.submitform(task, document.getElementById('adminForm'));
 		}
-	}
+	};
 </script>
 
 <div id="akquickicons" class="windwalker icon edit-form row-fluid">
 	<form action="<?php echo JURI::getInstance(); ?>"  method="post" name="adminForm" id="adminForm"
 		class="form-validate" enctype="multipart/form-data">
+
+
 
 		<?php echo JHtmlBootstrap::startTabSet('iconEditTab', array('active' => 'tab_basic')); ?>
 
