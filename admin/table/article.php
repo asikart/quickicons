@@ -23,7 +23,7 @@ class AkquickiconsTableArticle extends Table
 	 */
 	public function __construct()
 	{
-		parent::__construct('#__akquickicons_articles');
+		parent::__construct('#__content');
 	}
 
 	/**
