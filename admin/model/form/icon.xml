@@ -101,7 +101,7 @@
 
 	<fields name="params">
 		<fieldset name="publish">
-			<field name="param_target"
+			<field name="target"
 				type="list"
 				label="COM_AKQUICKICONS_TARGET_LABEL"
 				description="COM_AKQUICKICONS_TARGET_DESC"
@@ -115,7 +115,7 @@
 				<option value="modal">COM_AKQUICKICONS_TARGET_OPT_MODAL</option>
 			</field>
 
-			<field name="param_smart_url"
+			<field name="smart_url"
 				type="radio"
 				label="COM_AKQUICKICONS_SMART_URL_LABEL"
 				description="COM_AKQUICKICONS_SMART_URL_DESC"
@@ -128,14 +128,14 @@
 				<option value="0">JNO</option>
 			</field>
 
-			<field name="param_id"
+			<field name="id"
 				type="text"
 				label="COM_AKQUICKICONS_CUSTOM_ID"
 				description="COM_AKQUICKICONS_CUSTOM_ID_DESC"
 				labelclass="control-label"
 				/>
 
-			<field name="param_class"
+			<field name="class"
 				type="text"
 				label="COM_AKQUICKICONS_CUSTOM_CLASS"
 				description="COM_AKQUICKICONS_CUSTOM_CLASS_DESC"

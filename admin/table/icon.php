@@ -86,6 +86,8 @@ class AkquickiconsTableIcon extends \JTable
 	 */
 	public function store($updateNulls = false)
 	{
+		$this->params = json_encode($this->params);
+
 		return parent::store($updateNulls);
 	}
 
