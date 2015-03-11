@@ -57,6 +57,13 @@ class AkquickiconsTableIcon extends \JTable
 	 */
 	public function bind($src, $ignore = array())
 	{
+		if (isset($src['rules']) && is_array($src['rules']))
+		{
+			$rules = new JAccessRules($src['rules']);
+			
+			$this->setRules($rules);
+		}
+
 		return parent::bind($src, $ignore);
 	}
 
