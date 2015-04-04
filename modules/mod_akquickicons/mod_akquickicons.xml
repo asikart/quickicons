@@ -11,7 +11,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>asika@asikart.com</authorEmail>
 	<authorUrl>http://asikart.com</authorUrl>
-	<version>2.0.4</version>
+	<version>2.0.5</version>
 	<description>MOD_AKQUICKICONS_INSTALL_DESC</description>
 	<files>
 		<filename module="mod_akquickicons">mod_akquickicons.php</filename>
