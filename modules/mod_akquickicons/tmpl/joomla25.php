@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 $doc = JFactory::getDocument();
 JHtml::_('behavior.modal');
 
-$doc->addStylesheet('components/com_akquickicons/includes/akicons/css/akicons.css');
+$doc->addStylesheet('components/com_akquickicons/asset/css/akicons.css');
 $doc->addStyleSheet('modules/mod_akquickicons/css/akquickicons.css');
 ModAkquickiconsHelper::loadFontAwesome();
 

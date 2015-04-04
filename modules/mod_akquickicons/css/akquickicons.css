@@ -22,7 +22,12 @@
 	-webkit-transition-property: background-position, -webkit-border-bottom-left-radius, -webkit-box-shadow;
 	-moz-transition-property: background-position, -moz-border-radius-bottomleft, -moz-box-shadow;
 	-webkit-transition-duration: 0.8s;
-	-moz-transition-duration: 0.8s;	
+	-moz-transition-duration: 0.8s;
+	box-sizing: content-box;
+}
+
+.cpanel .icon a i {
+	margin: 0;
 }
 
 #cpanel div.icon a:hover,
