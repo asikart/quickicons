@@ -27,8 +27,7 @@ abstract class AkquickiconsHelper
 	 */
 	public static function addSubmenu($vName)
 	{
-		$app       = \JFactory::getApplication();
-		$inflector = StringInflector::getInstance(true);
+		$app = \JFactory::getApplication();
 
 		// Add Category Menu Item
 		if ($app->isAdmin())
@@ -54,6 +53,9 @@ abstract class AkquickiconsHelper
 
 		$dispatcher = \JEventDispatcher::getInstance();
 		$dispatcher->trigger('onAfterAddSubmenu', array('com_akquickicons', $vName));
+
+		// 3.4 menu fix
+		JFactory::getDocument()->addStyleDeclaration("#j-sidebar-container .page-header { padding-left: 20px; }");
 	}
 
 	/**

@@ -26,11 +26,12 @@
 
 	<fieldset name="information">
 		<field name="catid"
-			type="category"
+			type="categoryadd"
 			label="JCATEGORY"
 			description="JFIELD_CATEGORY_DESC"
 			extension="com_akquickicons"
 			labelclass="control-label"
+			quickadd="true"
 			/>
 
 		<field name="link"
