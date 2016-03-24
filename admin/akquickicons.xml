@@ -9,7 +9,7 @@
 	<author>Simon Asika</author>
 	<authorEmail>asika32764@gmail.com</authorEmail>
 	<authorUrl>http://asikart.com</authorUrl>
-	<version>2.0.5</version>
+	<version>2.0.6</version>
 	<description></description>
 
 	<scriptfile>install.php</scriptfile>
@@ -57,7 +57,7 @@
 	</modules>
 
 	<updateservers>
-		<server type="extension" priority="1" name="Asikart Quickicons Component">https://raw.githubusercontent.com/asikart/quickicons/staging/update.xml</server>
+		<server type="extension" priority="1" name="Asikart Quickicons Component">https://raw.githubusercontent.com/lyrasoft/quickicons/staging/update.xml</server>
 	</updateservers>
 
 </extension>
