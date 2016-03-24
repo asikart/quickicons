@@ -7,6 +7,8 @@
  */
 
 // No direct access
+use Windwalker\String\StringInflector;
+
 defined('_JEXEC') or die;
 
 /**
@@ -26,7 +28,7 @@ abstract class AkquickiconsHelper
 	public static function addSubmenu($vName)
 	{
 		$app       = \JFactory::getApplication();
-		$inflector = \JStringInflector::getInstance(true);
+		$inflector = StringInflector::getInstance(true);
 
 		// Add Category Menu Item
 		if ($app->isAdmin())
