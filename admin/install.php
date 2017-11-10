@@ -47,6 +47,20 @@ class Com_AkquickiconsInstallerScript
 		{
 			JFactory::getApplication()->enqueueMessage('images/quickicons folder has exists.', 'warning');
 		}
+	}
+
+	/**
+	 * setItemAssets
+	 *
+	 * @param string $path
+	 *
+	 * @return  void
+	 */
+	protected function setItemAssets($path)
+	{
+		include_once JPATH_LIBRARIES . '/windwalker/src/init.php';
+
+		$db = JFactory::getDbo();
 
 		// Set Category
 		$q = $db->getQuery(true);
@@ -78,12 +92,6 @@ class Com_AkquickiconsInstallerScript
 		$table_path = $path . '/table/icon.php';
 
 		include_once $table_path;
-
-		// TODO: Rewrite Windwalker install to first
-		if (!class_exists('Windwalker\Windwalker'))
-		{
-			include_once dirname($path) . '/windwalker/src/Table/Table.php';
-		}
 
 		$icon = JTable::getInstance('icon', 'AkquickiconsTable');
 		$user = JFactory::getUser();
@@ -198,10 +206,10 @@ CSS;
 
 		include $installScript;
 
-		// Set Module active
-		// ========================================================================
-		if ($type == 'install')
+		if ($type === 'install')
 		{
+			// Set Module active
+			// ========================================================================
 			$q = $db->getQuery(true);
 
 			$q->select('*')
@@ -225,6 +233,10 @@ CSS;
 			$in->menuid   = 0;
 
 			$db->insertObject('#__modules_menu', $in);
+
+			// Assets
+			// ========================================================================
+			$this->setItemAssets($path);
 		}
 	}
 }
