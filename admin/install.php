@@ -79,6 +79,12 @@ class Com_AkquickiconsInstallerScript
 
 		include_once $table_path;
 
+		// TODO: Rewrite Windwalker install to first
+		if (!class_exists('Windwalker\Windwalker'))
+		{
+			include_once dirname($path) . '/windwalker/src/Table/Table.php';
+		}
+
 		$icon = JTable::getInstance('icon', 'AkquickiconsTable');
 		$user = JFactory::getUser();
 
