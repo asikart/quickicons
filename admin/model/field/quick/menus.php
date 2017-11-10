@@ -71,13 +71,16 @@ class JFormFieldQuick_Menus extends JFormField
 		$script = <<<SCRIPT
 		
 		<script type="text/javascript">
-			window.addEvent('domready', function(){
-				a = $$('.controls > ul > li ul a') ;
-				a.addEvent('click' , function(e){
-					e.stop();
-					$('jform_link').set('value', e.target.get('href'));
-					$('jform_link').highlight();
-				} );
+			jQuery(function($) {
+				var links = $('.controls > ul#menu > li.dropdown > ul a');
+				
+				links.on('click' , function(event) {
+					event.stopPropagation();
+					event.preventDefault();
+
+					$('#jform_link').val($(this).attr('href'));
+					$('#jform_link').effect('highlight');
+				});
 			});
 		</script>
 		
