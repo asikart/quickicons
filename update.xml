@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <updates>
-	<!-- Joomla!3.[345] -->
+	<!-- Joomla!3.[5678] -->
 	<update>
 		<name>Asikart Quickicons</name>
-		<version>2.0.7</version>
-		<infourl title="Asikart Quickicons">http://ext.asikart.com</infourl>
+		<version>2.0.8</version>
+		<infourl title="Asikart Quickicons">http://asikart.co</infourl>
 		<downloads>
-			<downloadurl type="upgrade" format="zip">https://github.com/lyrasoft/quickicons/archive/master.zip</downloadurl>
+			<downloadurl type="upgrade" format="zip">https://github.com/asikart/quickicons/releases/download/2.0.8/com_akquickicons_2.0.8.zip</downloadurl>
 		</downloads>
-		<targetplatform name="joomla" version="3.[345]" />
+		<targetplatform name="joomla" version="3.[5678]" />
 		<element>com_akquickicons</element>
 		<type>component</type>
 	</update>
