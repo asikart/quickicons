@@ -7,13 +7,14 @@
  */
 
 use Joomla\Registry\Registry;
+use Windwalker\View\Html\HtmlView;
 
 /**
  * Class AkquickiconsViewImagesHtml
  *
  * @since 1.0
  */
-class AkquickiconsViewImagesHtml extends \Windwalker\View\Html\GridView
+class AkquickiconsViewImagesHtml extends HtmlView
 {
 	/**
 	 * The elFinder default toolbar buttons.
@@ -92,6 +93,17 @@ class AkquickiconsViewImagesHtml extends \Windwalker\View\Html\GridView
 SCRIPT;
 
 		$asset->internalJS($script);
+
+		// We don't need toolbar in the modal window.
+		if ($this->getLayout() !== 'modal')
+		{
+			$this->addToolbar();
+			$this->addSubmenu();
+
+			$this['sidebar'] = \JHtmlSidebar::render();
+
+			$this->setTitle();
+		}
 	}
 
 	/**
@@ -118,11 +130,11 @@ SCRIPT;
 		$asset->bootstrap();
 
 		// ElFinder includes
-		$asset->addCss('js/jquery-ui/css/smoothness/jquery-ui-1.8.24.custom.css');
+		$asset->addCss('css/jquery-ui/smoothness/jquery-ui-1.8.24.custom.css');
 		$asset->addCss('js/elfinder/css/elfinder.min.css');
 		$asset->addCss('js/elfinder/css/theme.css');
 
-		$asset->addJs('js/jquery-ui/js/jquery-ui.min.js');
+		$asset->addJs('js/jquery/jquery-ui.min.js');
 		$asset->addJs('js/elfinder/js/elfinder.min.js');
 
 		if (is_file(JPATH_LIBRARIES . '/windwalker/asset/js/elfinder/js/i18n/elfinder.' . $lang_code . '.js'))
@@ -145,6 +157,21 @@ SCRIPT;
 	}
 
 	/**
+	 * Add the submenu.
+	 *
+	 * @return  void
+	 */
+	protected function addSubmenu()
+	{
+		$helper = ucfirst($this->prefix) . 'Helper';
+
+		if (is_callable(array($helper, 'addSubmenu')))
+		{
+			$helper::addSubmenu($this->getName());
+		}
+	}
+
+	/**
 	 * configureToolbar
 	 *
 	 * @param array   $buttonSet
@@ -162,4 +189,3 @@ SCRIPT;
 		return $buttonSet;
 	}
 }
- 
