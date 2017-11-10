@@ -53,165 +53,6 @@
         ]
     },
     {
-        "name": "filp/whoops",
-        "version": "2.1.2",
-        "version_normalized": "2.1.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/filp/whoops.git",
-            "reference": "d13505b240a6f580bc75ba591da30299d6cb0eec"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/filp/whoops/zipball/d13505b240a6f580bc75ba591da30299d6cb0eec",
-            "reference": "d13505b240a6f580bc75ba591da30299d6cb0eec",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "require-dev": {
-            "mockery/mockery": "0.9.*",
-            "phpunit/phpunit": "^4.8 || ^5.0",
-            "symfony/var-dumper": "~3.0"
-        },
-        "suggest": {
-            "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
-            "whoops/soap": "Formats errors as SOAP responses"
-        },
-        "time": "2016-04-07 06:16:25",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Whoops\\": "src/Whoops/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Filipe Dobreira",
-                "homepage": "https://github.com/filp",
-                "role": "Developer"
-            }
-        ],
-        "description": "php error handling for cool kids",
-        "homepage": "https://github.com/filp/whoops",
-        "keywords": [
-            "error",
-            "exception",
-            "handling",
-            "library",
-            "whoops",
-            "zf2"
-        ]
-    },
-    {
-        "name": "symfony/yaml",
-        "version": "v2.8.6",
-        "version_normalized": "2.8.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/yaml.git",
-            "reference": "e4fbcc65f90909c999ac3b4dfa699ee6563a9940"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/yaml/zipball/e4fbcc65f90909c999ac3b4dfa699ee6563a9940",
-            "reference": "e4fbcc65f90909c999ac3b4dfa699ee6563a9940",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.9"
-        },
-        "time": "2016-03-29 19:00:15",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Yaml\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Yaml Component",
-        "homepage": "https://symfony.com"
-    },
-    {
-        "name": "windwalker/cache",
-        "version": "2.1.9",
-        "version_normalized": "2.1.9.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ventoviro/windwalker-cache.git",
-            "reference": "df1685b6cf0c9ce3da5329668aebce0f4c7d59c5"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ventoviro/windwalker-cache/zipball/df1685b6cf0c9ce3da5329668aebce0f4c7d59c5",
-            "reference": "df1685b6cf0c9ce3da5329668aebce0f4c7d59c5",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.10"
-        },
-        "require-dev": {
-            "windwalker/test": "~2.0"
-        },
-        "time": "2016-02-12 15:36:22",
-        "type": "windwalker-package",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Windwalker\\Cache\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.0+"
-        ],
-        "description": "Windwalker Cache package",
-        "homepage": "https://github.com/ventoviro/windwalker-cache",
-        "keywords": [
-            "cache",
-            "framework",
-            "windwalker"
-        ]
-    },
-    {
         "name": "windwalker/compare",
         "version": "2.1.9",
         "version_normalized": "2.1.9.0",
@@ -258,31 +99,27 @@
         ]
     },
     {
-        "name": "windwalker/registry",
+        "name": "windwalker/cache",
         "version": "2.1.9",
         "version_normalized": "2.1.9.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/ventoviro/windwalker-registry.git",
-            "reference": "12e3bfd7b8977df5c5e6b12a969b12137ec25181"
+            "url": "https://github.com/ventoviro/windwalker-cache.git",
+            "reference": "df1685b6cf0c9ce3da5329668aebce0f4c7d59c5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ventoviro/windwalker-registry/zipball/12e3bfd7b8977df5c5e6b12a969b12137ec25181",
-            "reference": "12e3bfd7b8977df5c5e6b12a969b12137ec25181",
+            "url": "https://api.github.com/repos/ventoviro/windwalker-cache/zipball/df1685b6cf0c9ce3da5329668aebce0f4c7d59c5",
+            "reference": "df1685b6cf0c9ce3da5329668aebce0f4c7d59c5",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.10"
         },
         "require-dev": {
-            "symfony/yaml": "2.*",
             "windwalker/test": "~2.0"
         },
-        "suggest": {
-            "symfony/yaml": "Install 2.* if you require YAML support."
-        },
-        "time": "2016-03-07 10:02:08",
+        "time": "2016-02-12 15:36:22",
         "type": "windwalker-package",
         "extra": {
             "branch-alias": {
@@ -292,115 +129,17 @@
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Windwalker\\Registry\\": ""
+                "Windwalker\\Cache\\": ""
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
             "LGPL-2.0+"
         ],
-        "description": "Windwalker Registry package",
-        "homepage": "https://github.com/ventoviro/windwalker-registry",
+        "description": "Windwalker Cache package",
+        "homepage": "https://github.com/ventoviro/windwalker-cache",
         "keywords": [
-            "framework",
-            "registry",
-            "windwalker"
-        ]
-    },
-    {
-        "name": "windwalker/io",
-        "version": "2.1.9",
-        "version_normalized": "2.1.9.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ventoviro/windwalker-io.git",
-            "reference": "dcb90e28b2530a59cad9fe1245858aba5405119d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ventoviro/windwalker-io/zipball/dcb90e28b2530a59cad9fe1245858aba5405119d",
-            "reference": "dcb90e28b2530a59cad9fe1245858aba5405119d",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.10"
-        },
-        "require-dev": {
-            "windwalker/filter": "~2.0",
-            "windwalker/test": "~2.0"
-        },
-        "suggest": {
-            "windwalker/filter": "Install 2.* if you require filter support."
-        },
-        "time": "2016-03-08 11:38:11",
-        "type": "windwalker-package",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Windwalker\\IO\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.0+"
-        ],
-        "description": "Windwalker IO package",
-        "homepage": "https://github.com/ventoviro/windwalker-io",
-        "keywords": [
-            "framework",
-            "io",
-            "windwalker"
-        ]
-    },
-    {
-        "name": "windwalker/console",
-        "version": "2.1.9",
-        "version_normalized": "2.1.9.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ventoviro/windwalker-console.git",
-            "reference": "c5a91840c6a20973bc4adc4bdd8b0261149f1704"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ventoviro/windwalker-console/zipball/c5a91840c6a20973bc4adc4bdd8b0261149f1704",
-            "reference": "c5a91840c6a20973bc4adc4bdd8b0261149f1704",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.10",
-            "windwalker/io": "~2.0",
-            "windwalker/registry": "~2.0"
-        },
-        "require-dev": {
-            "windwalker/test": "~2.0"
-        },
-        "time": "2016-04-02 04:13:51",
-        "type": "windwalker-package",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Windwalker\\Console\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.0+"
-        ],
-        "description": "Windwalker Controller package",
-        "homepage": "https://github.com/ventoviro/windwalker-console",
-        "keywords": [
-            "console",
+            "cache",
             "framework",
             "windwalker"
         ]
@@ -502,52 +241,6 @@
         "homepage": "https://github.com/ventoviro/windwalker-datamapper",
         "keywords": [
             "datamapper",
-            "framework",
-            "windwalker"
-        ]
-    },
-    {
-        "name": "windwalker/filesystem",
-        "version": "2.1.9",
-        "version_normalized": "2.1.9.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ventoviro/windwalker-filesystem.git",
-            "reference": "6f617b03280d52839c7ebff866348521cd8535b8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ventoviro/windwalker-filesystem/zipball/6f617b03280d52839c7ebff866348521cd8535b8",
-            "reference": "6f617b03280d52839c7ebff866348521cd8535b8",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.10"
-        },
-        "require-dev": {
-            "windwalker/test": "~2.0"
-        },
-        "time": "2016-03-23 15:01:32",
-        "type": "windwalker-package",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Windwalker\\Filesystem\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.0+"
-        ],
-        "description": "Windwalker Filesystem package",
-        "homepage": "https://github.com/ventoviro/windwalker-filesystem",
-        "keywords": [
-            "filesystem",
             "framework",
             "windwalker"
         ]
@@ -693,6 +386,340 @@
         ]
     },
     {
+        "name": "windwalker/filesystem",
+        "version": "2.1.9",
+        "version_normalized": "2.1.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ventoviro/windwalker-filesystem.git",
+            "reference": "6f617b03280d52839c7ebff866348521cd8535b8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ventoviro/windwalker-filesystem/zipball/6f617b03280d52839c7ebff866348521cd8535b8",
+            "reference": "6f617b03280d52839c7ebff866348521cd8535b8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.10"
+        },
+        "require-dev": {
+            "windwalker/test": "~2.0"
+        },
+        "time": "2016-03-23 15:01:32",
+        "type": "windwalker-package",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Windwalker\\Filesystem\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.0+"
+        ],
+        "description": "Windwalker Filesystem package",
+        "homepage": "https://github.com/ventoviro/windwalker-filesystem",
+        "keywords": [
+            "filesystem",
+            "framework",
+            "windwalker"
+        ]
+    },
+    {
+        "name": "windwalker/registry",
+        "version": "2.1.9",
+        "version_normalized": "2.1.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ventoviro/windwalker-registry.git",
+            "reference": "12e3bfd7b8977df5c5e6b12a969b12137ec25181"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ventoviro/windwalker-registry/zipball/12e3bfd7b8977df5c5e6b12a969b12137ec25181",
+            "reference": "12e3bfd7b8977df5c5e6b12a969b12137ec25181",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.10"
+        },
+        "require-dev": {
+            "symfony/yaml": "2.*",
+            "windwalker/test": "~2.0"
+        },
+        "suggest": {
+            "symfony/yaml": "Install 2.* if you require YAML support."
+        },
+        "time": "2016-03-07 10:02:08",
+        "type": "windwalker-package",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Windwalker\\Registry\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.0+"
+        ],
+        "description": "Windwalker Registry package",
+        "homepage": "https://github.com/ventoviro/windwalker-registry",
+        "keywords": [
+            "framework",
+            "registry",
+            "windwalker"
+        ],
+        "abandoned": "windwalker/structure"
+    },
+    {
+        "name": "windwalker/io",
+        "version": "2.1.9",
+        "version_normalized": "2.1.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ventoviro/windwalker-io.git",
+            "reference": "dcb90e28b2530a59cad9fe1245858aba5405119d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ventoviro/windwalker-io/zipball/dcb90e28b2530a59cad9fe1245858aba5405119d",
+            "reference": "dcb90e28b2530a59cad9fe1245858aba5405119d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.10"
+        },
+        "require-dev": {
+            "windwalker/filter": "~2.0",
+            "windwalker/test": "~2.0"
+        },
+        "suggest": {
+            "windwalker/filter": "Install 2.* if you require filter support."
+        },
+        "time": "2016-03-08 11:38:11",
+        "type": "windwalker-package",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Windwalker\\IO\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.0+"
+        ],
+        "description": "Windwalker IO package",
+        "homepage": "https://github.com/ventoviro/windwalker-io",
+        "keywords": [
+            "framework",
+            "io",
+            "windwalker"
+        ]
+    },
+    {
+        "name": "windwalker/console",
+        "version": "2.1.9",
+        "version_normalized": "2.1.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ventoviro/windwalker-console.git",
+            "reference": "c5a91840c6a20973bc4adc4bdd8b0261149f1704"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ventoviro/windwalker-console/zipball/c5a91840c6a20973bc4adc4bdd8b0261149f1704",
+            "reference": "c5a91840c6a20973bc4adc4bdd8b0261149f1704",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.10",
+            "windwalker/io": "~2.0",
+            "windwalker/registry": "~2.0"
+        },
+        "require-dev": {
+            "windwalker/test": "~2.0"
+        },
+        "time": "2016-04-02 04:13:51",
+        "type": "windwalker-package",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Windwalker\\Console\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.0+"
+        ],
+        "description": "Windwalker Controller package",
+        "homepage": "https://github.com/ventoviro/windwalker-console",
+        "keywords": [
+            "console",
+            "framework",
+            "windwalker"
+        ]
+    },
+    {
+        "name": "psr/log",
+        "version": "1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/log.git",
+            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2016-10-10 12:19:37",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Log\\": "Psr/Log/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for logging libraries",
+        "homepage": "https://github.com/php-fig/log",
+        "keywords": [
+            "log",
+            "psr",
+            "psr-3"
+        ]
+    },
+    {
+        "name": "windwalker/environment",
+        "version": "2.1.9",
+        "version_normalized": "2.1.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ventoviro/windwalker-environment.git",
+            "reference": "0cb83b3e07c3b9d56341e34a45d47be6aa5e17af"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ventoviro/windwalker-environment/zipball/0cb83b3e07c3b9d56341e34a45d47be6aa5e17af",
+            "reference": "0cb83b3e07c3b9d56341e34a45d47be6aa5e17af",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.10"
+        },
+        "require-dev": {
+            "windwalker/test": "~2.0"
+        },
+        "time": "2016-02-12 15:36:22",
+        "type": "windwalker-package",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Windwalker\\Environment\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.0+"
+        ],
+        "description": "Windwalker Environment package",
+        "homepage": "https://github.com/ventoviro/windwalker-environment",
+        "keywords": [
+            "environment",
+            "framework",
+            "windwalker"
+        ]
+    },
+    {
+        "name": "windwalker/test",
+        "version": "2.1.9",
+        "version_normalized": "2.1.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ventoviro/windwalker-test.git",
+            "reference": "8946d90f071d2337ab5fa51c860026957e09288d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ventoviro/windwalker-test/zipball/8946d90f071d2337ab5fa51c860026957e09288d",
+            "reference": "8946d90f071d2337ab5fa51c860026957e09288d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.10",
+            "windwalker/environment": "~2.0"
+        },
+        "time": "2016-02-12 15:36:22",
+        "type": "windwalker-package",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Windwalker\\Test\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.0+"
+        ],
+        "description": "Windwalker Test package",
+        "homepage": "https://github.com/ventoviro/windwalker-test",
+        "keywords": [
+            "framework",
+            "test",
+            "windwalker"
+        ]
+    },
+    {
         "name": "windwalker/string",
         "version": "2.1.9",
         "version_normalized": "2.1.9.0",
@@ -793,93 +820,116 @@
         ]
     },
     {
-        "name": "windwalker/environment",
-        "version": "2.1.9",
-        "version_normalized": "2.1.9.0",
+        "name": "symfony/yaml",
+        "version": "v2.8.26",
+        "version_normalized": "2.8.26.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/ventoviro/windwalker-environment.git",
-            "reference": "0cb83b3e07c3b9d56341e34a45d47be6aa5e17af"
+            "url": "https://github.com/symfony/yaml.git",
+            "reference": "4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ventoviro/windwalker-environment/zipball/0cb83b3e07c3b9d56341e34a45d47be6aa5e17af",
-            "reference": "0cb83b3e07c3b9d56341e34a45d47be6aa5e17af",
+            "url": "https://api.github.com/repos/symfony/yaml/zipball/4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5",
+            "reference": "4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.10"
+            "php": ">=5.3.9"
         },
-        "require-dev": {
-            "windwalker/test": "~2.0"
-        },
-        "time": "2016-02-12 15:36:22",
-        "type": "windwalker-package",
+        "time": "2017-06-01 20:52:29",
+        "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.2-dev"
+                "dev-master": "2.8-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Windwalker\\Environment\\": ""
-            }
+                "Symfony\\Component\\Yaml\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "LGPL-2.0+"
+            "MIT"
         ],
-        "description": "Windwalker Environment package",
-        "homepage": "https://github.com/ventoviro/windwalker-environment",
-        "keywords": [
-            "environment",
-            "framework",
-            "windwalker"
-        ]
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Yaml Component",
+        "homepage": "https://symfony.com"
     },
     {
-        "name": "windwalker/test",
-        "version": "2.1.9",
-        "version_normalized": "2.1.9.0",
+        "name": "asika/whoops",
+        "version": "2.1.9.1",
+        "version_normalized": "2.1.9.1",
         "source": {
             "type": "git",
-            "url": "https://github.com/ventoviro/windwalker-test.git",
-            "reference": "8946d90f071d2337ab5fa51c860026957e09288d"
+            "url": "https://github.com/asika32764/whoops.git",
+            "reference": "64ec661763a7ff2e6d2463fa0a43548fedc2b1d2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ventoviro/windwalker-test/zipball/8946d90f071d2337ab5fa51c860026957e09288d",
-            "reference": "8946d90f071d2337ab5fa51c860026957e09288d",
+            "url": "https://api.github.com/repos/asika32764/whoops/zipball/64ec661763a7ff2e6d2463fa0a43548fedc2b1d2",
+            "reference": "64ec661763a7ff2e6d2463fa0a43548fedc2b1d2",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.10",
-            "windwalker/environment": "~2.0"
+            "psr/log": "1.*"
         },
-        "time": "2016-02-12 15:36:22",
-        "type": "windwalker-package",
+        "require-dev": {
+            "mockery/mockery": "0.9.*",
+            "phpunit/phpunit": "^4.8 || ^5.0",
+            "symfony/var-dumper": "^2.6 || ^3.0"
+        },
+        "suggest": {
+            "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
+            "whoops/soap": "Formats errors as SOAP responses"
+        },
+        "time": "2017-07-06 14:42:01",
+        "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.2-dev"
+                "dev-master": "2.0-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Windwalker\\Test\\": ""
+                "Whoops\\": "src/Whoops/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "LGPL-2.0+"
+            "MIT"
         ],
-        "description": "Windwalker Test package",
-        "homepage": "https://github.com/ventoviro/windwalker-test",
+        "authors": [
+            {
+                "name": "Filipe Dobreira",
+                "homepage": "https://github.com/filp",
+                "role": "Developer"
+            }
+        ],
+        "description": "Whoops 2 supports PHP 5.3 to 7",
+        "homepage": "https://filp.github.io/whoops/",
         "keywords": [
-            "framework",
-            "test",
-            "windwalker"
+            "error",
+            "exception",
+            "handling",
+            "library",
+            "whoops",
+            "zf2"
         ]
     }
 ]

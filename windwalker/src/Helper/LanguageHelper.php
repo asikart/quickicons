@@ -8,7 +8,6 @@
 
 namespace Windwalker\Helper;
 
-use JFactory;
 use JFolder;
 use Joomla\Uri\Uri;
 use Windwalker\Data\Data;
@@ -151,15 +150,15 @@ class LanguageHelper extends AbstractFacade
 	{
 		$client = strtolower($client);
 
-		if ($client == 'site')
+		if ($client === 'site')
 		{
 			$client = JClient::SITE;
 		}
-		elseif ($client == 'admin' || $client == 'administrator')
+		elseif ($client === 'admin' || $client === 'administrator')
 		{
 			$client = JClient::ADMINISTRATOR;
 		}
-		elseif ($client == 'both')
+		elseif ($client === 'both')
 		{
 			$client = JClient::BOTH;
 		}
@@ -268,8 +267,13 @@ class LanguageHelper extends AbstractFacade
 	 *
 	 * @return  boolean
 	 */
-	public static function loadAll($lang = 'en-GB', $option = null)
+	public static function loadAll($lang = null, $option = null)
 	{
+		/** @var \JLanguage $language */
+		$language = static::getInstance();
+
+		$lang = $lang ? : $language->getTag();
+
 		$folder = PathHelper::getAdmin($option) . '/language/' . $lang;
 
 		if (is_dir($folder))
@@ -281,20 +285,18 @@ class LanguageHelper extends AbstractFacade
 			return false;
 		}
 
-		$language = static::getInstance();
-
 		foreach ($files as $file)
 		{
 			$file = explode('.', $file);
 
-			if (array_pop($file) != 'ini')
+			if (array_pop($file) !== 'ini')
 			{
 				continue;
 			}
 
 			array_shift($file);
 
-			if (count($file) != 1 && $file[1] == 'sys')
+			if (count($file) != 1 && $file[1] === 'sys')
 			{
 				continue;
 			}
