@@ -80,11 +80,13 @@ class Com_AkquickiconsInstallerScript
 		include_once $table_path;
 
 		$icon = JTable::getInstance('icon', 'AkquickiconsTable');
+		$user = JFactory::getUser();
 
 		foreach ($icon_ids as $k => $icon_id)
 		{
 			$icon->load($icon_id);
 			$icon->catid = $catids[0];
+			$icon->created_by = $user->id;
 			$icon->store();
 		}
 
